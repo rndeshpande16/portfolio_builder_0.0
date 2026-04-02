@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+IE:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="nav">
+      <style>
+        body {
+          margin: 0;
+        }
+        .nav {
+          background: linear-gradient(
+            60deg,
+            #0f1b2e 10%,
+            navy,
+            darkblue,
+            purple,
+            darkviolet
+          );
+          padding: 20px;
+          position: sticky;
+          nav {
+            width: 100%;
+          }
+          nav ul {
+            max-width: 100%;
+            display: flex;
+            list-style-type: none;
+            justify-content: space-around;
+            margin: 0;
+            padding: 0;
+          }
+          li {
+            padding: 0;
+            margin: 0;
+          }
+          a {
+            text-decoration: none;
+            font-family: "Playwrite IE";
+            font-weight: 400;
+            color: white;
+          }
+          li div {
+            width: 0;
+            position: relative;
+            height: 2.5px;
+            background-color: white;
+            transition: 0.2s width ease;
+          }
+          li:hover {
+            div {
+              width: 100%;
+            }
+          }
+        }
+      </style>
+      <nav>
+        <ul>
+          <li>
+            <a href="">Home</a>
+            <div></div>
+          </li>
+          <li>
+            <a href="">About</a>
+            <div></div>
+          </li>
+          <li>
+            <a href="">Education</a>
+            <div></div>
+          </li>
+          <li>
+            <a href="">Contact</a>
+            <div></div>
+          </li>
+          <li>
+            <a href="">Blog</a>
+            <div></div>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="home">
+      <style>
+        :root {
+          --light: #f0f0f0;
+          --dark: #1a1a1a;
+          --angle: 45deg;
+          --startCoordinates: calc((100vw - 100vh) / 2);
+          --endCoordinates: calc((100vw + 100vh) / 2);
+        }
+        body {
+          margin: 0;
+        }
+        .home {
+          background: linear-gradient(45deg, #1a1a1a 50%, white 50%);
+          background-attachment: fixed;
+          background-size: cover;
+          padding: 35px;
+          height: 100vh;
+          width: 100vw;
+          color: white;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          container-type: inline-size;
+          img {
+            height: 250px;
+            border-radius: 100%;
+            transition: 0.3s border-radius ease-in-out;
+          }
+          .imageintro {
+            display: flex;
+            justify-content: space-around;
+            gap: 25pt;
+          }
+          .imageintro div.intro {
+            min-width: 40%;
+            text-align: justify;
+            text-align-last: left;
+          }
+          .imageintro .img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+          }
+          @container (max-width: 1200px) {
+            .imageintro {
+              display: inline;
+            }
+            .imageintro .img {
+              float: left;
+              width: auto;
+              padding: 25pt;
+              margin: 0;
+            }
+            .imageintro img {
+              border-radius: 10pt;
+            }
+          }
+        }
+        .imageintro div.intro::after {
+          content: attr(data-text);
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #1a1a1a;
+          background-color: red;
+          clip-path: polygon(
+            var(--startCoordinates) 0,
+            var(--endCoordinates) 100%,
+            100% 100%,
+            100% 0
+          );
+        }
+      </style>
+      <div class="heading">
+        <h1>Hey, this is John! Welcome to my website!</h1>
+      </div>
+      <div class="imageintro">
+        <div class="img">
+          <img
+            src="https://images.pexels.com/photos/36536611/pexels-photo-36536611.jpeg"
+          />
+        </div>
+        <div class="intro">
+          <p>
+            I have always felt that the thin, biting air of the high altitudes
+            is the only thing that truly allows me to breathe. My fascination
+            with the Himalayas isn't about ticking famous summits off a
+            checklist; it is a deliberate, soul-deep immersion into the rugged
+            landscapes of Himachal Pradesh and the sacred, echoing silences of
+            Uttarakhand. Whether I am navigating the stark, rain-shadow deserts
+            of Spiti or finding a rare kind of stillness amidst the
+            mist-shrouded oak forests of Kumaon, I am drawn to the raw and
+            unfiltered spirit of these mountains. To me, these peaks are not
+            just a backdrop for an adventure—they are a demanding teacher and my
+            ultimate sanctuary.
+          </p>
+          <p>
+            The path I tread is defined by the shift from the lush, rolling
+            meadows of the Garhwal region to the formidable, snow-dusted passes
+            that guard the gateway to Tibet. I find myself equally at home
+            sharing tea in a remote Himalayan hamlet in the Parvati Valley as I
+            am tracing the ancient pilgrim trails that wind toward the high
+            shrines of the Char Dham. My journey is a constant search for that
+            perfect intersection of physical endurance and spiritual clarity,
+            proving that the further I climb into the heart of Devbhumi, the
+            closer I get to understanding the true scale of the world and my
+            place within it.
+          </p>
+        </div>
+      </div>
+    </section>
+    <div>
+      <div class="gradient-container" data-text="QUANTUM FINANCE">
+        QUANTUM FINANCE
+      </div>
+      <style>
+        .gradient-container {
+          position: relative;
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 3rem;
+          font-weight: 900;
+          /* Background split at 45 degrees */
+          background: linear-gradient(
+            var(--angle),
+            var(--light) 50%,
+            var(--dark) 50%
+          );
+          background-attachment: fixed;
+          color: var(--dark); /* Default text color for the light side */
+        }
+
+        .gradient-container::after {
+          content: attr(data-text);
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--light); /* Text color for the dark side */
+
+          /* The "Magic" Clip: A diagonal cut that matches 45 degrees */
+          /* This polygon creates a triangle covering the dark half */
+          clip-path: polygon(
+            var(--startCoordinates) 0,
+            var(--endCoordinates) 100%,
+            100% 100%,
+            100% 0
+          );
+          pointer-events: none;
+        }
+      </style>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js"></script>
+    <title>Portfolio Builder</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>Home</li>
+          <li>Build</li>
+          <li>About</li>
+          <li>Feedback</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <aside>
+        <ul>
+          <li draggable="true" ondragstart="homeDrag(event)">Home</li>
+          <li draggable="true" ondragstart="dragNav(event)">Nav</li>
+          <li draggable="true" ondragstart="homeDrag(event)">Contact</li>
+          <li draggable="true" ondragstart="homeDrag(event)">About</li>
+          <li draggable="true" ondragstart="homeDrag(event)">Photo Gallery</li>
+          <li draggable="true" ondragstart="homeDrag(event)">My Work</li>
+          <li draggable="true" ondragstart="homeDrag(event)">Achievements</li>
+          <li draggable="true" ondragstart="homeDrag(event)">Projects</li>
+          <li draggable="true" ondragstart="homeDrag(event)">Blog</li>
+          <li draggable="true" ondragstart="homeDrag(event)">Testimonials</li>
+          <li draggable="true" ondragstart="homeDrag(event)">Media</li>
+        </ul>
+      </aside>
+      <section
+        id="show"
+        ondrop="Drop(event)"
+        ondragover="DragOver(event)"
+      ></section>
+    </main>
+    <footer></footer>
+  </body>
+</html>
