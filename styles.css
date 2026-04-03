@@ -73,3 +73,40 @@ header nav ul {
   overflow-y: scroll;
   border-radius: 5px;
 }
+#menu{
+  border:1px black solid;
+  width:20vw;
+   position: fixed;
+   margin:0 5px 0 5px;
+   padding:15px;
+  top: 60px;
+  left: 78.5vw;
+  bottom: 0;
+  background-color: blueviolet;
+  color:aliceblue;
+  overflow-y: scroll;
+}
+#menu ul{
+  padding:0px;
+  position: relative;
+margin:auto;
+}
+#menu ul li{
+  list-style-type: none;
+  list-style: none;
+  margin:2px;
+  padding:5px;
+  text-align: center;
+  background-color: rgb(125, 33, 210);
+  border:2px blueviolet solid;
+  border-radius: 15px;;
+}
+#menu ul .selected{
+  background-color: rgb(104, 5, 185);
+}
+#menu ul li:hover{
+background-color: rgb(104, 24, 179);
+}
+#pageHeader{
+  text-align: center;
+}

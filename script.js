@@ -1,3 +1,4 @@
+let currentPage="home";
 function homeDrag(ev) {
   const html = `<section class="home">
       <style>
@@ -130,19 +131,19 @@ function dragNav(ev) {
         </style>
         <ul>
           <li>
-            <a href="">Home</a>
+            <a onclick="openPage('home')">Home</a>
             <div></div>
           </li>
           <li>
-            <a href="">About</a>
+            <a onclick="openPage('about')">About</a>
             <div></div>
           </li>
           <li>
-            <a href="">My Work</a>
+            <a onclick="openPage('myWork')">My Work</a>
             <div></div>
           </li>
           <li>
-            <a href="">Contacts</a>
+            <a onclick="openPage('contacts')">Contacts</a>
             <div></div>
           </li>
         </ul>
@@ -160,3 +161,24 @@ function Drop(ev) {
   var h = ev.dataTransfer.getData("html");
   document.getElementById("show").innerHTML += h;
 }
+function savePage(page){
+localStorage.setItem(page,document.getElementById("show").innerHTML);
+}
+function loadPage(page){
+  let data=localStorage.getItem(page);
+  if(data!=null){
+    document.getElementById("show").innerHTML=data;
+  }else{
+    document.getElementById("show").innerHTML="";
+  }
+}
+function openPage(page){
+  savePage(currentPage);
+  loadPage(page);
+  document.getElementsByClassName("selected")[0].classList.remove("selected");
+  document.getElementById(page+"PageOpener").classList.add("selected");
+  currentPage=page;
+}
+setTimeout(function(){
+loadPage("home");
+},200);
