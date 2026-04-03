@@ -101,6 +101,9 @@ margin:auto;
   border:2px blueviolet solid;
   border-radius: 15px;;
 }
+#menu ul .selected{
+  background-color: rgb(104, 5, 185);
+}
 #menu ul li:hover{
 background-color: rgb(104, 24, 179);
 }
