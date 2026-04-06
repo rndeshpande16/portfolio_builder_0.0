@@ -151,7 +151,100 @@ function dragNav(ev) {
     </section>`;
   ev.dataTransfer.setData("html", html);
 }
+function contactDrag(ev) {
+  const html = `
+    <style>
+        /* Exact variables from your homesection.html */
+        :root {
+          --light: #f0f0f0;
+          --dark: #1a1a1a;
+          --angle: 45deg;
+        }
 
+        
+        .gradient-container {
+            width: 100%;
+           min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            
+            
+            background: linear-gradient(
+                var(--angle),
+                var(--light) 50%,
+                var(--dark) 50%
+            );
+            background-attachment: fixed;
+        }
+        .main-menu {
+            background-color: #ffffff;
+            width: 450px;
+            max-width: 100%;
+            padding: 40px 30px;
+            border: 4px solid #26a69a;
+            border-radius: 20px;
+        }
+
+        .main-menu h1 {
+            color: #004d40;
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .main-menu p {
+            color: #444444;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .contact-link {
+            display: block;
+            background-color: #f5f5f5;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+            margin: 20px 0;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .contact-link:hover {
+            background-color: #e0e0e0;
+            border-color: #999999;
+        }
+        
+        .email-link { color: #d84315; }
+        .github-link { color: #37474f; }
+        .linkedin-link { color: #1565c0; }
+
+    </style>
+</head>
+
+
+    <div class="gradient-container">
+        <section class="main-menu">
+            <h1>Get In Touch</h1>
+            <p>Feel free to reach out to me through any of the links below!</p>
+            
+            <a href="mailto:sahil@example.com" class="contact-link email-link">
+                Email Me
+            </a>
+
+            <a href="https://github.com/sahil" target="_blank" class="contact-link github-link">
+                GitHub Profile
+            </a>
+
+            <a href="https://linkedin.com/in/sahil" target="_blank" class="contact-link linkedin-link">
+                LinkedIn Profile
+            </a>
+        </section>
+    </div>`;
+  ev.dataTransfer.setData("html", html);
+}
 function DragOver(ev) {
   ev.preventDefault();
 }
