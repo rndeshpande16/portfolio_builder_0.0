@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles.css" />
-    <script src="./script.js" onload="start()"></script>
+    <script src="./script.js"></script>
     <title>Portfolio Builder</title>
   </head>
-  <body>
+  <body onload="start()">
     <header>
       <nav>
         <ul>
@@ -22,9 +22,13 @@
     <main>
       <aside>
         <ul>
-          <li draggable="true" ondragstart="dragContent(event,'home')">Home</li>
-          <li draggable="true" ondragstart="dragContent(event,'nav')">Nav</li>
-          <li draggable="true" ondragstart="dragContent(event,'contact')">Contact</li>
+          <li draggable="true" ondragstart="dragContent(event, 'home')">
+            Home
+          </li>
+          <li draggable="true" ondragstart="dragContent(event, 'nav')">Nav</li>
+          <li draggable="true" ondragstart="dragContent(event, 'contact')">
+            Contact
+          </li>
           <li draggable="true" ondragstart="homeDrag(event)">About</li>
           <li draggable="true" ondragstart="homeDrag(event)">Photo Gallery</li>
           <li draggable="true" ondragstart="homeDrag(event)">My Work</li>
@@ -35,23 +39,30 @@
           <li draggable="true" ondragstart="homeDrag(event)">Media</li>
         </ul>
       </aside>
-      <section
-        id="show"
-        ondrop="Drop(event)"
-        ondragover="DragOver(event)"
-      ></section>
+
+      <iframe id="show"></iframe>
+
       <section id="menu">
         <h3 id="pageHeader">Pages</h3>
         <div id="myPages">
           <ul>
-            <li id="homePageOpener" onclick="openPage('home')" class="selected">Home</li>
+            <li id="homePageOpener" onclick="openPage('home')" class="selected">
+              Home
+            </li>
             <li id="aboutPageOpener" onclick="openPage('about')">About</li>
             <li id="myWorkPageOpener" onclick="openPage('myWork')">My Work</li>
-            <li id="contactsPageOpener" onclick="openPage('contacts')">Contacts</li>
+            <li id="contactsPageOpener" onclick="openPage('contacts')">
+              Contacts
+            </li>
           </ul>
         </div>
         <h3 id="pageHeader">Properties</h3>
-        <div><b>TODO:after clicking on components,you can change their text,theme,colors,etc here</b></div>
+        <div>
+          <b
+            >TODO:after clicking on components,you can change their
+            text,theme,colors,etc here</b
+          >
+        </div>
       </section>
     </main>
     <footer></footer>

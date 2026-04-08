@@ -1,0 +1,56 @@
+/* themes.css */
+
+/* 1. Base / Ocean Theme (Default) */
+:root,
+[data-theme="ocean"] {
+  --color-light: #e0f2fe;
+  --color-mediumlight: #7dd3fc;
+  --color-medium: #0ea5e9;
+  --color-mediumdark: #0369a1;
+  --color-dark: #082f49;
+}
+
+/* 2. Forest Theme */
+[data-theme="forest"] {
+  --color-light: #dcfce7;
+  --color-mediumlight: #86efac;
+  --color-medium: #22c55e;
+  --color-mediumdark: #15803d;
+  --color-dark: #14532d;
+}
+
+/* 3. Sunset Theme */
+[data-theme="sunset"] {
+  --color-light: #ffedd5;
+  --color-mediumlight: #fdba74;
+  --color-medium: #f97316;
+  --color-mediumdark: #c2410c;
+  --color-dark: #7c2d12;
+}
+
+/* 4. Amethyst Theme */
+[data-theme="amethyst"] {
+  --color-light: #f3e8ff;
+  --color-mediumlight: #d8b4fe;
+  --color-medium: #a855f7;
+  --color-mediumdark: #7e22ce;
+  --color-dark: #4c1d95;
+}
+
+/* 5. Monochrome Theme */
+[data-theme="monochrome"] {
+  --color-light: #f3f4f6;
+  --color-mediumlight: #d1d5db;
+  --color-medium: #9ca3af;
+  --color-mediumdark: #4b5563;
+  --color-dark: #1f2937;
+}
+
+/* 6. Cyberpunk Neon Theme */
+[data-theme="neon"] {
+  --color-light: #fef08a;
+  --color-mediumlight: #f472b6;
+  --color-medium: #d946ef;
+  --color-mediumdark: #8b5cf6;
+  --color-dark: #020617;
+}

@@ -1,3 +1,10 @@
+:root {
+  --light: #fff8f0;
+  --medl: #c08552;
+  --medd: #8c5a3c;
+  --dark: #4b2e2b;
+}
+
 body {
   margin: 0px;
   padding: 0px;
@@ -10,13 +17,14 @@ header nav {
 
 * {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--light);
 }
 
 header nav ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: blueviolet;
+  background-color: var(--dark);
   color: black;
   height: 60px;
   position: fixed;
@@ -27,9 +35,12 @@ aside {
   position: fixed;
   top: 60px;
   width: 22.5vw;
-  background-color: blueviolet;
+  background-color: var(--dark);
   bottom: 0;
   overflow-y: scroll;
+}
+aside li:first-child {
+  margin-top: 0;
 }
 
 aside li {
@@ -39,12 +50,13 @@ aside li {
   width: 100%;
   color: white;
   margin: 8px 0px;
-  background-color: rgb(255, 255, 255, 0.2);
+  background-color: var(--medl);
   transition: 0.2s background-color ease-in-out;
 }
 
 aside li:hover {
-  background-color: rgb(255, 255, 255, 0);
+  background-color: var(--medd);
+  cursor: pointer;
 }
 
 aside ul {
@@ -69,44 +81,57 @@ header nav ul {
   top: 60px;
   left: 22.5vw;
   bottom: 0;
-  box-shadow: 1px 1px 15px cyan;
-  overflow-y: scroll;
-  border-radius: 5px;
+  border: none;
+  background-color: white;
+  height: calc(100vh - 60px);
 }
-#menu{
-  border:1px black solid;
-  width:20vw;
-   position: fixed;
-   margin:0 5px 0 5px;
-   padding:15px;
+
+#menu {
+  border: 1px black solid;
+  width: 22.5vw;
+  position: fixed;
+  padding: 15px;
+  margin: 0;
   top: 60px;
-  left: 78.5vw;
+  left: 77.5vw;
   bottom: 0;
-  background-color: blueviolet;
-  color:aliceblue;
+  background-color: var(--dark);
+  color: aliceblue;
   overflow-y: scroll;
 }
-#menu ul{
-  padding:0px;
+
+#menu ul {
+  padding: 0px;
+  margin: 0;
   position: relative;
-margin:auto;
+  margin: auto;
+  width: 100%;
 }
-#menu ul li{
+
+#menu ul li {
   list-style-type: none;
   list-style: none;
-  margin:2px;
-  padding:5px;
+  margin: 2px 0px;
+  padding: 5px;
+  width: 100%;
   text-align: center;
-  background-color: rgb(125, 33, 210);
-  border:2px blueviolet solid;
-  border-radius: 15px;;
+  background-color: var(--medd);
+  border: 2px var(--light) solid;
+  border-radius: 15px;
+  transition: 0.3s all ease;
 }
-#menu ul .selected{
-  background-color: rgb(104, 5, 185);
+
+#menu ul .selected {
+  background-color: var(--light);
+  color: var(--dark);
 }
-#menu ul li:hover{
-background-color: rgb(104, 24, 179);
+
+#menu ul li:hover {
+  background-color: var(--medl);
+  color: var(--light);
+  cursor: pointer;
 }
-#pageHeader{
+
+#pageHeader {
   text-align: center;
 }

@@ -1,67 +1,94 @@
-let currentPage="home";
-var portfolio={};
-async function start(){
-  portfolio={
-  "home": await loadContent("homesection"),
-  "contact":await loadContent("contact"),
-  "nav":await loadContent("navsection")
-};
+let currentPage = "home";
+var portfolio = {};
 
+async function start() {
+  setupIframe();
+  portfolio = {
+    home: await loadContent("homesection"),
+    contact: await loadContent("contact"),
+    nav: await loadContent("navsection"),
+  };
+
+  setTimeout(function () {
+    loadPage("home");
+  }, 200);
 }
+
+function setupIframe() {
+  const iframe = document.getElementById("show");
+  const idoc = iframe.contentDocument;
+  document.documentElement.setAttribute("data-theme", "ocean");
+  iframe.contentWindow.postMessage({ type: "THEME_CHANGE", theme: "ocean" });
+  idoc.open();
+  idoc.write(
+    "<!DOCTYPE html><html lang='en' data-theme='ocean'><head><link rel='stylesheet' href='themes.css' /></head><body style='margin:0; padding:0; min-height: 100vh; width: 100%; box-sizing: border-box;'></body></html>",
+  );
+  idoc.close();
+  idoc.body.addEventListener("dragenter", function (ev) {
+    ev.preventDefault();
+  });
+
+  idoc.body.addEventListener("dragover", function (ev) {
+    ev.preventDefault();
+  });
+
+  idoc.body.addEventListener("drop", function (ev) {
+    ev.preventDefault();
+    var h = ev.dataTransfer.getData("text/html");
+    if (h) {
+      idoc.body.innerHTML += h;
+    }
+  });
+}
+
 async function loadContent(name) {
   try {
-    const response = await fetch('components/' + name + '.html');
+    const response = await fetch("components/" + name + ".html");
     const htmlString = await response.text();
-    //making a virtual DOM so we can like edit it before appending it to main body
+
     const parser = new DOMParser();
-    const virtualDoc = parser.parseFromString(htmlString, 'text/html');
+    const virtualDoc = parser.parseFromString(htmlString, "text/html");
+    const fetchedStyles = virtualDoc.querySelectorAll(
+      'style, link[rel="stylesheet"]',
+    );
 
-    //get every <style> tags and <link rel="stylesheet">
-    const fetchedStyles = virtualDoc.querySelectorAll('style, link[rel="stylesheet"]');
-    
-    fetchedStyles.forEach(styleNode => {
-      // to make sure main CSS body is not affected
-      document.head.insertBefore(styleNode, document.head.firstChild);
+    const iframeHead = document.getElementById("show").contentDocument.head;
+
+    fetchedStyles.forEach((styleNode) => {
+      iframeHead.insertBefore(styleNode.cloneNode(true), iframeHead.firstChild);
     });
-    const fetchedBody = virtualDoc.body;
-    return fetchedBody.innerHTML;
-    
+
+    return virtualDoc.body.innerHTML;
   } catch (error) {
-    console.error('Error fetching ' + name + ':', error);
-    return ""; 
+    console.error("Error fetching " + name + ":", error);
+    return "";
   }
 }
 
-function dragContent(ev,name) {
-  ev.dataTransfer.setData("html", portfolio[name]);
-}
-function DragOver(ev) {
-  ev.preventDefault();
+function dragContent(ev, name) {
+  ev.dataTransfer.setData("text/html", portfolio[name]);
 }
 
-function Drop(ev) {
-  ev.preventDefault();
-  var h = ev.dataTransfer.getData("html");
-  document.getElementById("show").innerHTML += h;
+function savePage(page) {
+  const iframeBody = document.getElementById("show").contentDocument.body;
+  localStorage.setItem(page, iframeBody.innerHTML);
 }
-function savePage(page){
-localStorage.setItem(page,document.getElementById("show").innerHTML);
-}
-function loadPage(page){
-  let data=localStorage.getItem(page);
-  if(data!=null){
-    document.getElementById("show").innerHTML=data;
-  }else{
-    document.getElementById("show").innerHTML="";
+
+function loadPage(page) {
+  let data = localStorage.getItem(page);
+  const iframeBody = document.getElementById("show").contentDocument.body;
+
+  if (data != null) {
+    iframeBody.innerHTML = data;
+  } else {
+    iframeBody.innerHTML = "";
   }
 }
-function openPage(page){
+
+function openPage(page) {
   savePage(currentPage);
   loadPage(page);
   document.getElementsByClassName("selected")[0].classList.remove("selected");
-  document.getElementById(page+"PageOpener").classList.add("selected");
-  currentPage=page;
+  document.getElementById(page + "PageOpener").classList.add("selected");
+  currentPage = page;
 }
-setTimeout(function(){
-loadPage("home");
-},200);
