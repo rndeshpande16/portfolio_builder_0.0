@@ -215,9 +215,24 @@ header nav ul {
   cursor: pointer;
 }
 
-.themePicker ul {
+.themePicker ul:nth-child(2) {
   position: absolute;
   top: 20px;
+  list-style-type: none;
+}
+
+.themePicker ul:nth-child(3) {
+  position: absolute;
+  top: 20px;
+  left: 190px;
+  list-style-type: none;
+}
+
+.themePicker ul:nth-child(4) {
+  position: absolute;
+  top: 20px;
+  left: calc(190px + 150px + 40px);
+  list-style-type: none;
 }
 
 .themePicker ul li {
