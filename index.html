@@ -8,6 +8,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./themes.css" />
     <script src="./script.js"></script>
     <title>Portfolio Builder</title>
   </head>
@@ -36,47 +37,724 @@
         <i class="fa-regular fa-circle-xmark"></i>
       </div>
       <ul style="list-style-type: none">
-        <li class="ocean" onclick="changeTheme('ocean')">Ocean</li>
-        <li class="forest" onclick="changeTheme('forest')">Forest</li>
-        <li class="sunset" onclick="changeTheme('sunset')">Sunset</li>
-        <li class="amethyst" onclick="changeTheme('amethyst')">Amethyst</li>
-        <li class="monochrome" onclick="changeTheme('monochrome')">
-          Monochrome
+        <li
+          class="ocean"
+          onclick="changeTheme('ocean')"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+        >
+          Ocean
+          <div class="box" style="display: flex; gap: 10px" data-theme="ocean">
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
         </li>
-        <li class="neon" onclick="changeTheme('neon')">Neon</li>
+        <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+          class="forest"
+          onclick="changeTheme('forest')"
+        >
+          Forest
+          <div class="box" style="display: flex; gap: 10px" data-theme="forest">
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
+        </li>
+        <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+          class="sunset"
+          onclick="changeTheme('sunset')"
+        >
+          Sunset
+          <div class="box" style="display: flex; gap: 10px" data-theme="sunset">
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
+        </li>
+        <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+          class="amethyst"
+          onclick="changeTheme('amethyst')"
+        >
+          Amethyst
+          <div
+            class="box"
+            style="display: flex; gap: 10px"
+            data-theme="amethyst"
+          >
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
+        </li>
+        <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+          class="monochrome"
+          onclick="changeTheme('monochrome')"
+        >
+          Monochrome
+          <div
+            class="box"
+            style="display: flex; gap: 10px"
+            data-theme="monochrome"
+          >
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
+        </li>
+        <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+          class="neon"
+          onclick="changeTheme('neon')"
+        >
+          Neon
+          <div class="box" style="display: flex; gap: 10px" data-theme="neon">
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
+        </li>
       </ul>
       <ul style="list-style-type: none">
-        <li class="cobalt2" onclick="changeTheme('cobalt2')">Cobalt 2</li>
-        <li class="abyss" onclick="changeTheme('abyss')">Abyss</li>
-        <li class="monokai" onclick="changeTheme('monokai')">Monokai</li>
         <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+          class="cobalt2"
+          onclick="changeTheme('cobalt2')"
+        >
+          Cobalt 2
+          <div
+            class="box"
+            style="display: flex; gap: 10px"
+            data-theme="cobalt2"
+          >
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
+        </li>
+        <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+          class="abyss"
+          onclick="changeTheme('abyss')"
+        >
+          Abyss
+          <div class="box" style="display: flex; gap: 10px" data-theme="abyss">
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
+        </li>
+        <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+          class="monokai"
+          onclick="changeTheme('monokai')"
+        >
+          Monokai
+          <div
+            class="box"
+            style="display: flex; gap: 10px"
+            data-theme="monokai"
+          >
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
+        </li>
+        <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
           class="dark-high-contrast"
           onclick="changeTheme('dark-high-contrast')"
         >
           Dark High Contrast
+          <div
+            class="box"
+            style="display: flex; gap: 10px"
+            data-theme="dark-high-contrast"
+          >
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
         </li>
-        <li class="kimbie-dark" onclick="changeTheme('kimbie-dark')">
+        <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+          class="kimbie-dark"
+          onclick="changeTheme('kimbie-dark')"
+        >
           Kimbie Dark
+          <div
+            class="box"
+            style="display: flex; gap: 10px"
+            data-theme="kimbie-dark"
+          >
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
         </li>
-        <li class="monokai-dimmed" onclick="changeTheme('monokai-dimmed')">
+        <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+          class="monokai-dimmed"
+          onclick="changeTheme('monokai-dimmed')"
+        >
           Monokai Dimmed
+          <div
+            class="box"
+            style="display: flex; gap: 10px"
+            data-theme="monokai-dimmed"
+          >
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
         </li>
       </ul>
       <ul>
-        <li class="solarized-dark" onclick="changeTheme('solarized-dark')">
+        <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+          class="solarized-dark"
+          onclick="changeTheme('solarized-dark')"
+        >
           Solarized Dark
+          <div
+            class="box"
+            style="display: flex; gap: 10px"
+            data-theme="solarized-dark"
+          >
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
         </li>
-        <li class="sakura" onclick="changeTheme('sakura')">Sakura</li>
-        <li class="ultra-violet" onclick="changeTheme('ultra-violet')">
+        <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+          class="sakura"
+          onclick="changeTheme('sakura')"
+        >
+          Sakura
+          <div class="box" style="display: flex; gap: 10px" data-theme="sakura">
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
+        </li>
+        <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+          class="ultra-violet"
+          onclick="changeTheme('ultra-violet')"
+        >
           Ultra Violet
+          <div
+            class="box"
+            style="display: flex; gap: 10px"
+            data-theme="ultra-violet"
+          >
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
         </li>
-        <li class="tokyo-night" onclick="changeTheme('tokyo-night')">
+        <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+          class="tokyo-night"
+          onclick="changeTheme('tokyo-night')"
+        >
           Tokyo Night
+          <div
+            class="box"
+            style="display: flex; gap: 10px"
+            data-theme="tokyo-night"
+          >
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
         </li>
-        <li class="gruvbox-dark" onclick="changeTheme('gruvbox-dark')">
+        <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+          class="gruvbox-dark"
+          onclick="changeTheme('gruvbox-dark')"
+        >
           Gruvbox Dark
+          <div
+            class="box"
+            style="display: flex; gap: 10px"
+            data-theme="gruvbox-dark"
+          >
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
         </li>
-        <li class="dracula" onclick="changeTheme('dracula')">Dracula</li>
+        <li
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+          class="dracula"
+          onclick="changeTheme('dracula')"
+        >
+          Dracula
+          <div
+            class="box"
+            style="display: flex; gap: 10px"
+            data-theme="dracula"
+          >
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-light);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-medium);
+              "
+            ></div>
+            <div
+              style="
+                height: 20px;
+                width: 20px;
+                border-radius: 7.5px;
+                background-color: var(--color-dark);
+              "
+            ></div>
+          </div>
+        </li>
       </ul>
     </div>
 
