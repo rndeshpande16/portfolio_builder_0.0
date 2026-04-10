@@ -118,10 +118,10 @@ header nav ul {
   border: none;
   background-color: white;
   height: calc(100vh - 60px);
+  transition: 0.4s ease;
 }
 
 #menu {
-  border: 1px black solid;
   width: calc(100vw - 77.5vw);
   position: fixed;
   margin: 0;
@@ -145,10 +145,9 @@ header nav ul {
   list-style-type: none;
   list-style: none;
   margin: 8px 0px;
-  padding: 5px;
+  padding: 7.5px;
   text-align: center;
   background-color: var(--medd);
-  border: 2px var(--light) solid;
   border-radius: 10px;
   transition: 0.3s all ease;
 }
@@ -253,4 +252,47 @@ header nav ul {
   cursor: pointer;
   background-color: var(--medl);
   color: var(--dark);
+}
+
+#properties li {
+  height: 20px;
+  margin-bottom: 20px !important;
+}
+
+.adjust {
+  position: relative;
+  left: 15vw;
+  top: -10px;
+  background-color: var(--light);
+  /* padding: 5px; */
+  width: 90px;
+  border-radius: 5px;
+  display: flex;
+  vertical-align: center;
+}
+
+.adjust i {
+  color: var(--light);
+  background-color: var(--dark);
+  margin: 5px;
+  padding-top: 3px;
+  border-radius: 5px;
+  height: 20px;
+  width: 20px;
+  vertical-align: center;
+  text-align: center;
+}
+
+.preview {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  transition: 0.3s all ease;
+  margin: 0;
+  border: 0;
+  padding: 0;
 }

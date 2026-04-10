@@ -27,7 +27,9 @@
             <i class="fa-solid fa-circle-half-stroke"></i>
           </li>
           <li><i class="fa-solid fa-download"></i></li>
-          <li><i class="fa-solid fa-eye"></i></li>
+          <li onclick="expandView()">
+            <i class="fa-solid fa-eye"></i>
+          </li>
         </ul>
       </nav>
     </header>
@@ -780,6 +782,12 @@
       </aside>
 
       <iframe id="show"></iframe>
+      <iframe
+        class="preview"
+        id="preview"
+        style="z-index: -2; opacity: 0"
+        onkeypress="handleEvent(event)"
+      ></iframe>
 
       <section id="menu">
         <h3 id="pageHeader">Pages</h3>

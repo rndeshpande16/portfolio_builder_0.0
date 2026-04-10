@@ -21,7 +21,7 @@ function setupIframe() {
   const theme = localStorage.getItem("theme") || "ocean";
   idoc.open();
   idoc.write(
-    `<!DOCTYPE html><html lang='en'><head><link rel='stylesheet' href='themes.css' /></head><body data-theme='${theme}' style='transition: 0.3s all ease; margin:0; padding:0; min-height: 100vh; width: 100%; box-sizing: border-box;'></body></html>`,
+    `<!DOCTYPE html><html lang='en'><head><link rel='stylesheet' href='themes.css' /><link rel='stylesheet' href='compsstyles.css' /></head><body data-theme='${theme}' style='transition: 0.3s all ease; margin:0; padding:0; min-height: 100vh; width: 100%; box-sizing: border-box;'></body></html>`,
   );
   idoc.close();
   idoc.body.addEventListener("dragenter", function (ev) {
@@ -47,6 +47,7 @@ function setupIframe() {
       });
       propertySec.innerHTML = props;
       idoc.body.innerHTML = htmlString;
+      localStorage.setItem("html", htmlString);
       savePage(currentPage, comps);
     }
   });
@@ -90,20 +91,21 @@ function loadPage(page) {
   const iframeBody = document.getElementById("show").contentDocument.body;
   const propertySec = document.getElementById("properties");
   var theme = localStorage.getItem("theme") || "ocean";
-  console.log(theme);
   document.getElementsByClassName(`${theme}`)[0].classList.toggle("active");
 
   if (data != null) {
     var properties = data.map((item) => item[0]);
     var propertyString = "";
     properties.forEach(
-      (property) => (propertyString += `<li>${property}</li>`),
+      (property) =>
+        (propertyString += `<li><div class='text'>${property}</div><div class='adjust'><i class="fa-solid fa-angle-down"></i><i class="fa-solid fa-angle-up fa-dark"></i><i class="fa-solid fa-xmark"></i></div></li>`),
     );
     propertySec.innerHTML = propertyString;
     var comps = data;
     var htmlString = "";
     comps.forEach((comp) => (htmlString += comp[1]));
     iframeBody.innerHTML = htmlString;
+    localStorage.setItem("html", htmlString);
   } else {
     iframeBody.innerHTML = "";
   }
@@ -138,4 +140,28 @@ function changeTheme(theme) {
   document.getElementsByClassName(`${oldTheme}`)[0].classList.toggle("active");
   localStorage.setItem("theme", theme);
   closeThemePicker();
+}
+
+async function expandView() {
+  const preview = await document.getElementById("preview");
+  window.addEventListener("keydown", (ev) => {
+    if (ev.key === "Escape") {
+      preview.style.zIndex = -2;
+      preview.style.opacity = 0;
+    }
+  });
+  const previewDoc =
+    (await preview.contentDocument) || (await preview.contentWindow.document);
+  previewDoc.write(
+    `<!DOCTYPE html><html lang='en'><head><link rel='stylesheet' href='themes.css' /><link rel='stylesheet' href='compsstyles.css' /></head><body data-theme='${localStorage.getItem("theme") || "ocean"}' style='transition: 0.3s all ease; margin:0; padding:0; min-height: 100vh; width: 100%; box-sizing: border-box;'></body></html>`,
+  );
+  previewDoc.body.innerHTML = localStorage.getItem("html");
+  preview.style.zIndex = 1000;
+  preview.style.opacity = 1;
+  preview.contentWindow.addEventListener("keydown", (ev) => {
+    if (ev.key === "Escape") {
+      preview.style.zIndex = -2;
+      preview.style.opacity = 0;
+    }
+  });
 }

@@ -1,38 +1,5 @@
 <section class="nav">
   <nav>
-    <style>
-      .nav nav {
-        position: sticky;
-        background-color: var(--color-dark);
-        color: var(--color-light);
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        padding: 10px;
-        ul {
-          display: flex;
-          list-style-type: none;
-          justify-content: space-around;
-          align-items: center;
-        }
-        a {
-          color: var(--color-light);
-          text-decoration: none;
-        }
-        li div {
-          height: 3px;
-          width: 0;
-          background-color: var(--color-light);
-          border-radius: 2px;
-          margin-top: 8px;
-          position: relative;
-          transition: 0.3s width ease;
-        }
-        li:hover {
-          div {
-            width: 100%;
-          }
-        }
-      }
-    </style>
     <ul>
       <li>
         <a onclick="openPage('home')">Home</a>
