@@ -13,6 +13,12 @@ body {
 header nav {
   position: fixed;
   top: 0;
+  width: 100vw;
+  display: flex;
+  background-color: var(--dark);
+  height: 60px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 * {
@@ -24,11 +30,28 @@ header nav ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: var(--dark);
+  border-radius: 10px;
   color: black;
   height: 60px;
-  position: fixed;
-  width: 100vw;
+}
+
+header nav ul:first-child {
+  width: 76.5%;
+  background-color: var(--medd);
+  margin: 5px;
+  height: 70%;
+}
+
+.sidenav li:hover {
+  cursor: pointer;
+}
+
+header nav ul:last-child {
+  width: 22%;
+  background-color: var(--medd);
+  margin: 5px;
+  margin-left: 0;
+  height: 70%;
 }
 
 aside {
@@ -43,19 +66,30 @@ aside li:first-child {
   margin-top: 0;
 }
 
+aside ul {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 aside li {
   list-style-type: none;
   padding: 15px 0px;
-  padding-left: 5px;
+  padding-left: 15px;
   width: 100%;
   color: white;
-  margin: 8px 0px;
-  background-color: var(--medl);
+  margin: 5px 0px;
+  background-color: var(--medd);
+  width: 90%;
   transition: 0.2s background-color ease-in-out;
+  border-radius: 10px;
+  text-align: left;
 }
 
 aside li:hover {
-  background-color: var(--medd);
+  background-color: var(--medl);
   cursor: pointer;
 }
 
@@ -88,9 +122,8 @@ header nav ul {
 
 #menu {
   border: 1px black solid;
-  width: 22.5vw;
+  width: calc(100vw - 77.5vw);
   position: fixed;
-  padding: 15px;
   margin: 0;
   top: 60px;
   left: 77.5vw;
@@ -105,19 +138,18 @@ header nav ul {
   margin: 0;
   position: relative;
   margin: auto;
-  width: 100%;
+  margin: 10px;
 }
 
 #menu ul li {
   list-style-type: none;
   list-style: none;
-  margin: 2px 0px;
+  margin: 8px 0px;
   padding: 5px;
-  width: 100%;
   text-align: center;
   background-color: var(--medd);
   border: 2px var(--light) solid;
-  border-radius: 15px;
+  border-radius: 10px;
   transition: 0.3s all ease;
 }
 
@@ -134,4 +166,76 @@ header nav ul {
 
 #pageHeader {
   text-align: center;
+}
+
+.blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Optional: darkens the background */
+  backdrop-filter: blur(8px); /* The magic blur property */
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  z-index: -1;
+  transition: 0.3s all ease;
+  opacity: 0;
+}
+
+.themePicker {
+  height: 400px;
+  width: 800px;
+  background-color: var(--medd);
+  position: fixed;
+  top: calc(50vh - 200px);
+  left: calc(50vw - 400px);
+  border-radius: 12px;
+  transition: 0.3s all ease;
+  opacity: 0;
+  z-index: -1;
+}
+
+.themePicker .close {
+  position: absolute;
+  font-size: 25pt;
+  right: 10px;
+  top: 10px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  transition: 0.3s background-color ease;
+}
+
+.themePicker .close:hover {
+  background-color: var(--dark);
+  cursor: pointer;
+}
+
+.themePicker ul {
+  position: absolute;
+  top: 20px;
+}
+
+.themePicker ul li {
+  padding: 10px;
+  margin: 10px;
+  background-color: var(--dark);
+  border-radius: 10px;
+  width: 150px;
+  transition: 0.3s all ease;
+}
+
+.themePicker ul li.active {
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+.themePicker ul li:hover {
+  cursor: pointer;
+  background-color: var(--medl);
+  color: var(--dark);
 }

@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
     <link rel="stylesheet" href="./styles.css" />
     <script src="./script.js"></script>
     <title>Portfolio Builder</title>
@@ -10,15 +14,39 @@
   <body onload="start()">
     <header>
       <nav>
-        <ul>
+        <ul class="mainnav">
           <li>Home</li>
           <li>Build</li>
           <li>About</li>
           <li>Feedback</li>
           <li>Contact</li>
         </ul>
+        <ul class="sidenav">
+          <li onclick="openThemePicker()">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+          </li>
+          <li><i class="fa-solid fa-download"></i></li>
+          <li><i class="fa-solid fa-eye"></i></li>
+        </ul>
       </nav>
     </header>
+    <div class="blur"></div>
+    <div class="themePicker">
+      <div class="close" onclick="closeThemePicker()">
+        <i class="fa-regular fa-circle-xmark"></i>
+      </div>
+      <ul style="list-style-type: none">
+        <li class="ocean" onclick="changeTheme('ocean')">Ocean</li>
+        <li class="forest" onclick="changeTheme('forest')">Forest</li>
+        <li class="sunset" onclick="changeTheme('sunset')">Sunset</li>
+        <li class="amethyst" onclick="changeTheme('amethyst')">Amethyst</li>
+        <li class="monochrome" onclick="changeTheme('monochrome')">
+          Monochrome
+        </li>
+        <li class="neon" onclick="changeTheme('neon')">Neon</li>
+      </ul>
+    </div>
+
     <main>
       <aside>
         <ul>
@@ -56,12 +84,9 @@
             </li>
           </ul>
         </div>
-        <h3 id="pageHeader">Properties</h3>
-        <div>
-          <b
-            >TODO:after clicking on components,you can change their
-            text,theme,colors,etc here</b
-          >
+        <h3 id="pageHeader">Sub Pages</h3>
+        <div id="propertySection">
+          <ul id="properties"></ul>
         </div>
       </section>
     </main>
