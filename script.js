@@ -136,6 +136,8 @@ function changeTheme(theme) {
   const oldTheme = localStorage.getItem("theme") || "ocean";
   const idoc = document.getElementById("show").contentDocument;
   idoc.body.setAttribute("data-theme", theme);
+  const preview = document.getElementById("preview").contentDocument;
+  preview.body.setAttribute("data-theme", theme);
   document.getElementsByClassName(`${theme}`)[0].classList.toggle("active");
   document.getElementsByClassName(`${oldTheme}`)[0].classList.toggle("active");
   localStorage.setItem("theme", theme);
