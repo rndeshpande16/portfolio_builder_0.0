@@ -37,6 +37,7 @@ function setupIframe() {
     var h = ev.dataTransfer.getData("text/html");
     if (h) {
       idoc.body.innerHTML += h;
+      savePage(currentPage);
     }
   });
 }
