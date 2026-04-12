@@ -1,4 +1,5 @@
 let currentPage = "home";
+var editorPos=[];
 var portfolio = {};
 
 async function start() {
@@ -43,7 +44,7 @@ function setupIframe() {
       var props = "";
       comps.forEach((comp, index) => {
         htmlString += comp[1];
-        props += `<li onclick='openEditBar(${index})'><div class='text'>${comp[0]}</div></li>`;
+        props += `<li id='openEditor${index}' ondragend="handleDragStart(event)" draggable='true' onclick='openEditBar(${index})'><div class='text'>${comp[0]}</div></li>`;
       });
       propertySec.innerHTML = props;
       idoc.body.innerHTML = htmlString;
@@ -85,7 +86,38 @@ function dragContent(ev, name) {
 function savePage(page, content) {
   localStorage.setItem(page, JSON.stringify(content));
 }
-
+function handleDragStart(ev){
+  const propertySec = document.getElementById("properties");
+  editorPos=[];
+  const x = ev.clientX;
+    const y = ev.clientY;
+  for(let i=0;i<propertySec.childElementCount;i++){
+    editorPos.push(propertySec.children[i].getBoundingClientRect().top+ window.scrollY);
+  }
+  let newElem=-1;
+  var changeY=0;
+  if(propertySec.childElementCount>1){
+    changeY=editorPos[1]-editorPos[0];
+  }
+   for(let i=0;i<propertySec.childElementCount;i++){
+    if(y>editorPos[i]&&y<editorPos[i]+changeY){
+      newElem=i;
+      console.log(i);
+    }
+   }
+   if(newElem==-1){
+    return;
+   }
+   let currentElem=parseInt(ev.target.id.split("openEditor")[1]);
+   let data=JSON.parse(localStorage.getItem(currentPage)) || [];
+   let temp = data[currentElem];
+  data[currentElem] = data[newElem];
+  data[newElem] = temp;
+  localStorage.setItem(currentPage, JSON.stringify(data));
+  loadPage(currentPage);
+   // console.log(`Drag ended at: X=${x}, Y=${y}`);
+    
+}
 function loadPage(page) {
   let data = JSON.parse(localStorage.getItem(page)) || [];
   const iframeBody = document.getElementById("show").contentDocument.body;
@@ -98,7 +130,7 @@ function loadPage(page) {
     var propertyString = "";
     properties.forEach(
       (property, index) =>
-        (propertyString += `<li onclick='openEditBar(${index})'><div class='text'>${property}</div><!--<div class='adjust'><i class="fa-solid fa-angle-down"></i><i class="fa-solid fa-angle-up fa-dark"></i><i class="fa-solid fa-xmark"></i></div>--></li>`),
+        (propertyString += `<li id='openEditor${index}'  ondragend="handleDragStart(event)" draggable='true' onclick='openEditBar(${index})'><div class='text'>${property}</div><!--<div class='adjust'><i class="fa-solid fa-angle-down"></i><i class="fa-solid fa-angle-up fa-dark"></i><i class="fa-solid fa-xmark"></i></div>--></li>`),
     );
     propertySec.innerHTML = propertyString;
     var comps = data;
