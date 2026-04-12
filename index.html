@@ -770,14 +770,14 @@
           <li draggable="true" ondragstart="dragContent(event, 'contact')">
             Contact
           </li>
-          <li draggable="true" ondragstart="homeDrag(event)">About</li>
+          <!-- <li draggable="true" ondragstart="homeDrag(event)">About</li>
           <li draggable="true" ondragstart="homeDrag(event)">Photo Gallery</li>
           <li draggable="true" ondragstart="homeDrag(event)">My Work</li>
           <li draggable="true" ondragstart="homeDrag(event)">Achievements</li>
           <li draggable="true" ondragstart="homeDrag(event)">Projects</li>
           <li draggable="true" ondragstart="homeDrag(event)">Blog</li>
           <li draggable="true" ondragstart="homeDrag(event)">Testimonials</li>
-          <li draggable="true" ondragstart="homeDrag(event)">Media</li>
+          <li draggable="true" ondragstart="homeDrag(event)">Media</li> -->
         </ul>
       </aside>
 
@@ -807,6 +807,22 @@
         <div id="propertySection">
           <ul id="properties"></ul>
         </div>
+        <section id="clear" class="clear">
+          <div onclick="clearCurrent()">
+            <i class="fa-solid fa-broom"></i> Clear Current Page
+          </div>
+          <div onclick="clearAll()">
+            <i class="fa-solid fa-broom"></i> Clear All Pages
+          </div>
+        </section>
+      </section>
+      <section id="editComponent" class="editComponent">
+        <form action="" id="editForm">
+          <input type="hidden" name="row" id="row" value="0" />
+          <div class="closebtn" onclick="closeEditComponent()">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+        </form>
       </section>
     </main>
     <footer></footer>

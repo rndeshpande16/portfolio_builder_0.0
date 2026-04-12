@@ -30,7 +30,7 @@ header nav ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 5pt;
   color: black;
   height: 60px;
 }
@@ -84,7 +84,7 @@ aside li {
   background-color: var(--medd);
   width: 90%;
   transition: 0.2s background-color ease-in-out;
-  border-radius: 10px;
+  border-radius: 5pt;
   text-align: left;
 }
 
@@ -135,10 +135,8 @@ header nav ul {
 
 #menu ul {
   padding: 0px;
-  margin: 0;
+  margin: 10pt;
   position: relative;
-  margin: auto;
-  margin: 10px;
 }
 
 #menu ul li {
@@ -148,7 +146,7 @@ header nav ul {
   padding: 7.5px;
   text-align: center;
   background-color: var(--medd);
-  border-radius: 10px;
+  border-radius: 5pt;
   transition: 0.3s all ease;
 }
 
@@ -188,7 +186,7 @@ header nav ul {
   position: fixed;
   top: calc(50vh - 200px);
   left: calc(50vw - 500px);
-  border-radius: 12px;
+  border-radius: 5pt;
   transition: 0.3s all ease;
   opacity: 0;
   z-index: -1;
@@ -205,7 +203,7 @@ header nav ul {
   align-items: center;
   height: 40px;
   width: 40px;
-  border-radius: 10px;
+  border-radius: 5pt;
   transition: 0.3s background-color ease;
 }
 
@@ -238,7 +236,7 @@ header nav ul {
   padding: 10px;
   margin: 10px;
   background-color: var(--dark);
-  border-radius: 10px;
+  border-radius: 5pt;
   width: 250px;
   transition: 0.3s all ease;
 }
@@ -256,7 +254,6 @@ header nav ul {
 
 #properties li {
   height: 20px;
-  margin-bottom: 20px !important;
 }
 
 .adjust {
@@ -266,7 +263,7 @@ header nav ul {
   background-color: var(--light);
   /* padding: 5px; */
   width: 90px;
-  border-radius: 5px;
+  border-radius: 5pt;
   display: flex;
   vertical-align: center;
 }
@@ -276,7 +273,7 @@ header nav ul {
   background-color: var(--dark);
   margin: 5px;
   padding-top: 3px;
-  border-radius: 5px;
+  border-radius: 5pt;
   height: 20px;
   width: 20px;
   vertical-align: center;
@@ -295,4 +292,99 @@ header nav ul {
   margin: 0;
   border: 0;
   padding: 0;
+}
+
+.editComponent {
+  position: fixed;
+  width: calc(22.5vw - 30px);
+  background-color: var(--medl);
+  right: 0;
+  left: 77.5vw;
+  top: 60px;
+  bottom: 0;
+  padding: 15px;
+  transition: 0.3s all ease;
+  transform: translateX(22.5vw);
+  overflow-y: scroll;
+}
+
+.compe {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.compe input {
+  padding: 15px;
+  color: var(--dark);
+  border-radius: 5pt;
+  border: 0;
+  width: 18vw;
+  transition: 0.3s all ease;
+}
+
+.compe textarea {
+  min-height: 200px;
+  width: 18vw;
+  padding: 15px;
+  border-radius: 5pt;
+  border: none;
+  color: var(--dark);
+}
+
+.closebtn {
+  position: absolute;
+  top: 10pt;
+  right: 10pt;
+  padding: 3pt;
+  background-color: var(--medd);
+  border-radius: 5pt;
+  transition: 0.3s all ease;
+}
+
+.closebtn:hover {
+  background-color: var(--dark);
+  color: var(--light);
+  cursor: pointer;
+}
+
+.empty-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-bar .empty {
+  font-size: 20pt;
+  text-align: center;
+  line-height: 30pt;
+  margin: 20pt;
+}
+
+.editComponent hr {
+  height: 2pt;
+  border-radius: 5pt;
+  background-color: var(--dark);
+  border: 0;
+  width: 100%;
+}
+
+.clear {
+  padding: 15px;
+  color: var(--light);
+
+  div {
+    margin-bottom: 15px;
+    background-color: var(--medd);
+    padding: 10pt;
+    transition: 0.3s all ease;
+    border-radius: 5pt;
+  }
+  div:hover {
+    cursor: pointer;
+    background-color: darkred;
+  }
 }

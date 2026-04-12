@@ -70,7 +70,6 @@
   container-type: inline-size;
   img {
     height: 250px;
-    border-radius: 100%;
     transition: 0.3s border-radius ease-in-out;
   }
   .imageintro {
@@ -97,7 +96,8 @@
     .imageintro .img {
       float: left;
       width: auto;
-      padding: 25pt;
+      padding-bottom: 10pt;
+      padding-right: 10pt;
       margin: 0;
     }
     .imageintro img {
