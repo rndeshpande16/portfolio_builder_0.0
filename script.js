@@ -8,6 +8,8 @@ async function start() {
     contact: await loadContent("contactsection"),
     nav: await loadContent("navsection"),
     gallery: await loadContent("gallerysection"),
+    testimonials: await loadContent("testimonialssection"),
+    about: await loadContent("aboutsection"),
   };
 
   setTimeout(function () {
