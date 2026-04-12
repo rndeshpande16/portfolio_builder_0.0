@@ -1,5 +1,4 @@
 let currentPage = "home";
-var editorPos=[];
 var portfolio = {};
 
 async function start() {
@@ -88,7 +87,7 @@ function savePage(page, content) {
 }
 function handleDragStart(ev){
   const propertySec = document.getElementById("properties");
-  editorPos=[];
+  let editorPos=[];
   const x = ev.clientX;
     const y = ev.clientY;
   for(let i=0;i<propertySec.childElementCount;i++){
@@ -356,7 +355,7 @@ function openEditBar(index) {
   data.querySelectorAll("p").forEach((paragraph, ind) => {
     let elem = document.createElement("div");
     elem.classList.add("compe");
-    elem.innerHTML = para(paragraph.innerHTML, ind);
+    elem.innerHTML = para(paragraph.innerText, ind);
     editForm.appendChild(elem);
     console.log("para");
     elems += 1;
