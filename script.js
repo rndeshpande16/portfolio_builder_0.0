@@ -5,8 +5,9 @@ async function start() {
   setupIframe();
   portfolio = {
     home: await loadContent("homesection"),
-    contact: await loadContent("contact"),
+    contact: await loadContent("contactsection"),
     nav: await loadContent("navsection"),
+    gallery: await loadContent("gallerysection"),
   };
 
   setTimeout(function () {
@@ -85,37 +86,38 @@ function dragContent(ev, name) {
 function savePage(page, content) {
   localStorage.setItem(page, JSON.stringify(content));
 }
-function handleDragStart(ev){
+function handleDragStart(ev) {
   const propertySec = document.getElementById("properties");
-  let editorPos=[];
+  let editorPos = [];
   const x = ev.clientX;
-    const y = ev.clientY;
-  for(let i=0;i<propertySec.childElementCount;i++){
-    editorPos.push(propertySec.children[i].getBoundingClientRect().top+ window.scrollY);
+  const y = ev.clientY;
+  for (let i = 0; i < propertySec.childElementCount; i++) {
+    editorPos.push(
+      propertySec.children[i].getBoundingClientRect().top + window.scrollY,
+    );
   }
-  let newElem=-1;
-  var changeY=0;
-  if(propertySec.childElementCount>1){
-    changeY=editorPos[1]-editorPos[0];
+  let newElem = -1;
+  var changeY = 0;
+  if (propertySec.childElementCount > 1) {
+    changeY = editorPos[1] - editorPos[0];
   }
-   for(let i=0;i<propertySec.childElementCount;i++){
-    if(y>editorPos[i]&&y<editorPos[i]+changeY){
-      newElem=i;
+  for (let i = 0; i < propertySec.childElementCount; i++) {
+    if (y > editorPos[i] && y < editorPos[i] + changeY) {
+      newElem = i;
       console.log(i);
     }
-   }
-   if(newElem==-1){
+  }
+  if (newElem == -1) {
     return;
-   }
-   let currentElem=parseInt(ev.target.id.split("openEditor")[1]);
-   let data=JSON.parse(localStorage.getItem(currentPage)) || [];
-   let temp = data[currentElem];
+  }
+  let currentElem = parseInt(ev.target.id.split("openEditor")[1]);
+  let data = JSON.parse(localStorage.getItem(currentPage)) || [];
+  let temp = data[currentElem];
   data[currentElem] = data[newElem];
   data[newElem] = temp;
   localStorage.setItem(currentPage, JSON.stringify(data));
   loadPage(currentPage);
-   // console.log(`Drag ended at: X=${x}, Y=${y}`);
-    
+  // console.log(`Drag ended at: X=${x}, Y=${y}`);
 }
 function loadPage(page) {
   let data = JSON.parse(localStorage.getItem(page)) || [];
@@ -170,7 +172,7 @@ function changeTheme(theme) {
   const preview = document.getElementById("preview").contentDocument;
   preview.body.setAttribute("data-theme", theme);
   document.getElementsByClassName(`${theme}`)[0].classList.toggle("active");
-  document.getElementsByClassName(`${oldTheme}`)[0].classList.toggle("active");
+  document.getElementsByClassName(`${oldTheme}`)[0].classList.remove("active");
   localStorage.setItem("theme", theme);
   closeThemePicker();
 }
@@ -298,7 +300,7 @@ function openEditBar(index) {
               id="paragraph${ind}"
               name="paragraph${ind}"
               minlength="50"
-              resize='vertical'
+              style='overflow-x: hidden;overflow-y: scroll;'
               onkeydown="
                 if (event.key === 'Enter') {
                   handleParaEdit(event, this.value, ${ind}, ${index});
