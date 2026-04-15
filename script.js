@@ -1,4 +1,4 @@
-let currentPage = "home";
+let currentPage = localStorage.getItem("last-page") || "home";
 var portfolio = {};
 
 async function start() {
@@ -13,7 +13,9 @@ async function start() {
   };
 
   setTimeout(function () {
-    loadPage("home");
+    const lastPage = localStorage.getItem("last-page") || "home";
+    document.getElementById(`${lastPage}PageOpener`).classList.add("selected");
+    loadPage(lastPage);
     const linkFont = localStorage.getItem("link-font") || "Roboto";
     document.querySelectorAll(`#${linkFont.split(" ").join("-")}`)[2].selected =
       true;
@@ -176,6 +178,7 @@ function openPage(page) {
   document.getElementsByClassName("selected")[0].classList.remove("selected");
   document.getElementById(page + "PageOpener").classList.add("selected");
   currentPage = page;
+  localStorage.setItem("last-page", page || "home");
 }
 
 function closeThemePicker() {
@@ -291,10 +294,6 @@ function handleLhrefEdit(ev, val, row, ind) {
 }
 
 async function closeEditComponent() {
-  // document.querySelector(".editComponent").style.opacity = 0;
-  // await setTimeout(() => {
-  //   document.querySelector(".editComponent").style.zIndex = -2;
-  // }, 300);
   document.querySelector(".editComponent").style.transform =
     "translateX(22.5vw)";
   setTimeout(() => {
