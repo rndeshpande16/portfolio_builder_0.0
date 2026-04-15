@@ -423,11 +423,11 @@ textarea {
 
 .fontPicker {
   height: 400px;
-  width: 1000px;
-  background-color: var(--medd);
+  width: 400px;
+  background-color: var(--dark);
   position: fixed;
   top: calc(50vh - 200px);
-  left: calc(50vw - 500px);
+  left: calc(50vw - 200px);
   border-radius: 5pt;
   transition: 0.3s all ease;
   opacity: 0;
@@ -450,7 +450,7 @@ textarea {
 }
 
 .fontPicker .close:hover {
-  background-color: var(--dark);
+  background-color: var(--medd);
   cursor: pointer;
 }
 
@@ -462,7 +462,7 @@ textarea {
   padding: 5pt 10pt;
   color: var(--dark);
   font-family: "Ubuntu";
-  width: 250px;
+  width: 280px;
   font-size: 18pt;
   border-radius: 5pt;
 }
