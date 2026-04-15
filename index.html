@@ -9,6 +9,12 @@
     />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="./themes.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Creepster&family=Pacifico&family=Playwrite+IE:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
     <script src="./script.js"></script>
     <title>Portfolio Builder</title>
   </head>
@@ -30,6 +36,7 @@
           <li onclick="expandView()">
             <i class="fa-solid fa-eye"></i>
           </li>
+          <li onclick="openFontPicker()"><i class="fa-solid fa-font"></i></li>
         </ul>
       </nav>
     </header>
@@ -759,6 +766,68 @@
         </li>
       </ul>
     </div>
+    <div class="fontPicker">
+      <div class="close" onclick="closeFontPicker()">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="block heading">Heading Font</div>
+      <div class="block input">
+        <select
+          name="fontHead"
+          id="fontHead"
+          onchange="changeHeadFont(this.value)"
+        >
+          <option id="serif" value="serif">Serif</option>
+          <option id="Roboto" value="Roboto">Roboto</option>
+          <option id="Pacifico" value="Pacifico">Pacifico</option>
+          <option id="Bitcount-Grid-Double" value="Bitcount Grid Double">
+            Bitcount Grid Double
+          </option>
+          <option id="Playwrite-IE" value="Playwrite IE">Playwrite IE</option>
+          <option id="Creepster" value="Creepster">Creepster</option>
+          <option id="Poppins" value="Poppins">Poppins</option>
+          <option id="Ubuntu" value="Ubuntu">Ubuntu</option>
+        </select>
+      </div>
+      <div class="block heading">Paragraph Font</div>
+      <div class="block input">
+        <select
+          name="fontPara"
+          id="fontPara"
+          onchange="changeParaFont(this.value)"
+        >
+          <option id="serif" value="serif">Serif</option>
+          <option id="Roboto" value="Roboto">Roboto</option>
+          <option id="Pacifico" value="Pacifico">Pacifico</option>
+          <option id="Bitcount-Grid-Double" value="Bitcount Grid Double">
+            Bitcount Grid Double
+          </option>
+          <option id="Playwrite-IE" value="Playwrite IE">Playwrite IE</option>
+          <option id="Creepster" value="Creepster">Creepster</option>
+          <option id="Poppins" value="Poppins">Poppins</option>
+          <option id="Ubuntu" value="Ubuntu">Ubuntu</option>
+        </select>
+      </div>
+      <div class="block heading">Link Font</div>
+      <div class="block input">
+        <select
+          name="fontLink"
+          id="fontLink"
+          onchange="changeLinkFont(this.value)"
+        >
+          <option id="serif" value="serif">Serif</option>
+          <option id="Roboto" value="Roboto">Roboto</option>
+          <option id="Pacifico" value="Pacifico">Pacifico</option>
+          <option id="Bitcount-Grid-Double" value="Bitcount Grid Double">
+            Bitcount Grid Double
+          </option>
+          <option id="Playwrite-IE" value="Playwrite IE">Playwrite IE</option>
+          <option id="Creepster" value="Creepster">Creepster</option>
+          <option id="Poppins" value="Poppins">Poppins</option>
+          <option id="Ubuntu" value="Ubuntu">Ubuntu</option>
+        </select>
+      </div>
+    </div>
 
     <main>
       <aside>
@@ -786,7 +855,9 @@
         </ul>
       </aside>
 
-      <iframe id="show"></iframe>
+      <div class="showframe">
+        <iframe id="show"></iframe>
+      </div>
       <iframe
         class="preview"
         id="preview"

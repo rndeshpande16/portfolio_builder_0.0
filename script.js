@@ -14,6 +14,18 @@ async function start() {
 
   setTimeout(function () {
     loadPage("home");
+    const linkFont = localStorage.getItem("link-font") || "Roboto";
+    document.querySelectorAll(`#${linkFont.split(" ").join("-")}`)[2].selected =
+      true;
+    const paraFont = localStorage.getItem("paragraph-font") || "Ubuntu";
+    document.querySelectorAll(`#${paraFont.split(" ").join("-")}`)[1].selected =
+      true;
+    const headFont = localStorage.getItem("heading-font") || "Pacifico";
+    document.querySelectorAll(`#${headFont.split(" ").join("-")}`)[0].selected =
+      true;
+    document.querySelector("#fontHead").style.fontFamily = `${headFont}`;
+    document.querySelector("#fontPara").style.fontFamily = `${paraFont}`;
+    document.querySelector("#fontLink").style.fontFamily = `${linkFont}`;
   }, 200);
 }
 
@@ -22,9 +34,17 @@ function setupIframe() {
   const idoc = iframe.contentDocument;
   const propertySec = document.getElementById("properties");
   const theme = localStorage.getItem("theme") || "ocean";
+  const headFont = localStorage.getItem("heading-font") || "Pacifico";
+  const paraFont = localStorage.getItem("paragraph-font") || "Ubuntu";
+  const linkFont = localStorage.getItem("link-font") || "Roboto";
   idoc.open();
   idoc.write(
-    `<!DOCTYPE html><html lang='en'><head><link rel='stylesheet' href='themes.css' /><link rel='stylesheet' href='compsstyles.css' /></head><body data-theme='${theme}' style='transition: 0.3s all ease; margin:0; padding:0; min-height: 100vh; width: 100%; box-sizing: border-box;'></body></html>`,
+    `<!DOCTYPE html><html lang='en'><head><link rel='stylesheet' href='themes.css' /><link
+      rel="stylesheet"
+      href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css'
+    /><style>h1 {font-family: '${headFont}' !important;} p {font-family: '${paraFont}' !important;} a {font-family: '${linkFont}' !important;}</style><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Creepster&family=Pacifico&family=Playwrite+IE:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"><link rel='stylesheet' href='compsstyles.css' /></head><body data-theme='${theme}' style='transition: 0.3s all ease; margin:0; padding:0; min-height: 100vh; width: 100%; box-sizing: border-box;'></body></html>`,
   );
   idoc.close();
   idoc.body.addEventListener("dragenter", function (ev) {
@@ -66,12 +86,17 @@ async function loadContent(name) {
     const fetchedStyles = virtualDoc.querySelectorAll(
       'style, link[rel="stylesheet"]',
     );
+    const fa = document.createElement("link");
+    fa.rel = "stylesheet";
+    fa.href =
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css";
 
     const iframeHead = document.getElementById("show").contentDocument.head;
 
     fetchedStyles.forEach((styleNode) => {
       iframeHead.insertBefore(styleNode.cloneNode(true), iframeHead.firstChild);
     });
+    iframeHead.appendChild(fa);
 
     return virtualDoc.body.innerHTML;
   } catch (error) {
@@ -187,10 +212,19 @@ async function expandView() {
       preview.style.opacity = 0;
     }
   });
+  const headFont = localStorage.getItem("heading-font") || "Pacifico";
+  const paraFont = localStorage.getItem("paragraph-font") || "Ubuntu";
+  const linkFont = localStorage.getItem("link-font") || "Roboto";
+  const theme = localStorage.getItem("theme") || "ocean";
   const previewDoc =
     (await preview.contentDocument) || (await preview.contentWindow.document);
   previewDoc.write(
-    `<!DOCTYPE html><html lang='en'><head><link rel='stylesheet' href='themes.css' /><link rel='stylesheet' href='compsstyles.css' /></head><body data-theme='${localStorage.getItem("theme") || "ocean"}' style='transition: 0.3s all ease; margin:0; padding:0; min-height: 100vh; width: 100%; box-sizing: border-box;'></body></html>`,
+    `<!DOCTYPE html><html lang='en'><head><link rel='stylesheet' href='themes.css' /><link
+      rel="stylesheet"
+      href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css'
+    /><style>h1 {font-family: '${headFont}' !important;} p {font-family: '${paraFont}' !important;} a {font-family: '${linkFont}' !important;}</style><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Creepster&family=Pacifico&family=Playwrite+IE:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"><link rel='stylesheet' href='compsstyles.css' /></head><body data-theme='${theme}' style='transition: 0.3s all ease; margin:0; padding:0; min-height: 100vh; width: 100%; box-sizing: border-box;'></body></html>`,
   );
   previewDoc.body.innerHTML = localStorage.getItem("html");
   preview.style.zIndex = 1000;
@@ -400,4 +434,33 @@ function clearAll() {
   } else {
     return;
   }
+}
+
+function openFontPicker() {
+  document.querySelector(".blur").style.opacity = "1";
+  document.querySelector(".fontPicker").style.opacity = "1";
+  document.querySelector(".blur").style.zIndex = "10";
+  document.querySelector(".fontPicker").style.zIndex = "11";
+}
+
+function closeFontPicker() {
+  document.querySelector(".blur").style.opacity = "0";
+  document.querySelector(".fontPicker").style.opacity = "0";
+  document.querySelector(".blur").style.zIndex = "-1";
+  document.querySelector(".fontPicker").style.zIndex = "-1";
+}
+
+function changeHeadFont(val) {
+  localStorage.setItem("heading-font", val);
+  window.location.reload();
+}
+
+function changeParaFont(val) {
+  localStorage.setItem("paragraph-font", val);
+  window.location.reload();
+}
+
+function changeLinkFont(val) {
+  localStorage.setItem("link-font", val);
+  window.location.reload();
 }

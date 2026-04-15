@@ -109,7 +109,7 @@ header nav ul {
   margin: 0;
 }
 
-#show {
+.showframe {
   width: 55vw;
   position: fixed;
   top: 60px;
@@ -119,6 +119,9 @@ header nav ul {
   background-color: white;
   height: calc(100vh - 60px);
   transition: 0.4s ease;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(-45deg, var(--light) 50%, var(--medl) 50%);
 }
 
 #menu {
@@ -397,4 +400,69 @@ header nav ul {
 
 textarea {
   resize: vertical;
+}
+
+#show {
+  width: 100%;
+  resize: horizontal;
+  position: relative !important;
+  max-width: 55vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(100% - 10pt);
+  margin: 5pt;
+  border-radius: 5pt;
+  border: none;
+}
+
+.showframe {
+  display: flex;
+  justify-content: center;
+}
+
+.fontPicker {
+  height: 400px;
+  width: 1000px;
+  background-color: var(--medd);
+  position: fixed;
+  top: calc(50vh - 200px);
+  left: calc(50vw - 500px);
+  border-radius: 5pt;
+  transition: 0.3s all ease;
+  opacity: 0;
+  z-index: -1;
+}
+
+.fontPicker .close {
+  position: absolute;
+  font-size: 25pt;
+  right: 10px;
+  top: 10px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 5pt;
+  transition: 0.3s background-color ease;
+}
+
+.fontPicker .close:hover {
+  background-color: var(--dark);
+  cursor: pointer;
+}
+
+.fontPicker .block {
+  margin: 20pt;
+}
+
+.fontPicker select {
+  padding: 5pt 10pt;
+  color: var(--dark);
+  font-family: "Ubuntu";
+  width: 250px;
+  font-size: 18pt;
+  border-radius: 5pt;
 }

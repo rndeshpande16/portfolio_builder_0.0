@@ -19,4 +19,38 @@
       </li>
     </ul>
   </nav>
+  <div
+    class="responsive-toggle"
+    onclick="
+      const nav = document.getElementsByClassName('responsive-nav')[0];
+      nav.style.transform = 'translateX(0)';
+    "
+  >
+    <i style="color: white; font-size: 15pt" class="fa-solid fa-bars"></i>
+  </div>
+  <nav class="responsive-nav">
+    <div
+      class="close-nav"
+      onclick="
+        document.getElementsByClassName('responsive-nav')[0].style.transform =
+          'translateX(-100vw)'
+      "
+    >
+      <i class="fa-regular fa-xmark"></i>
+    </div>
+    <ul>
+      <li>
+        <a onclick="openPage('home')">Home</a>
+      </li>
+      <li>
+        <a onclick="openPage('about')">About</a>
+      </li>
+      <li>
+        <a onclick="openPage('myWork')">My Work</a>
+      </li>
+      <li>
+        <a onclick="openPage('contacts')">Contacts</a>
+      </li>
+    </ul>
+  </nav>
 </section>
