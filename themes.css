@@ -1,6 +1,3 @@
-/* themes.css */
-
-/* 1. Base / Ocean Theme (Default) */
 :root,
 [data-theme="ocean"] {
   --color-light: #e0f2fe;
@@ -10,7 +7,6 @@
   --color-dark: #082f49;
 }
 
-/* 2. Forest Theme */
 [data-theme="forest"] {
   --color-light: #dcfce7;
   --color-mediumlight: #86efac;
@@ -19,7 +15,6 @@
   --color-dark: #14532d;
 }
 
-/* 3. Sunset Theme */
 [data-theme="sunset"] {
   --color-light: #ffedd5;
   --color-mediumlight: #fdba74;
@@ -28,7 +23,6 @@
   --color-dark: #7c2d12;
 }
 
-/* 4. Amethyst Theme */
 [data-theme="amethyst"] {
   --color-light: #f3e8ff;
   --color-mediumlight: #d8b4fe;
@@ -37,7 +31,6 @@
   --color-dark: #4c1d95;
 }
 
-/* 5. Monochrome Theme */
 [data-theme="monochrome"] {
   --color-light: #f3f4f6;
   --color-mediumlight: #d1d5db;
@@ -46,11 +39,106 @@
   --color-dark: #1f2937;
 }
 
-/* 6. Cyberpunk Neon Theme */
 [data-theme="neon"] {
   --color-light: #fef08a;
   --color-mediumlight: #f472b6;
   --color-medium: #d946ef;
   --color-mediumdark: #8b5cf6;
   --color-dark: #020617;
+}
+
+[data-theme="cobalt2"] {
+  --color-light: #ffffff;
+  --color-mediumlight: #ffc600;
+  --color-medium: #0088ff;
+  --color-mediumdark: #1e3c56;
+  --color-dark: #193549;
+}
+
+[data-theme="abyss"] {
+  --color-light: #dddddd;
+  --color-mediumlight: #6688aa;
+  --color-medium: #225588;
+  --color-mediumdark: #0b1e31;
+  --color-dark: #000c18;
+}
+
+[data-theme="monokai"] {
+  --color-light: #f8f8f2;
+  --color-mediumlight: #a6e22e;
+  --color-medium: #f92672;
+  --color-mediumdark: #3e3d32;
+  --color-dark: #272822;
+}
+
+[data-theme="dark-high-contrast"] {
+  --color-light: #ffffff;
+  --color-mediumlight: #ffff00;
+  --color-medium: #00ffff;
+  --color-mediumdark: #333333;
+  --color-dark: #000000;
+}
+
+[data-theme="kimbie-dark"] {
+  --color-light: #d3af86;
+  --color-mediumlight: #889b4a;
+  --color-medium: #f06431;
+  --color-mediumdark: #362712;
+  --color-dark: #221a0f;
+}
+
+[data-theme="monokai-dimmed"] {
+  --color-light: #d4d4d4;
+  --color-mediumlight: #4ec9b0;
+  --color-medium: #c586c0;
+  --color-mediumdark: #333333;
+  --color-dark: #1e1e1e;
+}
+
+[data-theme="solarized-dark"] {
+  --color-light: #839496;
+  --color-mediumlight: #b58900;
+  --color-medium: #2aa198;
+  --color-mediumdark: #073642;
+  --color-dark: #002b36;
+}
+
+[data-theme="sakura"] {
+  --color-light: #fdf2f8;
+  --color-mediumlight: #f472b6;
+  --color-medium: #ec4899;
+  --color-mediumdark: #be185d;
+  --color-dark: #831843;
+}
+
+[data-theme="ultra-violet"] {
+  --color-light: #f5f3ff;
+  --color-mediumlight: #a78bfa;
+  --color-medium: #8b5cf6;
+  --color-mediumdark: #6d28d9;
+  --color-dark: #4c1d95;
+}
+
+[data-theme="tokyo-night"] {
+  --color-light: #c0caf5;
+  --color-mediumlight: #7aa2f7;
+  --color-medium: #bb9af7;
+  --color-mediumdark: #1f2335;
+  --color-dark: #1a1b26;
+}
+
+[data-theme="gruvbox-dark"] {
+  --color-light: #ebdbb2;
+  --color-mediumlight: #fabd2f;
+  --color-medium: #fe8019;
+  --color-mediumdark: #3c3836;
+  --color-dark: #282828;
+}
+
+[data-theme="dracula"] {
+  --color-light: #f8f8f2;
+  --color-mediumlight: #ff79c6;
+  --color-medium: #bd93f9;
+  --color-mediumdark: #44475a;
+  --color-dark: #282a36;
 }

@@ -1,38 +1,5 @@
 <section class="nav">
   <nav>
-    <style>
-      .nav nav {
-        position: sticky;
-        background-color: var(--color-dark);
-        color: var(--color-light);
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        padding: 10px;
-        ul {
-          display: flex;
-          list-style-type: none;
-          justify-content: space-around;
-          align-items: center;
-        }
-        a {
-          color: var(--color-light);
-          text-decoration: none;
-        }
-        li div {
-          height: 3px;
-          width: 0;
-          background-color: var(--color-light);
-          border-radius: 2px;
-          margin-top: 8px;
-          position: relative;
-          transition: 0.3s width ease;
-        }
-        li:hover {
-          div {
-            width: 100%;
-          }
-        }
-      }
-    </style>
     <ul>
       <li>
         <a onclick="openPage('home')">Home</a>
@@ -49,6 +16,40 @@
       <li>
         <a onclick="openPage('contacts')">Contacts</a>
         <div></div>
+      </li>
+    </ul>
+  </nav>
+  <div
+    class="responsive-toggle"
+    onclick="
+      const nav = document.getElementsByClassName('responsive-nav')[0];
+      nav.style.transform = 'translateX(0)';
+    "
+  >
+    <i style="color: white; font-size: 15pt" class="fa-solid fa-bars"></i>
+  </div>
+  <nav class="responsive-nav">
+    <div
+      class="close-nav"
+      onclick="
+        document.getElementsByClassName('responsive-nav')[0].style.transform =
+          'translateX(-100vw)'
+      "
+    >
+      <i class="fa-solid xmark">X</i>
+    </div>
+    <ul>
+      <li>
+        <a onclick="openPage('home')">Home</a>
+      </li>
+      <li>
+        <a onclick="openPage('about')">About</a>
+      </li>
+      <li>
+        <a onclick="openPage('myWork')">My Work</a>
+      </li>
+      <li>
+        <a onclick="openPage('contacts')">Contacts</a>
       </li>
     </ul>
   </nav>
