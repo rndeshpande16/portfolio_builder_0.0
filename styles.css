@@ -103,7 +103,9 @@ header nav ul li {
   list-style-type: none;
   list-style: none;
 }
-
+header nav ul li a {
+  text-decoration: none;
+}
 header nav ul {
   padding: 0;
   margin: 0;
