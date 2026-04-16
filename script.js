@@ -1,6 +1,7 @@
 let currentPage = localStorage.getItem("last-page") || "home";
 var portfolio = {};
-
+var changes=[[]];
+let currentChange=0;
 async function start() {
   setupIframe();
   portfolio = {
@@ -34,7 +35,6 @@ async function start() {
 function setupIframe() {
   const iframe = document.getElementById("show");
   const idoc = iframe.contentDocument;
-  const propertySec = document.getElementById("properties");
   const theme = localStorage.getItem("theme") || "ocean";
   const headFont = localStorage.getItem("heading-font") || "Pacifico";
   const paraFont = localStorage.getItem("paragraph-font") || "Ubuntu";
@@ -61,7 +61,14 @@ function setupIframe() {
     ev.preventDefault();
     var h = ev.dataTransfer.getData("text/html");
     var c = ev.dataTransfer.getData("text/component");
-    var comps = JSON.parse(localStorage.getItem(currentPage)) || [];
+    addComponent(c,h);
+  });
+}
+function addComponent(c,h){
+  const iframe = document.getElementById("show");
+  const idoc = iframe.contentDocument;
+  const propertySec = document.getElementById("properties");
+var comps = JSON.parse(localStorage.getItem(currentPage)) || [];
     if (h) {
       comps.push([c, h]);
       var htmlString = "";
@@ -75,9 +82,7 @@ function setupIframe() {
       localStorage.setItem("html", htmlString);
       savePage(currentPage, comps);
     }
-  });
 }
-
 async function loadContent(name) {
   try {
     const response = await fetch("components/" + name + ".html");
@@ -110,6 +115,7 @@ async function loadContent(name) {
 function dragContent(ev, name) {
   ev.dataTransfer.setData("text/html", portfolio[name]);
   ev.dataTransfer.setData("text/component", name);
+  addChange(["add",name]);
 }
 
 function savePage(page, content) {
@@ -140,13 +146,18 @@ function handleDragStart(ev) {
     return;
   }
   let currentElem = parseInt(ev.target.id.split("openEditor")[1]);
-  let data = JSON.parse(localStorage.getItem(currentPage)) || [];
-  let temp = data[currentElem];
-  data[currentElem] = data[newElem];
-  data[newElem] = temp;
-  localStorage.setItem(currentPage, JSON.stringify(data));
-  loadPage(currentPage);
+  addChange(["swap",currentElem,newElem]);
+  swapComponents(currentElem,newElem);
   // console.log(`Drag ended at: X=${x}, Y=${y}`);
+}
+function swapComponents(comp1,comp2){
+let data = JSON.parse(localStorage.getItem(currentPage)) || [];
+  let temp = data[comp1];
+  data[comp1] = data[comp2];
+  data[comp2] = temp;
+  localStorage.setItem(currentPage, JSON.stringify(data));
+  
+  loadPage(currentPage);
 }
 function loadPage(page) {
   let data = JSON.parse(localStorage.getItem(page)) || [];
@@ -422,6 +433,45 @@ function openEditBar(index) {
   }
   editBar.style.transform = "translateX(0)";
 }
+function addChange(arr){
+  changes.push(arr);
+currentChange++;
+}
+function undo(){
+  let command=changes[currentChange];
+  let success=false;
+  let data=JSON.parse(localStorage.getItem(currentPage));
+  if(command[0]=="add"){
+    //deleteBlock(data.length-1);
+    data.pop();
+    localStorage.setItem(currentPage,JSON.stringify(data));
+    loadPage(currentPage);
+    success=true;
+  }else if(command[0]=="swap"){
+    let ind1=command[1];
+    let ind2=command[2];
+    let temp=data[ind1];
+    data[ind1]=data[ind2];
+    data[ind2]=temp;
+
+    localStorage.setItem(currentPage, JSON.stringify(data));
+    loadPage(currentPage);
+    success=true;
+  }else if(command[0]=="delete"){
+    let originalIndex=command[1];
+    let deletedItem=JSON.parse(command[2]);
+    data.splice(originalIndex,0,deletedItem);
+    localStorage.setItem(currentPage,JSON.stringify(data));
+    loadPage(currentPage);
+    success = true;
+  }
+  if(success){
+    currentChange--;
+  }
+}
+function redo(){
+
+}
 function deleteManual(event,index){
   event.preventDefault();
   if (confirm("Are you sure?")) {
@@ -435,6 +485,7 @@ function deleteManual(event,index){
 }
 function deleteBlock(index){
   let data=JSON.parse(localStorage.getItem(currentPage));
+  addChange(["delete",index,JSON.stringify(data[index])]);
   data.splice(index,1);
   localStorage.setItem(currentPage,JSON.stringify(data));
 }
