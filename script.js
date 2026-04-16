@@ -311,10 +311,10 @@ function openEditBar(index) {
   if (editBar.querySelectorAll(".empty").length != 0) {
     editBar.removeChild(editBar.querySelector(".empty"));
   }
-  let data = JSON.parse(localStorage.getItem(currentPage));
+  let fulldata = JSON.parse(localStorage.getItem(currentPage));
   let elems = 0;
   editBar.classList.remove("empty-bar");
-  data = parser.parseFromString(data[index][1], "text/html");
+  data = parser.parseFromString(fulldata[index][1], "text/html");
   editForm.querySelector("#row").value = index;
   let heading = (val, ind) => {
     return `<hr />
@@ -373,6 +373,12 @@ function openEditBar(index) {
               onchange="handleLhrefEdit(event, this.value, ${ind}, ${index})"
             />`;
   };
+  let deleteButton="<button class='delbtn' onclick='deleteManual(event,"+index+")'>Delete</button>";
+  let delem = document.createElement("div");
+    //delem.classList.add("compe");
+    delem.innerHTML = deleteButton;
+    editForm.appendChild(delem);
+ editForm.appendChild(delem);
   data.querySelectorAll("h1").forEach((head, ind) => {
     let elem = document.createElement("div");
     elem.classList.add("compe");
@@ -416,7 +422,22 @@ function openEditBar(index) {
   }
   editBar.style.transform = "translateX(0)";
 }
-
+function deleteManual(event,index){
+  event.preventDefault();
+  if (confirm("Are you sure?")) {
+    deleteBlock(index);
+  loadPage(currentPage);
+  closeEditComponent();
+  } else {
+    return;
+  }
+  
+}
+function deleteBlock(index){
+  let data=JSON.parse(localStorage.getItem(currentPage));
+  data.splice(index,1);
+  localStorage.setItem(currentPage,JSON.stringify(data));
+}
 function clearCurrent() {
   if (confirm("Are you sure?")) {
     localStorage.removeItem(currentPage);

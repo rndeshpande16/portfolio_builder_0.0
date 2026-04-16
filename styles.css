@@ -45,7 +45,9 @@ header nav ul:first-child {
 .sidenav li:hover {
   cursor: pointer;
 }
-
+.sidenav li b{
+  font-size: larger;
+}
 header nav ul:last-child {
   width: 22%;
   background-color: var(--medd);
@@ -376,7 +378,23 @@ header nav ul {
   border: 0;
   width: 100%;
 }
-
+.delbtn{
+  list-style-type: none;
+    padding: 15px 0px;
+    padding-left: 15px;
+    width: 100%;
+    color: white;
+    margin: 5px 0px;
+    background-color: var(--medd);
+    width: 90%;
+    transition: 0.2s background-color ease-in-out;
+    border-radius: 5pt;
+    text-align: center;
+}
+.delbtn:hover {
+  background-color: var(--medl);
+  cursor: pointer;
+}
 .clear {
   padding: 15px;
   color: var(--light);
