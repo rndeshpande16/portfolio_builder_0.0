@@ -32,7 +32,9 @@
           <li onclick="openThemePicker()">
             <i class="fa-solid fa-circle-half-stroke"></i>
           </li>
-          <li><i class="fa-solid fa-download"></i></li>
+          <li onclick="openDownloadPicker()">
+            <i class="fa-solid fa-download"></i>
+          </li>
           <li onclick="expandView()">
             <i class="fa-solid fa-eye"></i>
           </li>
@@ -830,7 +832,19 @@
         </select>
       </div>
     </div>
-
+    <div class="downloadPicker">
+      <i class="close" onclick="closeDownloadPicker()">X</i>
+      <div class="mainBox">
+        <button onclick="downloadPage('home', 'index.html')">Home</button
+        ><button onclick="downloadPage('about', 'about.html')">About</button
+        ><button onclick="downloadPage('myWork', 'myWork.html')">My Work</button
+        ><button onclick="downloadPage('contacts', 'contacts.html')">
+          Contact</button
+        ><button onclick="downloadStyles('compsstyles.css')">Styles</button>
+        <button onclick="downloadThemes('themes.css')">Themes</button>
+        <button onclick="downloadAllPages()">All</button>
+      </div>
+    </div>
     <main>
       <aside>
         <ul>
@@ -850,7 +864,9 @@
           <li draggable="true" ondragstart="dragContent(event, 'testimonials')">
             Testimonials
           </li>
-
+          <li draggable="true" ondragstart="dragContent(event, 'footer')">
+            Footer
+          </li>
           <!-- <li draggable="true" ondragstart="homeDrag(event)">My Work</li>
           <li draggable="true" ondragstart="homeDrag(event)">Projects</li>
           <li draggable="true" ondragstart="homeDrag(event)">Blog</li>

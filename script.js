@@ -1,7 +1,7 @@
 let currentPage = localStorage.getItem("last-page") || "home";
 var portfolio = {};
-var changes=[[]];
-let currentChange=0;
+var changes = [[]];
+let currentChange = 0;
 async function start() {
   setupIframe();
   portfolio = {
@@ -11,6 +11,7 @@ async function start() {
     gallery: await loadContent("gallerysection"),
     testimonials: await loadContent("testimonialssection"),
     about: await loadContent("aboutsection"),
+    footer: await loadContent("footersection"),
   };
 
   setTimeout(function () {
@@ -61,27 +62,27 @@ function setupIframe() {
     ev.preventDefault();
     var h = ev.dataTransfer.getData("text/html");
     var c = ev.dataTransfer.getData("text/component");
-    addComponent(c,h);
+    addComponent(c, h);
   });
 }
-function addComponent(c,h){
+function addComponent(c, h) {
   const iframe = document.getElementById("show");
   const idoc = iframe.contentDocument;
   const propertySec = document.getElementById("properties");
-var comps = JSON.parse(localStorage.getItem(currentPage)) || [];
-    if (h) {
-      comps.push([c, h]);
-      var htmlString = "";
-      var props = "";
-      comps.forEach((comp, index) => {
-        htmlString += comp[1];
-        props += `<li id='openEditor${index}' ondragend="handleDragStart(event)" draggable='true' onclick='openEditBar(${index})'><div class='text'>${comp[0]}</div></li>`;
-      });
-      propertySec.innerHTML = props;
-      idoc.body.innerHTML = htmlString;
-      localStorage.setItem("html", htmlString);
-      savePage(currentPage, comps);
-    }
+  var comps = JSON.parse(localStorage.getItem(currentPage)) || [];
+  if (h) {
+    comps.push([c, h]);
+    var htmlString = "";
+    var props = "";
+    comps.forEach((comp, index) => {
+      htmlString += comp[1];
+      props += `<li id='openEditor${index}' ondragend="handleDragStart(event)" draggable='true' onclick='openEditBar(${index})'><div class='text'>${comp[0]}</div></li>`;
+    });
+    propertySec.innerHTML = props;
+    idoc.body.innerHTML = htmlString;
+    localStorage.setItem("html", htmlString);
+    savePage(currentPage, comps);
+  }
 }
 async function loadContent(name) {
   try {
@@ -115,7 +116,7 @@ async function loadContent(name) {
 function dragContent(ev, name) {
   ev.dataTransfer.setData("text/html", portfolio[name]);
   ev.dataTransfer.setData("text/component", name);
-  addChange(["add",name]);
+  addChange(["add", name]);
 }
 
 function savePage(page, content) {
@@ -146,17 +147,17 @@ function handleDragStart(ev) {
     return;
   }
   let currentElem = parseInt(ev.target.id.split("openEditor")[1]);
-  addChange(["swap",currentElem,newElem]);
-  swapComponents(currentElem,newElem);
+  addChange(["swap", currentElem, newElem]);
+  swapComponents(currentElem, newElem);
   // console.log(`Drag ended at: X=${x}, Y=${y}`);
 }
-function swapComponents(comp1,comp2){
-let data = JSON.parse(localStorage.getItem(currentPage)) || [];
+function swapComponents(comp1, comp2) {
+  let data = JSON.parse(localStorage.getItem(currentPage)) || [];
   let temp = data[comp1];
   data[comp1] = data[comp2];
   data[comp2] = temp;
   localStorage.setItem(currentPage, JSON.stringify(data));
-  
+
   loadPage(currentPage);
 }
 function loadPage(page) {
@@ -384,12 +385,15 @@ function openEditBar(index) {
               onchange="handleLhrefEdit(event, this.value, ${ind}, ${index})"
             />`;
   };
-  let deleteButton="<button class='delbtn' onclick='deleteManual(event,"+index+")'>Delete</button>";
+  let deleteButton =
+    "<button class='delbtn' onclick='deleteManual(event," +
+    index +
+    ")'>Delete</button>";
   let delem = document.createElement("div");
-    //delem.classList.add("compe");
-    delem.innerHTML = deleteButton;
-    editForm.appendChild(delem);
- editForm.appendChild(delem);
+  //delem.classList.add("compe");
+  delem.innerHTML = deleteButton;
+  editForm.appendChild(delem);
+  editForm.appendChild(delem);
   data.querySelectorAll("h1").forEach((head, ind) => {
     let elem = document.createElement("div");
     elem.classList.add("compe");
@@ -433,61 +437,58 @@ function openEditBar(index) {
   }
   editBar.style.transform = "translateX(0)";
 }
-function addChange(arr){
+function addChange(arr) {
   changes.push(arr);
-currentChange++;
+  currentChange++;
 }
-function undo(){
-  let command=changes[currentChange];
-  let success=false;
-  let data=JSON.parse(localStorage.getItem(currentPage));
-  if(command[0]=="add"){
+function undo() {
+  let command = changes[currentChange];
+  let success = false;
+  let data = JSON.parse(localStorage.getItem(currentPage));
+  if (command[0] == "add") {
     //deleteBlock(data.length-1);
     data.pop();
-    localStorage.setItem(currentPage,JSON.stringify(data));
+    localStorage.setItem(currentPage, JSON.stringify(data));
     loadPage(currentPage);
-    success=true;
-  }else if(command[0]=="swap"){
-    let ind1=command[1];
-    let ind2=command[2];
-    let temp=data[ind1];
-    data[ind1]=data[ind2];
-    data[ind2]=temp;
+    success = true;
+  } else if (command[0] == "swap") {
+    let ind1 = command[1];
+    let ind2 = command[2];
+    let temp = data[ind1];
+    data[ind1] = data[ind2];
+    data[ind2] = temp;
 
     localStorage.setItem(currentPage, JSON.stringify(data));
     loadPage(currentPage);
-    success=true;
-  }else if(command[0]=="delete"){
-    let originalIndex=command[1];
-    let deletedItem=JSON.parse(command[2]);
-    data.splice(originalIndex,0,deletedItem);
-    localStorage.setItem(currentPage,JSON.stringify(data));
+    success = true;
+  } else if (command[0] == "delete") {
+    let originalIndex = command[1];
+    let deletedItem = JSON.parse(command[2]);
+    data.splice(originalIndex, 0, deletedItem);
+    localStorage.setItem(currentPage, JSON.stringify(data));
     loadPage(currentPage);
     success = true;
   }
-  if(success){
+  if (success) {
     currentChange--;
   }
 }
-function redo(){
-
-}
-function deleteManual(event,index){
+function redo() {}
+function deleteManual(event, index) {
   event.preventDefault();
   if (confirm("Are you sure?")) {
     deleteBlock(index);
-  loadPage(currentPage);
-  closeEditComponent();
+    loadPage(currentPage);
+    closeEditComponent();
   } else {
     return;
   }
-  
 }
-function deleteBlock(index){
-  let data=JSON.parse(localStorage.getItem(currentPage));
-  addChange(["delete",index,JSON.stringify(data[index])]);
-  data.splice(index,1);
-  localStorage.setItem(currentPage,JSON.stringify(data));
+function deleteBlock(index) {
+  let data = JSON.parse(localStorage.getItem(currentPage));
+  addChange(["delete", index, JSON.stringify(data[index])]);
+  data.splice(index, 1);
+  localStorage.setItem(currentPage, JSON.stringify(data));
 }
 function clearCurrent() {
   if (confirm("Are you sure?")) {
@@ -534,4 +535,72 @@ function changeParaFont(val) {
 function changeLinkFont(val) {
   localStorage.setItem("link-font", val);
   window.location.reload();
+}
+
+const downloadPage = (pageName, fileName) => {
+  loadPage(pageName);
+  const iframe = document.getElementById("show");
+  let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+  let htmlText = iframeDoc.documentElement.innerHTML;
+  const blob = new Blob([htmlText], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+};
+
+const downloadStyles = async (fileName) => {
+  const file = await fetch("/compsstyles.css");
+  var css = await file.text();
+  const blob = new Blob([css], { type: "text/css" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+};
+
+const downloadThemes = async (fileName) => {
+  const file = await fetch("/themes.css");
+  var css = await file.text();
+  const blob = new Blob([css], { type: "text/css" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+};
+
+const downloadAllPages = () => {
+  downloadPage("home", "index.html");
+  downloadPage("about", "about.html");
+  downloadPage("myWork", "myWork.html");
+  downloadPage("contacts", "contacts.html");
+  downloadStyles("compsstyles.css");
+  downloadThemes("themes.css");
+  loadPage(currentPage);
+};
+
+function openDownloadPicker() {
+  document.querySelector(".blur").style.opacity = "1";
+  document.querySelector(".downloadPicker").style.opacity = "1";
+  document.querySelector(".blur").style.zIndex = "10";
+  document.querySelector(".downloadPicker").style.zIndex = "11";
+}
+
+function closeDownloadPicker() {
+  document.querySelector(".blur").style.opacity = "0";
+  document.querySelector(".downloadPicker").style.opacity = "0";
+  document.querySelector(".blur").style.zIndex = "-1";
+  document.querySelector(".downloadPicker").style.zIndex = "-1";
 }

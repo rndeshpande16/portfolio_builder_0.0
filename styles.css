@@ -45,7 +45,7 @@ header nav ul:first-child {
 .sidenav li:hover {
   cursor: pointer;
 }
-.sidenav li b{
+.sidenav li b {
   font-size: larger;
 }
 header nav ul:last-child {
@@ -378,18 +378,18 @@ header nav ul {
   border: 0;
   width: 100%;
 }
-.delbtn{
+.delbtn {
   list-style-type: none;
-    padding: 15px 0px;
-    padding-left: 15px;
-    width: 100%;
-    color: white;
-    margin: 5px 0px;
-    background-color: var(--medd);
-    width: 90%;
-    transition: 0.2s background-color ease-in-out;
-    border-radius: 5pt;
-    text-align: center;
+  padding: 15px 0px;
+  padding-left: 15px;
+  width: 100%;
+  color: white;
+  margin: 5px 0px;
+  background-color: var(--medd);
+  width: 90%;
+  transition: 0.2s background-color ease-in-out;
+  border-radius: 5pt;
+  text-align: center;
 }
 .delbtn:hover {
   background-color: var(--medl);
@@ -485,4 +485,79 @@ textarea {
   width: 280px;
   font-size: 18pt;
   border-radius: 5pt;
+}
+
+.delbtn {
+  background-color: var(--light);
+  color: red;
+  font-weight: bolder;
+  width: 100%;
+  border: 0;
+  padding: 10pt;
+  transition: 0.3s all ease;
+}
+
+.delbtn:hover {
+  background-color: darkred;
+  color: white;
+}
+
+.downloadPicker {
+  height: 400px;
+  width: 400px;
+  background-color: var(--dark);
+  position: fixed;
+  top: calc(50vh - 200px);
+  left: calc(50vw - 200px);
+  border-radius: 5pt;
+  transition: 0.3s all ease;
+  opacity: 0;
+  z-index: -1;
+  padding: 10pt;
+}
+
+.downloadPicker .close {
+  position: absolute;
+  font-size: 25pt;
+  right: 10px;
+  top: 10px;
+  padding: 10pt;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+  border-radius: 5pt;
+  transition: 0.3s background-color ease;
+  font-style: normal;
+}
+
+.downloadPicker .close:hover {
+  background-color: var(--medd);
+  cursor: pointer;
+}
+
+.mainBox {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10pt;
+  margin-top: 60px;
+  width: 100%;
+}
+
+.mainBox button {
+  padding: 8pt;
+  border-radius: 5pt;
+  border: none;
+  color: var(--dark);
+  background-color: var(--medd);
+  font-weight: bold;
+  font-size: 15pt;
+  color: var(--light);
+  transition: all 0.3s ease;
+}
+
+.mainBox button:hover {
+  background-color: var(--medl);
+  cursor: pointer;
 }

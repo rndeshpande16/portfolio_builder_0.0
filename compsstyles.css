@@ -33,7 +33,7 @@ body {
   width: 450px;
   max-width: 100%;
   padding: 40px 30px;
-  border-radius: 20px;
+  border-radius: 5pt;
 }
 
 .gradient-container .main-menu h1 {
@@ -52,7 +52,7 @@ body {
   display: block;
   background-color: var(--color-dark);
   border-radius: 8px;
-  margin: 20px 0;
+  margin: 20pt 0;
   color: var(--color-mediumlight);
   padding: 15px;
   text-decoration: none;
@@ -119,7 +119,7 @@ nav * {
   margin: 0;
 }
 .nav nav {
-  position: sticky;
+  position: fixed;
   top: 0;
   margin: 0;
   width: 100vw;
@@ -338,11 +338,14 @@ nav * {
   }
   .responsive-nav {
     display: flex !important;
-    z-index: 9999999 !important;
+    z-index: 9999 !important;
     position: absolute;
+    top: 0 !important;
+    bottom: 0 !important;
   }
   .nav {
     position: fixed;
+    z-index: 9999 !important;
     transition: 0.3s all ease;
   }
 }
@@ -427,4 +430,84 @@ nav * {
   .responsive-toggle {
     display: none;
   }
+}
+
+section:nth-child(2) {
+  margin-top: 80px !important;
+}
+
+.footer {
+  margin: 0;
+  background: linear-gradient(
+      45deg,
+      var(--color-light) 50%,
+      var(--color-mediumlight) 50%
+    )
+    fixed;
+  padding: 10pt 0;
+}
+.footer i {
+  font-size: 30pt;
+  margin: 0;
+  border-radius: 7.5pt;
+}
+.instagram {
+  background: linear-gradient(-135deg, purple, darkviolet, orange, yellow);
+  color: white;
+  border-radius: 10pt !important;
+  i {
+    font-size: 40pt;
+  }
+}
+.facebook {
+  color: blue;
+  i {
+    font-size: 40pt;
+  }
+}
+.whatsapp {
+  color: rgb(22, 134, 0);
+  i {
+    font-size: 45pt;
+  }
+}
+.phone {
+  background: green;
+  color: white;
+}
+.mail {
+  background-color: darkred;
+  color: white;
+}
+.social-media a {
+  height: 30pt;
+  width: 30pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5pt;
+  padding: 10px;
+  text-decoration: none;
+}
+.social-media {
+  display: flex;
+  justify-content: center;
+  gap: 15pt;
+  /* justify-content: space-around; */
+  /* background-color: white; */
+  margin: 10pt;
+  margin: auto 20pt;
+  padding: 10pt;
+  border-radius: 5pt;
+}
+.copywright {
+  padding: 2.5pt 10pt;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  margin: 10pt;
+  margin: auto 20pt;
+  margin-top: 10pt;
+  border-radius: 5pt;
+  text-align: center;
+  font-size: 16pt;
 }
