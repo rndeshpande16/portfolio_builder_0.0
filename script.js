@@ -425,6 +425,43 @@ function openEditBar(index) {
     editForm.appendChild(elem);
     elems += 1;
   });
+
+  document.addEventListener("click", function (e) {
+  if (e.target && e.target.id === "addNewParagraph") {
+    console.log("clicked");
+
+    let elem = document.createElement("div");
+    elem.classList.add("compe");
+
+    let itemhr = document.createElement("hr");
+    elem.appendChild(itemhr);
+
+    let label = document.createElement("p");
+    label.textContent = "Paragraph";
+    elem.appendChild(label);
+
+    let inputPara = document.createElement("textarea");
+    inputPara.minLength = 50;
+    inputPara.name = "paragraph2";
+    inputPara.value = "Write more hobbies";
+
+    inputPara.style.color = "black";
+    inputPara.style.padding = "7%";
+    inputPara.style.marginBottom = "4%";
+    inputPara.style.borderRadius = "5px";
+    inputPara.style.width = "90%";
+    inputPara.style.overflowX = "hidden";
+    inputPara.style.overflowY = "scroll";
+
+    let editForm = document.getElementById("editForm");
+
+    editForm.appendChild(elem);
+    editForm.appendChild(inputPara);
+
+    elems += 1;
+  }
+});
+
   if (elems === 0) {
     let emp = document.createElement("div");
     emp.classList.add("empty");
@@ -473,7 +510,7 @@ function undo() {
     currentChange--;
   }
 }
-function redo() {}
+function redo() { }
 function deleteManual(event, index) {
   event.preventDefault();
   if (confirm("Are you sure?")) {
