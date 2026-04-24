@@ -320,6 +320,12 @@ async function closeEditComponent() {
 function openEditBar(index) {
   let editForm = document.querySelector("#editForm");
   let editBar = document.querySelector(".editComponent");
+  editForm.innerHTML = `
+    <input type="hidden" name="row" id="row" value="${index}" />
+    <div class="closebtn" onclick="closeEditComponent()">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+  `;
   if (editBar.querySelectorAll(".empty").length != 0) {
     editBar.removeChild(editBar.querySelector(".empty"));
   }
@@ -328,9 +334,12 @@ function openEditBar(index) {
   editBar.classList.remove("empty-bar");
   data = parser.parseFromString(fulldata[index][1], "text/html");
   editForm.querySelector("#row").value = index;
-  let heading = (val, ind) => {
+  let heading=(val,ind)=>{
     return `<hr />
-            <label for="heading${ind}">Heading ${ind + 1}:</label>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+              <label for="heading${ind}" style="margin: 0;">Heading ${ind + 1}:</label>
+              <i class="fa-solid fa-trash" style="cursor: pointer; color: #ff4444;" onclick="deleteSubElement(event, 'h1', ${ind}, ${index})"></i>
+            </div>
             <input
               type="text"
               value="${val}"
@@ -340,9 +349,13 @@ function openEditBar(index) {
             />
           `;
   };
-  let para = (val, ind) => {
+
+  let para = (val,ind)=>{
     return `<hr />
-            <label for="paragraph${ind}">Paragraph ${ind + 1}:</label>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+              <label for="paragraph${ind}" style="margin: 0;">Paragraph ${ind + 1}:</label>
+              <i class="fa-solid fa-trash" style="cursor: pointer; color: #ff4444;" onclick="deleteSubElement(event, 'p', ${ind}, ${index})"></i>
+            </div>
             <textarea
               id="paragraph${ind}"
               name="paragraph${ind}"
@@ -356,9 +369,13 @@ function openEditBar(index) {
             >${val}</textarea>
           `;
   };
-  let img = (val, ind) => {
+
+  let img=(val,ind)=>{
     return `<hr />
-            <label for="image${ind}">Image Link ${ind + 1}:</label>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+              <label for="image${ind}" style="margin: 0;">Image Link ${ind + 1}:</label>
+              <i class="fa-solid fa-trash" style="cursor: pointer; color: #ff4444;" onclick="deleteSubElement(event, 'img', ${ind}, ${index})"></i>
+            </div>
             <input
               type="text"
               value="${val}"
@@ -367,8 +384,12 @@ function openEditBar(index) {
               onchange="handleImageEdit(event, this.value, ${ind}, ${index})"
             />`;
   };
-  let anchor = (val, href, ind) => {
-    return `<hr /><label for="ltext${ind}">Link ${ind + 1} Text:</label>
+  let anchor=(val,href,ind)=>{
+    return `<hr />
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+              <label for="ltext${ind}" style="margin: 0;">Link ${ind + 1} Text:</label>
+              <i class="fa-solid fa-trash" style="cursor: pointer; color: #ff4444;" onclick="deleteSubElement(event, 'a', ${ind}, ${index})"></i>
+            </div>
             <input
               type="text"
               value="${val}"
@@ -393,7 +414,7 @@ function openEditBar(index) {
   //delem.classList.add("compe");
   delem.innerHTML = deleteButton;
   editForm.appendChild(delem);
-  editForm.appendChild(delem);
+ // editForm.appendChild(delem);
   data.querySelectorAll("h1").forEach((head, ind) => {
     let elem = document.createElement("div");
     elem.classList.add("compe");
@@ -425,43 +446,43 @@ function openEditBar(index) {
     editForm.appendChild(elem);
     elems += 1;
   });
+ let addElementUI = document.createElement("div");
+  addElementUI.classList.add("compe");
+ addElementUI.innerHTML = `
+    <hr style="margin-top: 20px;" />
+    <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;">
+      <label style="margin: 0; font-weight: bold; font-size: 1.1rem;">Add New Element:</label>
+      
+      <select id="newElementType" style="background-color: gray; padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 100%; font-size: 1rem; color: white;">
+        <option value="p">Paragraph</option>
+        <option value="h1">Heading 1</option>
+        <option value="img">Image</option>
+        <option value="a">Link</option>
+      </select>
 
-  document.addEventListener("click", function (e) {
-  if (e.target && e.target.id === "addNewParagraph") {
-    console.log("clicked");
-
-    let elem = document.createElement("div");
-    elem.classList.add("compe");
-
-    let itemhr = document.createElement("hr");
-    elem.appendChild(itemhr);
-
-    let label = document.createElement("p");
-    label.textContent = "Paragraph";
-    elem.appendChild(label);
-
-    let inputPara = document.createElement("textarea");
-    inputPara.minLength = 50;
-    inputPara.name = "paragraph2";
-    inputPara.value = "Write more hobbies";
-
-    inputPara.style.color = "black";
-    inputPara.style.padding = "7%";
-    inputPara.style.marginBottom = "4%";
-    inputPara.style.borderRadius = "5px";
-    inputPara.style.width = "90%";
-    inputPara.style.overflowX = "hidden";
-    inputPara.style.overflowY = "scroll";
-
-    let editForm = document.getElementById("editForm");
-
-    editForm.appendChild(elem);
-    editForm.appendChild(inputPara);
-
-    elems += 1;
-  }
-});
-
+      <button 
+        id="addNewElement" 
+        type="button" 
+        onclick="addNewElementHandler(event)"
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: rgb(255, 98, 0); 
+          border-radius: 5px; 
+          border: none; 
+          width: 100%;
+          min-height: 8vh;
+          background-color: rgba(0, 0, 0, 0.891);
+          cursor: pointer;
+          font-size: 1.1rem;
+          font-weight: bold;
+        ">
+        Add
+      </button>
+    </div>
+  `;
+  editForm.appendChild(addElementUI);
   if (elems === 0) {
     let emp = document.createElement("div");
     emp.classList.add("empty");
@@ -474,6 +495,35 @@ function openEditBar(index) {
   }
   editBar.style.transform = "translateX(0)";
 }
+document.addEventListener("click", function (e) {
+  if (e.target && e.target.id === "addNewElement") {
+    e.preventDefault();
+    console.log("Add new element clicked");
+    let index = parseInt(document.getElementById("row").value);
+    let elementType = document.getElementById("newElementType").value;
+    var htmlString = JSON.parse(localStorage.getItem(currentPage));
+    const doc = parser.parseFromString(htmlString[index][1], "text/html");
+    let newElem = doc.createElement(elementType);
+    //localStorage.setItem(currentPage, JSON.stringify(htmlString));
+    if (elementType === "p") {
+      newElem.innerText = "Write your new paragraph here";
+    } else if (elementType === "h1") {
+      newElem.innerText = "New Heading";
+    } else if (elementType === "img") {
+      newElem.src = "https://placehold.co/600x400?text=Placeholder+Image";
+    } else if (elementType === "a") {
+      newElem.innerText = "New Link";
+      newElem.href = "#";
+    }
+    let container = doc.body.querySelector("section") || doc.body;
+    container.appendChild(newElem);
+    const str = serializer.serializeToString(doc);
+    htmlString[index][1] = str;
+    localStorage.setItem(currentPage, JSON.stringify(htmlString));
+    loadPage(currentPage);
+    openEditBar(index);
+  }
+});
 function addChange(arr) {
   changes.push(arr);
   currentChange++;
@@ -526,6 +576,21 @@ function deleteBlock(index) {
   addChange(["delete", index, JSON.stringify(data[index])]);
   data.splice(index, 1);
   localStorage.setItem(currentPage, JSON.stringify(data));
+}
+function deleteSubElement(ev, tag, row, ind) {
+  ev.preventDefault();
+  var htmlString = JSON.parse(localStorage.getItem(currentPage));
+  const doc = parser.parseFromString(htmlString[ind][1], "text/html");
+  const elements = doc.querySelectorAll(tag);
+  if (elements[row]) {
+    elements[row].remove();
+  }
+  const str = serializer.serializeToString(doc);
+  htmlString[ind][1] = str;
+  localStorage.setItem(currentPage, JSON.stringify(htmlString));
+  loadPage(currentPage);
+  //closeEditComponent();
+  openEditBar(ind);
 }
 function clearCurrent() {
   if (confirm("Are you sure?")) {
