@@ -363,7 +363,7 @@ function openEditBar(index) {
               style='overflow-x: hidden;overflow-y: scroll;'
               onkeydown="
                 if (event.key === 'Enter') {
-                  handleParaEdit(event, this.value, ${ind}, ${index});
+                  event.preventDefault();handleParaEdit(event, this.value, ${ind}, ${index});
                 }
               "
             >${val}</textarea>
@@ -407,7 +407,7 @@ function openEditBar(index) {
             />`;
   };
   let deleteButton =
-    "<button class='delbtn' onclick='deleteManual(event," +
+    "<button type='button' class='delbtn' onclick='deleteManual(event," +
     index +
     ")'>Delete</button>";
   let delem = document.createElement("div");
