@@ -1,8 +1,13 @@
 :root {
-  --light: #fff8f0;
+  /* --light: #fff8f0;
   --medl: #c08552;
   --medd: #8c5a3c;
-  --dark: #4b2e2b;
+  --dark: #4b2e2b; */
+  --light: rgb(255, 94, 0);
+  --medl: rgba(0, 0, 0, 0.742);
+  --medd: rgba(0, 0, 0, 0.742);
+  --dark: rgba(0, 0, 0, 0.742);
+
 }
 
 body {
@@ -91,7 +96,7 @@ aside li {
 }
 
 aside li:hover {
-  background-color: var(--medl);
+  background-color: rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 
