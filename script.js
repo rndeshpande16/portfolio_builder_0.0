@@ -334,7 +334,7 @@ function openEditBar(index) {
   editBar.classList.remove("empty-bar");
   data = parser.parseFromString(fulldata[index][1], "text/html");
   editForm.querySelector("#row").value = index;
-  let heading=(val,ind)=>{
+  let heading = (val, ind) => {
     return `<hr />
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
               <label for="heading${ind}" style="margin: 0;">Heading ${ind + 1}:</label>
@@ -350,7 +350,7 @@ function openEditBar(index) {
           `;
   };
 
-  let para = (val,ind)=>{
+  let para = (val, ind) => {
     return `<hr />
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
               <label for="paragraph${ind}" style="margin: 0;">Paragraph ${ind + 1}:</label>
@@ -370,7 +370,7 @@ function openEditBar(index) {
           `;
   };
 
-  let img=(val,ind)=>{
+  let img = (val, ind) => {
     return `<hr />
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
               <label for="image${ind}" style="margin: 0;">Image Link ${ind + 1}:</label>
@@ -384,7 +384,7 @@ function openEditBar(index) {
               onchange="handleImageEdit(event, this.value, ${ind}, ${index})"
             />`;
   };
-  let anchor=(val,href,ind)=>{
+  let anchor = (val, href, ind) => {
     return `<hr />
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
               <label for="ltext${ind}" style="margin: 0;">Link ${ind + 1} Text:</label>
@@ -414,7 +414,7 @@ function openEditBar(index) {
   //delem.classList.add("compe");
   delem.innerHTML = deleteButton;
   editForm.appendChild(delem);
- // editForm.appendChild(delem);
+  // editForm.appendChild(delem);
   data.querySelectorAll("h1").forEach((head, ind) => {
     let elem = document.createElement("div");
     elem.classList.add("compe");
@@ -446,14 +446,14 @@ function openEditBar(index) {
     editForm.appendChild(elem);
     elems += 1;
   });
- let addElementUI = document.createElement("div");
+  let addElementUI = document.createElement("div");
   addElementUI.classList.add("compe");
- addElementUI.innerHTML = `
+  addElementUI.innerHTML = `
     <hr style="margin-top: 20px;" />
-    <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;">
+    <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;width: 100%;">
       <label style="margin: 0; font-weight: bold; font-size: 1.1rem;">Add New Element:</label>
       
-      <select id="newElementType" style="background-color: gray; padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 100%; font-size: 1rem; color: white;">
+      <select id="newElementType" style="background-color: var(--dark); padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 100%; font-size: 1rem; color: white;">
         <option value="p">Paragraph</option>
         <option value="h1">Heading 1</option>
         <option value="img">Image</option>
@@ -468,12 +468,12 @@ function openEditBar(index) {
           display: flex;
           justify-content: center;
           align-items: center;
-          color: rgb(255, 98, 0); 
+          color: var(--light); 
           border-radius: 5px; 
           border: none; 
           width: 100%;
           min-height: 8vh;
-          background-color: rgba(0, 0, 0, 0.891);
+          background-color: var(--dark);
           cursor: pointer;
           font-size: 1.1rem;
           font-weight: bold;
@@ -560,7 +560,7 @@ function undo() {
     currentChange--;
   }
 }
-function redo() { }
+function redo() {}
 function deleteManual(event, index) {
   event.preventDefault();
   if (confirm("Are you sure?")) {

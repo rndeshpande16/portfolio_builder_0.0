@@ -2,7 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  animation: textLight 1s linear infinite;
+  animation-play-state: paused;
+  animation-delay: calc(var(--scroll) * -1s);
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+  font-family: "Poppins";
 }
 
 html {
@@ -10,12 +15,12 @@ html {
 }
 
 body {
-  background: #dadbde;
+  background: white;
   color: rgba(0, 0, 0, 0.905);
 }
 
 .logo {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Bitcount Grid Double";
   font-weight: bold;
   color: white;
   font-size: 2rem;
@@ -105,7 +110,7 @@ nav a:hover::after {
 .hero {
   margin-left: 20%;
   margin-right: 20%;
-  height: 50vh;
+  /* height: 50vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -134,7 +139,11 @@ hero h1 {
   padding: 15px 35px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(45deg, rgba(1, 0, 7, 0.917), rgba(255, 72, 0, 0.942));
+  background: linear-gradient(
+    45deg,
+    rgba(1, 0, 7, 0.917),
+    rgba(255, 72, 0, 0.942)
+  );
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -147,14 +156,28 @@ hero h1 {
   padding: 80px;
 }
 
+body {
+  animation: show 1s linear infinite;
+  animation-play-state: paused;
+  animation-delay: calc(var(--scroll) * -1s);
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+
+@keyframes show {
+  to {
+    background-color: rgb(172, 172, 172);
+  }
+}
+
 .card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 220px;
+  width: 200px;
   border-radius: 15px;
-
+  padding: 10pt;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
 
@@ -171,7 +194,7 @@ hero h1 {
 .card h6 {
   text-align: center;
   font-size: 30px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Ubuntu";
 }
 
 .img-card {
@@ -192,7 +215,6 @@ hero h1 {
   filter: brightness(1.1) contrast(1.05);
 }
 
-
 .cta {
   text-align: center;
   padding: 100px 20px;
@@ -212,7 +234,7 @@ hero h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 50vh;
+  /* height: 50vh; */
   padding: 40px;
 }
 
@@ -238,7 +260,8 @@ hero h1 {
   margin-right: 4%;
   width: 50%;
   height: 100%;
-  background: url("https://cdn.dribbble.com/userupload/18820927/file/original-794cf672b0fe28359588c4d383dfa540.png?crop=0x0-1800x1350&format=webp&resize=400x300&vertical=center") no-repeat center/cover;
+  background: url("https://cdn.dribbble.com/userupload/18820927/file/original-794cf672b0fe28359588c4d383dfa540.png?crop=0x0-1800x1350&format=webp&resize=400x300&vertical=center")
+    no-repeat center/cover;
   clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
 }
 
@@ -247,7 +270,7 @@ hero h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  /* height: 50vh; */
   margin-top: 10%;
   margin-bottom: 8%;
 }
@@ -262,20 +285,22 @@ hero h1 {
 }
 
 #diffclass-option {
-  width: 40%;
+  /* max-width: 70vw; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 3%;
+  gap: 10pt;
 }
 
-#diffclass-option button{
+#diffclass-option button {
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.05);
   border: none;
   font-size: 1rem;
   font-weight: bold;
-  height: 5vh;
+  /* height: 5vh; */
+  height: 8vh;
   width: 150px;
 }
 
@@ -301,26 +326,34 @@ hero h1 {
 
 #info-display {
   display: flex;
-  flex-wrap: wrap;          
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;                
-  width: 50%;
+  align-items: center;
+  gap: 20px;
+  min-width: 50%;
   margin-bottom: 5%;
 }
 
-#text1, #text2, #text3, #text4 {
+#text1,
+#text2,
+#text3,
+#text4 {
   padding: 20px;
   background-color: rgba(150, 143, 143, 0.354);
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Bitcount Grid Double";
   font-weight: bold;
   font-size: 1rem;
-  width: 45%;      
-  height: 15vh;
-  border-radius: 5px;   
-  transition: box-shadow 0.3s ease-in;   
+  width: 300px;
+  height: fit-content;
+  height: 33vh;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease-in;
 }
 
-#text1:hover, #text2:hover, #text3:hover, #text4:hover{
+#text1:hover,
+#text2:hover,
+#text3:hover,
+#text4:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
@@ -333,18 +366,25 @@ hero h1 {
   opacity: 0;
 }
 
-.hero-section{
+.hero-section {
   margin-top: 7%;
   margin-bottom: 10%;
 }
 
-#demo-page{
-  width: 70%;
-  height: 70vh;
+#demo-page {
+  /* width: 70%; */
+  max-width: 80vw;
+  /* height: 70vh; */
   margin-bottom: 3%;
 }
 
-.layout-download{
+@media screen and (max-width: 710px) {
+  #diffclass-option {
+    display: none;
+  }
+}
+
+.layout-download {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -352,27 +392,33 @@ hero h1 {
   margin-bottom: 5%;
   margin-left: 15%;
   margin-right: 15%;
-  border: 2px solid rgb(0,0,0);
+  /* border: 2px solid rgb(0, 0, 0); */
   height: 20vh;
+  padding: 10pt;
   /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); */
 }
 
 .layout-download p {
-  font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
   font-size: 2rem;
   margin-bottom: 2%;
+  text-align: center;
 }
 
-#downloadBasicHtml{
+#downloadBasicHtml {
   border: none;
   border-radius: 5px;
-  width: 15%;
-  height: 5vh;
+  padding: 10pt;
+  /* width: 15%; */
+  /* height: 5vh; */
   color: white;
   font-weight: bold;
   background-color: rgba(255, 72, 0, 0.942);
   font-size: 2rem;
+}
+
+#downloadBasicHtml:hover {
+  cursor: pointer;
 }
 
 footer {
@@ -380,4 +426,5 @@ footer {
   padding: 30px;
   background: rgba(1, 0, 7, 0.751);
   opacity: 0.6;
+  color: white;
 }

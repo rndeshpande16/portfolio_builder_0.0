@@ -440,8 +440,8 @@ section:nth-child(2) {
   margin: 0;
   background: linear-gradient(
       45deg,
-      var(--color-light) 50%,
-      var(--color-mediumlight) 50%
+      var(--color-mediumlight) 50%,
+      var(--color-mediumdark) 50%
     )
     fixed;
   padding: 10pt 0;
@@ -466,7 +466,7 @@ section:nth-child(2) {
   }
 }
 .whatsapp {
-  color: rgb(22, 134, 0);
+  color: green;
   i {
     font-size: 45pt;
   }

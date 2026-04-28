@@ -3,11 +3,10 @@
   --medl: #c08552;
   --medd: #8c5a3c;
   --dark: #4b2e2b; */
-  --light: rgb(255, 94, 0);
-  --medl: rgba(0, 0, 0, 0.742);
-  --medd: rgba(0, 0, 0, 0.742);
-  --dark: rgba(0, 0, 0, 0.742);
-
+  --dark: rgba(0, 0, 0, 0.875);
+  --medd: rgba(255, 255, 255, 0.221);
+  --medl: rgba(255, 72, 0, 0.942);
+  --light: white;
 }
 
 body {
@@ -21,7 +20,7 @@ header nav {
   width: 100vw;
   display: flex;
   background-color: var(--dark);
-  height: 60px;
+  height: 80px;
   align-items: center;
   justify-content: space-between;
 }
@@ -42,7 +41,6 @@ header nav ul {
 
 header nav ul:first-child {
   width: 76.5%;
-  background-color: var(--medd);
   margin: 5px;
   height: 70%;
 }
@@ -56,14 +54,20 @@ header nav ul:first-child {
 header nav ul:last-child {
   width: 22%;
   background-color: var(--medd);
+  opacity: 0.7;
   margin: 5px;
   margin-left: 0;
   height: 70%;
+  transition: 0.3s opacity ease;
+}
+
+header nav ul:last-child:hover {
+  opacity: 1;
 }
 
 aside {
   position: fixed;
-  top: 60px;
+  top: 80px;
   width: 22.5vw;
   background-color: var(--dark);
   bottom: 0;
@@ -121,12 +125,12 @@ header nav ul {
 .showframe {
   width: 55vw;
   position: fixed;
-  top: 60px;
+  top: 80px;
   left: 22.5vw;
   bottom: 0;
   border: none;
   background-color: white;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 80px);
   transition: 0.4s ease;
   margin: 0;
   padding: 0;
@@ -137,7 +141,7 @@ header nav ul {
   width: calc(100vw - 77.5vw);
   position: fixed;
   margin: 0;
-  top: 60px;
+  top: 80px;
   left: 77.5vw;
   bottom: 0;
   background-color: var(--dark);
@@ -312,7 +316,7 @@ header nav ul {
   background-color: var(--medl);
   right: 0;
   left: 77.5vw;
-  top: 60px;
+  top: 80px;
   bottom: 0;
   padding: 15px;
   transition: 0.3s all ease;
@@ -546,7 +550,7 @@ textarea {
   display: grid;
   grid-template-columns: auto auto;
   gap: 10pt;
-  margin-top: 60px;
+  margin-top: 80px;
   width: 100%;
 }
 
