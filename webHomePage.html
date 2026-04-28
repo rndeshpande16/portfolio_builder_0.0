@@ -57,6 +57,25 @@
       </section>
     </div>
 
+    <div class="carousel">
+      <div class="group">
+        <div class="slider-img"><img src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/meja-sm.webp" alt=""></div>
+        <div class="slider-img"><img src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/vide-sm.webp" alt=""></div>
+        <div class="slider-img"><img src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/malte-sm.webp" alt=""></div>
+        <div class="slider-img"><img src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/harald-sm.webp" alt=""></div>
+        <div class="slider-img"><img src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/thea-sm.webp" alt=""></div>
+        <div class="slider-img"><img src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/alfons-sm.webp" alt=""></div>
+      </div>
+      <div aria-hidden class="group">
+        <div class="slider-img"><img src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/meja-sm.webp" alt=""></div>
+        <div class="slider-img"><img src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/vide-sm.webp" alt=""></div>
+        <div class="slider-img"><img src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/malte-sm.webp" alt=""></div>
+        <div class="slider-img"><img src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/harald-sm.webp" alt=""></div>
+        <div class="slider-img"><img src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/thea-sm.webp" alt=""></div>
+        <div class="slider-img"><img src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/alfons-sm.webp" alt=""></div>
+      </div>
+    </div>
+
     <div class="hero-section">
       <section class="hero">
         <h1>Build Your Portfolio. Instantly.</h1>
@@ -110,6 +129,59 @@
       </section>
     </div>
 
+    <div class="faq-section">
+    <div class="faq">
+      <h1>Frequently asked question</h1>
+      <div class="qans-section">
+      <div id="q1">
+        <div id="q-text">Portfoliobox actually free, or is it just a trial?</div>
+        <div id="plus">+</div>
+      </div>
+      <div id="ans-1">You can build and publish a real portfolio website for free, with no time limit and no credit card required. When you want to add a custom domain or use our advanced business tools, you can easily upgrade to a paid plan.</div>
+      </div>
+
+      <div class="qans-section">
+      <div id="q2">
+        <div id="q-text">Will my portfolio website look good on mobile devices?</div>
+        <div id="plus">+</div>
+      </div>
+      <div id="ans-2">Yes. Every Portfoliobox template is fully responsive and automatically adapts to all screen sizes, from desktop to tablet to mobile.</div>
+      </div>
+
+      <div class="qans-section">
+      <div id="q3">
+        <div id="q-text">Am I locked into a single portfolio template once I start?</div>
+        <div id="plus">+</div>
+      </div>
+      <div id="ans-3">Yes. Every Portfoliobox template is fully responsive and automatically adapts to all screen sizes, from desktop to tablet to mobile.</div>
+      </div>
+
+      <div class="qans-section">
+      <div id="q4">
+        <div id="q-text">Do I need coding or design skills?</div>
+        <div id="plus">+</div>
+      </div>
+      <div id="ans-4">No. Portfoliobox is a visual editor that runs in your browser. You build your site by moving things around and seeing changes in real time. No downloads, no code, no technical knowledge needed. </div>
+      </div>
+
+      <div class="qans-section">
+      <div id="q5">
+        <div id="q-text">How does the 0% commission work for selling online?</div>
+        <div id="plus">+</div> 
+      </div>
+      <div id="ans-5">Portfoliobox does not take any commission on your sales. You keep 100% of your revenue when selling products, digital files, bookings, or appointments through your portfolio.</div>
+      </div>
+
+      <div class="qans-section">
+      <div id="q6">
+        <div id="q-text">What is the difference between the free and paid plans?</div>
+        <div id="plus">+</div>
+      </div>
+      <div id="ans-6">The free plan gives you a real portfolio website with 5 pages, 30 images, and gallery layouts. Paid plans add a custom domain, more storage, e-commerce, bookings, invoicing, custom email, and analytics. Start free and upgrade when you need more.</div>
+      </div>
+    </div>
+    </div>
+
     <section class="cta">
       <h2>Start your project today</h2>
       <button>Join Now</button>
@@ -122,6 +194,44 @@
         const text2 = document.getElementById("text2");
         const text3 = document.getElementById("text3");
         const text4 = document.getElementById("text4");
+
+        const q1 = document.getElementById('q1');
+        const q2 = document.getElementById('q2');
+        const q3 = document.getElementById('q3');
+        const q4 = document.getElementById('q4');
+        const q5 = document.getElementById('q5');
+        const q6 = document.getElementById('q6');
+
+        q1.addEventListener('click',() => {
+          const ans = document.getElementById("ans-1");
+          if(ans.style.display == "none") ans.style.display = "block";
+          else ans.style.display = "none";
+        });
+        q2.addEventListener('click',() => {
+          const ans = document.getElementById("ans-2");
+          if(ans.style.display == "none") ans.style.display = "block";
+          else ans.style.display = "none";
+        });
+        q3.addEventListener('click',() => {
+          const ans = document.getElementById("ans-3");
+          if(ans.style.display == "none") ans.style.display = "block";
+          else ans.style.display = "none";
+        });
+        q4.addEventListener('click',() => {
+          const ans = document.getElementById("ans-4");
+          if(ans.style.display == "none") ans.style.display = "block";
+          else ans.style.display = "none";
+        });
+        q5.addEventListener('click',() => {
+          const ans = document.getElementById("ans-5");
+          if(ans.style.display == "none") ans.style.display = "block";
+          else ans.style.display = "none";
+        });
+        q6.addEventListener('click',() => {
+          const ans = document.getElementById("ans-6");
+          if(ans.style.display == "none") ans.style.display = "block";
+          else ans.style.display = "none";
+        });
 
         setContent(
           text1,
