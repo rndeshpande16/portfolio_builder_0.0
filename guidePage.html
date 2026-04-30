@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PortFolio Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Creepster&family=Pacifico&family=Playwrite+IE:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="webHomePage.css" />
+    <style>
+        h2 {
+            text-align: center;
+            margin-bottom: 3%;
+            font-size: 2em;
+        }
+
+        .guide-section {
+            animation: fadeInPage 0.5s ease-in;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .guide {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            width: 80%;
+            margin: 10% auto;
+        }
+
+        .step {
+            height: 20em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 10%;
+            animation: move linear both;
+            animation-timeline: view();
+            animation-range: entry 25% cover 60%;
+        }
+
+        .step-img {
+            height: 20em;
+            width: 45%;
+            background: cornflowerblue;
+            border-radius: .5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 10% 20%;
+        }
+
+        .step-text {
+            width: 50%;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.2rem;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .step-text h2 {
+            color: rgba(255, 72, 0, 0.942);
+        }
+
+        @keyframes move {
+            0% {
+                opacity: 0;
+                transform: translateY(10%) scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-overlay">
+        <div class="modal-card">
+            <span id="close-modal" class="close-btn">&times;</span>
+            <h2>Welcome to Myportfolio</h2>
+            <p>Please enter your details to improve your experience</p>
+            <form id="form-submit">
+                <div class="input-group">
+                    <label>Enter your name: </label>
+                    <input type="text" id="username" required>
+                </div>
+
+                <div class="input-group">
+                    <label>For what purpose you are using this website</label>
+                    <input type="text" id="usergoal" required>
+                </div>
+
+                <button type="submit" class="start-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="head">
+        <div class="logo">MyPortfolio</div>
+        <div id="login">
+            <a href="#" id="login-user-name">login</a>
+            <a href="#" id="logout" style="display: none">logout</a>
+        </div>
+    </div>
+    <header class="navbar">
+        <nav>
+            <a href="\webHomePage.html">Home</a>
+            <a href="\guidePage.html">Guide</a>
+            <a href="#">Donate</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <div class="guide-section">
+        <h2>How to Create Your Portfolio</h2>
+        <div class="guide">
+            <div class="step">
+                <div class="step-img">
+                    <img src="Step1.png" alt="Drag and drop elements">
+                </div>
+                <div class="step-text">
+                    <h2>01. Pick Your Elements:</h2> Drag elements from the sidebar directly into the editor to
+                    start building your layout.
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-text">
+                    <h2>02. Personalize:</h2> Click on any tab on subpage nav and a window will open to edit the
+                    contents of it
+                </div>
+                <div class="step-img">
+                    <img src="step2.png" alt="Customize content">
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-img">
+                    <img src="style.png" alt="Style your site">
+                </div>
+                <div class="step-text">
+                    <h2>03. Style It:</h2> Use the global styling tools to change colors, fonts.
+                    across your entire site.
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-text">
+                    <h2>04. Preview:</h2> Check how your portfolio looks on mobile, tablet, and desktop views
+                    with one click.
+                </div>
+                <div class="step-img">
+                    <img src="preview.png" alt="Preview site">
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-img">
+                    <img src="publish.png" alt="Publish site">
+                </div>
+                <div class="step-text">
+                    <h2>05. Download:</h2> Once you're happy, hit download the button!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>© 2026 MyPortfolio</footer>
+    <script>
+        const loginBtn = document.getElementById('login');
+        const formOverlay = document.querySelector('.form-overlay');
+        const formSubmit = document.getElementById('form-submit');
+        const loggedUserName = document.querySelector('#login-user-name');
+        const logout = document.querySelector('#logout');
+        const closeBtn = document.getElementById('close-modal');
+
+        loadUserData();
+
+        loginBtn.addEventListener('click', () => {
+            formOverlay.style.display = "flex";
+        });
+
+        formSubmit.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nameValue = document.getElementById('username').value;
+            const goalValue = document.getElementById('usergoal').value;
+
+            localStorage.setItem('username', nameValue);
+            localStorage.setItem('usergoal', goalValue);
+
+            formOverlay.style.display = "none";
+            loadUserData();
+        });
+
+        function loadUserData() {
+            const storedName = localStorage.getItem('username');
+
+            if (storedName) {
+                if (loggedUserName) {
+                    loggedUserName.innerText = "Hello " + storedName + "!";
+                }
+                logout.style.display = "block";
+                logOut();
+            }
+        }
+
+        function logOut() {
+            logout.onclick = () => {
+                localStorage.clear();
+                window.location.reload()
+            }
+        }
+
+        closeBtn.addEventListener('click', () => {
+            formOverlay.style.display = "none";
+        });
+    </script>
+</body>
+
+</html>
