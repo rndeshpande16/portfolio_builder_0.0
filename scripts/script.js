@@ -42,12 +42,12 @@ function setupIframe() {
   const linkFont = localStorage.getItem("link-font") || "Roboto";
   idoc.open();
   idoc.write(
-    `<!DOCTYPE html><html lang='en'><head><link rel='stylesheet' href='themes.css' /><link
+    `<!DOCTYPE html><html lang='en'><head><link rel='stylesheet' href='/styles/themes.css' /><link
       rel="stylesheet"
       href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css'
     /><style>h1 {font-family: '${headFont}' !important;} p {font-family: '${paraFont}' !important;} a {font-family: '${linkFont}' !important;}</style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Creepster&family=Pacifico&family=Playwrite+IE:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"><link rel='stylesheet' href='compsstyles.css' /></head><body data-theme='${theme}' style='transition: 0.3s all ease; margin:0; padding:0; min-height: 100vh; width: 100%; box-sizing: border-box;'></body></html>`,
+<link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Creepster&family=Pacifico&family=Playwrite+IE:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"><link rel='stylesheet' href='/styles/compsstyles.css' /></head><body data-theme='${theme}' style='transition: 0.3s all ease; margin:0; padding:0; min-height: 100vh; width: 100%; box-sizing: border-box;'></body></html>`,
   );
   idoc.close();
   idoc.body.addEventListener("dragenter", function (ev) {
@@ -234,12 +234,12 @@ async function expandView() {
   const previewDoc =
     (await preview.contentDocument) || (await preview.contentWindow.document);
   previewDoc.write(
-    `<!DOCTYPE html><html lang='en'><head><link rel='stylesheet' href='themes.css' /><link
+    `<!DOCTYPE html><html lang='en'><head><link rel='stylesheet' href='/styles/themes.css' /><link
       rel="stylesheet"
       href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css'
     /><style>h1 {font-family: '${headFont}' !important;} p {font-family: '${paraFont}' !important;} a {font-family: '${linkFont}' !important;}</style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Creepster&family=Pacifico&family=Playwrite+IE:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"><link rel='stylesheet' href='compsstyles.css' /></head><body data-theme='${theme}' style='transition: 0.3s all ease; margin:0; padding:0; min-height: 100vh; width: 100%; box-sizing: border-box;'></body></html>`,
+<link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Creepster&family=Pacifico&family=Playwrite+IE:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"><link rel='stylesheet' href='/styles/compsstyles.css' /></head><body data-theme='${theme}' style='transition: 0.3s all ease; margin:0; padding:0; min-height: 100vh; width: 100%; box-sizing: border-box;'></body></html>`,
   );
   previewDoc.body.innerHTML = localStorage.getItem("html");
   preview.style.zIndex = 1000;
@@ -338,7 +338,7 @@ function openEditBar(index) {
     return `<hr />
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
               <label for="heading${ind}" style="margin: 0;">Heading ${ind + 1}:</label>
-              <i class="fa-solid fa-trash" style="cursor: pointer; color: #ff4444;" onclick="deleteSubElement(event, 'h1', ${ind}, ${index})"></i>
+              <i class="fa-solid fa-trash" style="cursor: pointer; color: black;" onclick="deleteSubElement(event, 'h1', ${ind}, ${index})"></i>
             </div>
             <input
               type="text"
@@ -354,7 +354,7 @@ function openEditBar(index) {
     return `<hr />
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
               <label for="paragraph${ind}" style="margin: 0;">Paragraph ${ind + 1}:</label>
-              <i class="fa-solid fa-trash" style="cursor: pointer; color: #ff4444;" onclick="deleteSubElement(event, 'p', ${ind}, ${index})"></i>
+              <i class="fa-solid fa-trash" style="cursor: pointer; color: black;" onclick="deleteSubElement(event, 'p', ${ind}, ${index})"></i>
             </div>
             <textarea
               id="paragraph${ind}"
@@ -374,7 +374,7 @@ function openEditBar(index) {
     return `<hr />
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
               <label for="image${ind}" style="margin: 0;">Image Link ${ind + 1}:</label>
-              <i class="fa-solid fa-trash" style="cursor: pointer; color: #ff4444;" onclick="deleteSubElement(event, 'img', ${ind}, ${index})"></i>
+              <i class="fa-solid fa-trash" style="cursor: pointer; color: black;" onclick="deleteSubElement(event, 'img', ${ind}, ${index})"></i>
             </div>
             <input
               type="text"
@@ -388,7 +388,7 @@ function openEditBar(index) {
     return `<hr />
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
               <label for="ltext${ind}" style="margin: 0;">Link ${ind + 1} Text:</label>
-              <i class="fa-solid fa-trash" style="cursor: pointer; color: #ff4444;" onclick="deleteSubElement(event, 'a', ${ind}, ${index})"></i>
+              <i class="fa-solid fa-trash" style="cursor: pointer; color: black;" onclick="deleteSubElement(event, 'a', ${ind}, ${index})"></i>
             </div>
             <input
               type="text"
@@ -653,10 +653,11 @@ const downloadPage = (pageName, fileName) => {
   link.click();
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
+  loadPage(currentPage);
 };
 
 const downloadStyles = async (fileName) => {
-  const file = await fetch("/compsstyles.css");
+  const file = await fetch("/styles/compsstyles.css");
   var css = await file.text();
   const blob = new Blob([css], { type: "text/css" });
   const url = URL.createObjectURL(blob);
@@ -670,7 +671,7 @@ const downloadStyles = async (fileName) => {
 };
 
 const downloadThemes = async (fileName) => {
-  const file = await fetch("/themes.css");
+  const file = await fetch("/styles/themes.css");
   var css = await file.text();
   const blob = new Blob([css], { type: "text/css" });
   const url = URL.createObjectURL(blob);
@@ -683,15 +684,15 @@ const downloadThemes = async (fileName) => {
   URL.revokeObjectURL(url);
 };
 
-const downloadAllPages = () => {
-  downloadPage("home", "index.html");
-  downloadPage("about", "about.html");
-  downloadPage("myWork", "myWork.html");
-  downloadPage("contacts", "contacts.html");
-  downloadStyles("compsstyles.css");
-  downloadThemes("themes.css");
-  loadPage(currentPage);
-};
+// const downloadAllPages = () => {
+//   downloadPage("home", "index.html");
+//   downloadPage("about", "about.html");
+//   downloadPage("myWork", "myWork.html");
+//   downloadPage("contacts", "contacts.html");
+//   downloadStyles("compsstyles.css");
+//   downloadThemes("themes.css");
+//   loadPage(currentPage);
+// };
 
 function openDownloadPicker() {
   document.querySelector(".blur").style.opacity = "1";
@@ -706,3 +707,40 @@ function closeDownloadPicker() {
   document.querySelector(".blur").style.zIndex = "-1";
   document.querySelector(".downloadPicker").style.zIndex = "-1";
 }
+
+const returnHtml = async (pageName = "home") => {
+  loadPage(pageName);
+  const iframe = document.getElementById("show");
+  let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+  let htmlText = iframeDoc.documentElement.innerHTML;
+  return htmlText;
+};
+
+const returnCss = async (fileName = "compsstyles") => {
+  const file = await fetch(`/styles/${fileName}.css`);
+  var css = await file.text();
+  return css;
+};
+
+const downloadAllPages = async () => {
+  const zip = new JSZip();
+  let filesFound = false;
+  const folder = zip.folder("main");
+  folder.file("index.html", await returnHtml("home"));
+  folder.file("about.html", await returnHtml("about"));
+  folder.file("myWork.html", await returnHtml("myWork"));
+  folder.file("contacts.html", await returnHtml("contacts"));
+  const stylesFolder = folder.folder("styles");
+  stylesFolder.file("compsstyles.css", await returnCss("compsstyles"));
+  stylesFolder.file("themes.css", await returnCss("themes"));
+  try {
+    const content = await zip.generateAsync({ type: "blob" });
+    saveAs(
+      content,
+      prompt("Enter website name: ", localStorage.getItem("username")),
+    );
+  } catch (err) {
+    alert("Couldn't be downloaded :(\nPlease retry");
+    console.log(err);
+  }
+};

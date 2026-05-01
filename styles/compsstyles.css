@@ -11,6 +11,12 @@ i.xmark {
 body {
   overflow-x: hidden;
   max-width: 100vw;
+  background: linear-gradient(
+      45deg,
+      var(--color-light) 50%,
+      var(--color-mediumlight) 50%
+    )
+    fixed;
 }
 .gradient-container {
   width: 100%;
@@ -510,4 +516,9 @@ section:nth-child(2) {
   border-radius: 5pt;
   text-align: center;
   font-size: 16pt;
+}
+
+img {
+  max-width: calc(100vw - 10pt);
+  max-height: calc(100vh - 10pt);
 }

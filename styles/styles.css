@@ -3,9 +3,9 @@
   --medl: #c08552;
   --medd: #8c5a3c;
   --dark: #4b2e2b; */
-  --dark: rgba(0, 0, 0, 0.875);
-  --medd: rgba(255, 255, 255, 0.221);
-  --medl: rgba(255, 72, 0, 0.942);
+  --dark: rgb(0, 0, 0);
+  --medd: rgb(100, 100, 100);
+  --medl: rgb(255, 72, 0);
   --light: white;
 }
 
@@ -26,7 +26,7 @@ header nav {
 }
 
 * {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Poppins";
   color: var(--light);
 }
 
@@ -392,9 +392,7 @@ header nav ul {
   padding: 15px 0px;
   padding-left: 15px;
   width: 100%;
-  color: white;
   margin: 5px 0px;
-  background-color: var(--medd);
   width: 90%;
   transition: 0.2s background-color ease-in-out;
   border-radius: 5pt;
@@ -498,7 +496,7 @@ textarea {
 
 .delbtn {
   background-color: var(--light);
-  color: rgb(255, 255, 255);
+  color: var(--dark);
   font-weight: bolder;
   width: 100%;
   border: 0;
@@ -569,4 +567,53 @@ textarea {
 .mainBox button:hover {
   background-color: var(--medl);
   cursor: pointer;
+}
+
+a.active {
+  color: orange;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: white;
+  opacity: 0.8;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 50%;
+  height: 3px;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.mainnav {
+  width: 100%;
+}
+
+nav h2 {
+  text-align: center;
+  padding-left: 20pt;
+  padding-right: 20pt;
+  font-family: "Bitcount Grid Double";
+}
+
+.fa-trash {
+  margin-left: 10pt;
+  margin-right: 10pt;
 }

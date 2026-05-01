@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PortFolio Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Creepster&family=Pacifico&family=Playwrite+IE:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/styles/index.css" />
+    <style>
+      h2 {
+        text-align: center;
+        margin-bottom: 3%;
+        font-size: 2em;
+      }
+
+      .guide-section {
+        animation: fadeInPage 0.5s ease-in;
+        padding: 50px 0;
+        padding-bottom: 0;
+        text-align: center;
+      }
+
+      .guide h2 {
+        text-align: left;
+      }
+
+      .guide {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      .step {
+        /* height: 20em; */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        animation: move linear both;
+        animation-timeline: view();
+        animation-range: entry 25% cover 60%;
+      }
+
+      .step-img {
+        /* height: 20em; */
+        width: 60%;
+        /* background: cornflowerblue; */
+        border-radius: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); */
+      }
+
+      .step-img img {
+        max-width: 100%;
+        max-height: 40em;
+        /* object-position: 10% 20%; */
+        border-radius: 5pt;
+      }
+
+      .step-text {
+        width: 40%;
+        font-family: "Poppins";
+        font-size: 1.2rem;
+        text-align: center;
+        line-height: 1.5;
+        text-align: justify;
+        text-align-last: left;
+      }
+
+      .step-text h2 {
+        color: rgba(255, 72, 0, 0.942);
+      }
+
+      @keyframes move {
+        0% {
+          opacity: 0;
+          transform: translateY(10%) scale(0.9);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .tip {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 10pt;
+        margin-bottom: 15pt;
+      }
+      .tip-text {
+        max-width: 320px;
+        text-align: justify;
+        text-align-last: left;
+        padding: 10pt 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="form-overlay">
+      <div class="modal-card">
+        <span id="close-modal" class="close-btn">&times;</span>
+        <h2>Welcome to Myportfolio</h2>
+        <p>Please enter your details to improve your experience</p>
+        <form id="form-submit">
+          <div class="input-group">
+            <label>Enter your name: </label>
+            <input type="text" id="username" required />
+          </div>
+
+          <div class="input-group">
+            <label>For what purpose you are using this website</label>
+            <input type="text" id="usergoal" required />
+          </div>
+
+          <button type="submit" class="start-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="head">
+      <div class="logo">MyPortfolio</div>
+      <div id="login">
+        <a href="/index.html" id="login-user-name">Login</a>
+        <a href="#" id="logout" style="display: none">Logout</a>
+      </div>
+    </div>
+    <header class="navbar">
+      <nav>
+        <a href="/index.html">Home</a>
+        <a href="/guide.html" style="color: orange">Guide</a>
+        <a href="/build.html">Build</a>
+        <a href="#">Feedback</a>
+        <a href="#">About</a>
+      </nav>
+    </header>
+
+    <div class="guide-section">
+      <h2>How to Create Your Portfolio</h2>
+      <div class="guide">
+        <div class="step">
+          <div class="step-img">
+            <img src="/media/s1.png" alt="Drag and drop elements" />
+          </div>
+          <div class="step-text">
+            <h2>01. Pick Your Elements:</h2>
+            Drag elements from the sidebar directly into the editor to start
+            building your layout.
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-text">
+            <h2>02. Edit by section:</h2>
+            Click on any tab on sub-pages nav and a window will open to edit the
+            contents of it
+          </div>
+          <div class="step-img">
+            <img src="/media/s2.png" alt="Customize content" />
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-img">
+            <img src="/media/s3.png" alt="Edit till perfection" />
+          </div>
+          <div class="step-text">
+            <h2>03. Edit till perfection:</h2>
+            Edit your image urls, hyperlinks and paragraph as well as heading
+            texts. You can also add images, hyperlinks, paragraphs and headings
+            to the existing subpage or delete it part by part or wholly!
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-text">
+            <h2>04. Responsive view:</h2>
+            Resize the window from bottom right corner to view how the website
+            looks in mobile or tablet view.
+          </div>
+          <div class="step-img">
+            <img src="/media/s8.png" alt="Customize content" />
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-img">
+            <img src="/media/s4.png" alt="Customize font" />
+          </div>
+          <div class="step-text">
+            <h2>06. Customize font:</h2>
+            Change font by text-type. You can now use entirely different fonts
+            for paragraphs and headings, as well as hyperlinks!<br /><br />
+            There are 8 imported fonts including Poppins, Serif, Bitcount Grid
+            Double, Creepster, Pacifico, Ubuntu, Roboto, and Playwrite-IE
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-text">
+            <h2>07. Change theme:</h2>
+            Change themes as per your vibe from the inbuilt theme templates!
+            There are 18 of 'em only crafted for you!
+          </div>
+          <div class="step-img">
+            <img src="/media/s5.png" alt="Change themes" />
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-img">
+            <img src="/media/s6.png" alt="Preview Website" />
+          </div>
+          <div class="step-text">
+            <h2>08. Preview the website:</h2>
+            You can preview the website as it looks in reality using the preview
+            feature by clicking on the preview icon in the side nav at the top
+            right corner.
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-text">
+            <h2>09. Download your website:</h2>
+            You can download the whole website as a zip file or also by
+            individual pages, as per your convenience.
+          </div>
+          <div class="step-img">
+            <img src="/media/s7.png" alt="Change themes" />
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-img">
+          <img
+            src="https://download.logo.wine/logo/Netlify/Netlify-Logo.wine.png"
+            alt="Change themes"
+          />
+        </div>
+        <div class="step-text">
+          <h2>09. Host online through Netlify:</h2>
+          Directly upload your main directory to Netlify to deploy it online and
+          share it with others <i class="fa-solid fa-face-smile"></i>
+        </div>
+      </div>
+      <h2 style="margin: 5pt auto">Some tips:</h2>
+      <div class="tip">
+        <p class="tip-text">
+          Check website text, links, and urls thoroughly before downloading to
+          ensure the proper loading of the website. Even a small mistake in the
+          url reference of an image can lead to loading of garbage images or
+          alternative text
+        </p>
+        <p class="tip-text">
+          Use the resize option to view the mobile and tab view so that the
+          website looks attractive across all the platforms. Also make sure to
+          preview the website before deploying to make sure there are no errors.
+        </p>
+        <p class="tip-text">
+          Before downloading the website, make sure to change all the links in
+          the navbars and replace it with the links of your desired website name
+          in the domain
+        </p>
+      </div>
+    </div>
+
+    <footer>© 2026 MyPortfolio</footer>
+    <script>
+      const loginBtn = document.getElementById("login");
+      const formOverlay = document.querySelector(".form-overlay");
+      const formSubmit = document.getElementById("form-submit");
+      const loggedUserName = document.querySelector("#login-user-name");
+      const logout = document.querySelector("#logout");
+      const closeBtn = document.getElementById("close-modal");
+
+      loadUserData();
+
+      loginBtn.addEventListener("click", () => {
+        formOverlay.style.display = "flex";
+      });
+
+      formSubmit.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const nameValue = document.getElementById("username").value;
+        const goalValue = document.getElementById("usergoal").value;
+
+        localStorage.setItem("username", nameValue);
+        localStorage.setItem("usergoal", goalValue);
+
+        formOverlay.style.display = "none";
+        loadUserData();
+      });
+
+      function loadUserData() {
+        const storedName = localStorage.getItem("username");
+
+        if (storedName) {
+          if (loggedUserName) {
+            loggedUserName.innerText = "Hello " + storedName + "!";
+          }
+          logout.style.display = "block";
+          logOut();
+        }
+      }
+
+      function logOut() {
+        logout.onclick = () => {
+          localStorage.clear();
+          window.location.reload();
+        };
+      }
+
+      closeBtn.addEventListener("click", () => {
+        formOverlay.style.display = "none";
+      });
+    </script>
+  </body>
+</html>

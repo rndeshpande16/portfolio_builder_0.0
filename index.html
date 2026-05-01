@@ -3,922 +3,294 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="./themes.css" />
+    <title>PortFolio Builder</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Creepster&family=Pacifico&family=Playwrite+IE:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
       rel="stylesheet"
     />
-    <script src="./script.js"></script>
-    <title>Portfolio Builder</title>
+    <link rel="stylesheet" href="/styles/index.css" />
   </head>
-  <body onload="start()">
-    <header>
+
+  <body>
+    <div class="form-overlay">
+      <div class="modal-card">
+        <span id="close-modal" class="close-btn">&times;</span>
+        <h2>Welcome to <strong>Myportfolio</strong></h2>
+        <p>Please enter your details to improve your experience</p>
+        <form id="form-submit">
+          <div class="input-group">
+            <label for="username">Name</label>
+            <input name="username" type="text" id="username" required />
+          </div>
+
+          <div class="input-group">
+            <label for="usergoal">Purpose</label>
+            <input name="usergoal" type="text" id="usergoal" required />
+          </div>
+
+          <button type="submit" class="start-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="head">
+      <div class="logo">MyPortfolio</div>
+      <div id="login">
+        <a href="#" id="login-user-name">Login</a>
+        <a href="#" id="logout" style="display: none">Logout</a>
+      </div>
+    </div>
+    <header class="navbar">
       <nav>
-        <ul class="mainnav">
-          <li><a href="/webHomePage.html">Home</a></li>
-          <li>Build</li>
-          <li>About</li>
-          <li>Feedback</li>
-          <li>Contact</li>
-        </ul>
-        <ul class="sidenav">
-          <li onclick="openThemePicker()">
-            <i class="fa-solid fa-circle-half-stroke"></i>
-          </li>
-          <li onclick="openDownloadPicker()">
-            <i class="fa-solid fa-download"></i>
-          </li>
-          <li onclick="expandView()">
-            <i class="fa-solid fa-eye"></i>
-          </li>
-          <li onclick="openFontPicker()"><i class="fa-solid fa-font"></i></li>
-          <li onclick="undo()"><b>↶</b></li>
-          <li><b>↷</b></li>
-        </ul>
+        <a href="#" style="color: orange">Home</a>
+        <a href="/guide.html">Guide</a>
+        <a href="/build.html">Build</a>
+        <a href="#">Feedback</a>
+        <a href="#">About</a>
       </nav>
     </header>
-    <div class="blur"></div>
-    <div class="themePicker">
-      <div class="close" onclick="closeThemePicker()">
-        <i class="fa-regular fa-circle-xmark"></i>
-      </div>
-      <ul style="list-style-type: none">
-        <li
-          class="ocean"
-          onclick="changeTheme('ocean')"
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-        >
-          Ocean
-          <div class="box" style="display: flex; gap: 10px" data-theme="ocean">
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="forest"
-          onclick="changeTheme('forest')"
-        >
-          Forest
-          <div class="box" style="display: flex; gap: 10px" data-theme="forest">
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="sunset"
-          onclick="changeTheme('sunset')"
-        >
-          Sunset
-          <div class="box" style="display: flex; gap: 10px" data-theme="sunset">
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="amethyst"
-          onclick="changeTheme('amethyst')"
-        >
-          Amethyst
-          <div
-            class="box"
-            style="display: flex; gap: 10px"
-            data-theme="amethyst"
-          >
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="monochrome"
-          onclick="changeTheme('monochrome')"
-        >
-          Monochrome
-          <div
-            class="box"
-            style="display: flex; gap: 10px"
-            data-theme="monochrome"
-          >
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="neon"
-          onclick="changeTheme('neon')"
-        >
-          Neon
-          <div class="box" style="display: flex; gap: 10px" data-theme="neon">
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-      </ul>
-      <ul style="list-style-type: none">
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="cobalt2"
-          onclick="changeTheme('cobalt2')"
-        >
-          Cobalt 2
-          <div
-            class="box"
-            style="display: flex; gap: 10px"
-            data-theme="cobalt2"
-          >
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="abyss"
-          onclick="changeTheme('abyss')"
-        >
-          Abyss
-          <div class="box" style="display: flex; gap: 10px" data-theme="abyss">
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="monokai"
-          onclick="changeTheme('monokai')"
-        >
-          Monokai
-          <div
-            class="box"
-            style="display: flex; gap: 10px"
-            data-theme="monokai"
-          >
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="dark-high-contrast"
-          onclick="changeTheme('dark-high-contrast')"
-        >
-          Dark High Contrast
-          <div
-            class="box"
-            style="display: flex; gap: 10px"
-            data-theme="dark-high-contrast"
-          >
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="kimbie-dark"
-          onclick="changeTheme('kimbie-dark')"
-        >
-          Kimbie Dark
-          <div
-            class="box"
-            style="display: flex; gap: 10px"
-            data-theme="kimbie-dark"
-          >
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="monokai-dimmed"
-          onclick="changeTheme('monokai-dimmed')"
-        >
-          Monokai Dimmed
-          <div
-            class="box"
-            style="display: flex; gap: 10px"
-            data-theme="monokai-dimmed"
-          >
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-      </ul>
-      <ul>
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="solarized-dark"
-          onclick="changeTheme('solarized-dark')"
-        >
-          Solarized Dark
-          <div
-            class="box"
-            style="display: flex; gap: 10px"
-            data-theme="solarized-dark"
-          >
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="sakura"
-          onclick="changeTheme('sakura')"
-        >
-          Sakura
-          <div class="box" style="display: flex; gap: 10px" data-theme="sakura">
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="ultra-violet"
-          onclick="changeTheme('ultra-violet')"
-        >
-          Ultra Violet
-          <div
-            class="box"
-            style="display: flex; gap: 10px"
-            data-theme="ultra-violet"
-          >
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="tokyo-night"
-          onclick="changeTheme('tokyo-night')"
-        >
-          Tokyo Night
-          <div
-            class="box"
-            style="display: flex; gap: 10px"
-            data-theme="tokyo-night"
-          >
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="gruvbox-dark"
-          onclick="changeTheme('gruvbox-dark')"
-        >
-          Gruvbox Dark
-          <div
-            class="box"
-            style="display: flex; gap: 10px"
-            data-theme="gruvbox-dark"
-          >
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-        <li
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-          class="dracula"
-          onclick="changeTheme('dracula')"
-        >
-          Dracula
-          <div
-            class="box"
-            style="display: flex; gap: 10px"
-            data-theme="dracula"
-          >
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-light);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-medium);
-              "
-            ></div>
-            <div
-              style="
-                height: 20px;
-                width: 20px;
-                border-radius: 7.5px;
-                background-color: var(--color-dark);
-              "
-            ></div>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="fontPicker">
-      <div class="close" onclick="closeFontPicker()">
-        <i class="fa-solid xmark">X</i>
-      </div>
-      <div class="block heading">Heading Font</div>
-      <div class="block input">
-        <select
-          name="fontHead"
-          id="fontHead"
-          onchange="changeHeadFont(this.value)"
-        >
-          <option id="serif" value="serif">Serif</option>
-          <option id="Roboto" value="Roboto">Roboto</option>
-          <option id="Pacifico" value="Pacifico">Pacifico</option>
-          <option id="Bitcount-Grid-Double" value="Bitcount Grid Double">
-            Bitcount Grid Double
-          </option>
-          <option id="Playwrite-IE" value="Playwrite IE">Playwrite IE</option>
-          <option id="Creepster" value="Creepster">Creepster</option>
-          <option id="Poppins" value="Poppins">Poppins</option>
-          <option id="Ubuntu" value="Ubuntu">Ubuntu</option>
-        </select>
-      </div>
-      <div class="block heading">Paragraph Font</div>
-      <div class="block input">
-        <select
-          name="fontPara"
-          id="fontPara"
-          onchange="changeParaFont(this.value)"
-        >
-          <option id="serif" value="serif">Serif</option>
-          <option id="Roboto" value="Roboto">Roboto</option>
-          <option id="Pacifico" value="Pacifico">Pacifico</option>
-          <option id="Bitcount-Grid-Double" value="Bitcount Grid Double">
-            Bitcount Grid Double
-          </option>
-          <option id="Playwrite-IE" value="Playwrite IE">Playwrite IE</option>
-          <option id="Creepster" value="Creepster">Creepster</option>
-          <option id="Poppins" value="Poppins">Poppins</option>
-          <option id="Ubuntu" value="Ubuntu">Ubuntu</option>
-        </select>
-      </div>
-      <div class="block heading">Link Font</div>
-      <div class="block input">
-        <select
-          name="fontLink"
-          id="fontLink"
-          onchange="changeLinkFont(this.value)"
-        >
-          <option id="serif" value="serif">Serif</option>
-          <option id="Roboto" value="Roboto">Roboto</option>
-          <option id="Pacifico" value="Pacifico">Pacifico</option>
-          <option id="Bitcount-Grid-Double" value="Bitcount Grid Double">
-            Bitcount Grid Double
-          </option>
-          <option id="Playwrite-IE" value="Playwrite IE">Playwrite IE</option>
-          <option id="Creepster" value="Creepster">Creepster</option>
-          <option id="Poppins" value="Poppins">Poppins</option>
-          <option id="Ubuntu" value="Ubuntu">Ubuntu</option>
-        </select>
-      </div>
-    </div>
-    <div class="downloadPicker">
-      <i class="close" onclick="closeDownloadPicker()">X</i>
-      <div class="mainBox">
-        <button onclick="downloadPage('home', 'index.html')">Home</button
-        ><button onclick="downloadPage('about', 'about.html')">About</button
-        ><button onclick="downloadPage('myWork', 'myWork.html')">My Work</button
-        ><button onclick="downloadPage('contacts', 'contacts.html')">
-          Contact</button
-        ><button onclick="downloadStyles('compsstyles.css')">Styles</button>
-        <button onclick="downloadThemes('themes.css')">Themes</button>
-        <button onclick="downloadAllPages()">All</button>
-      </div>
-    </div>
-    <main>
-      <aside>
-        <ul>
-          <li draggable="true" ondragstart="dragContent(event, 'nav')">Nav</li>
-          <li draggable="true" ondragstart="dragContent(event, 'home')">
-            Home
-          </li>
-          <li draggable="true" ondragstart="dragContent(event, 'about')">
-            About
-          </li>
-          <li draggable="true" ondragstart="dragContent(event, 'contact')">
-            Contact
-          </li>
-          <li draggable="true" ondragstart="dragContent(event, 'gallery')">
-            Gallery
-          </li>
-          <li draggable="true" ondragstart="dragContent(event, 'testimonials')">
-            Testimonials
-          </li>
-          <li draggable="true" ondragstart="dragContent(event, 'footer')">
-            Footer
-          </li>
-          <!-- <li draggable="true" ondragstart="homeDrag(event)">My Work</li>
-          <li draggable="true" ondragstart="homeDrag(event)">Projects</li>
-          <li draggable="true" ondragstart="homeDrag(event)">Blog</li>
-          <li draggable="true" ondragstart="homeDrag(event)">Media</li> -->
-        </ul>
-      </aside>
 
-      <div class="showframe">
-        <iframe id="show"></iframe>
-      </div>
-      <iframe
-        class="preview"
-        id="preview"
-        style="z-index: -2; opacity: 0"
-        onkeypress="handleEvent(event)"
-      ></iframe>
+    <div class="features-section">
+      <section class="features">
+        <div class="card">
+          <div class="img-card">
+            <img
+              src="https://media.istockphoto.com/id/1225549108/vector/run-sport-exercise-vector-icon-illustration.jpg?s=612x612&w=0&k=20&c=RKFqwoj4U4mw076yakzLoxFxz5MLm1gQI_mU4RVpzp4="
+            />
+          </div>
+          <h6>Fast</h6>
+        </div>
+        <div class="card">
+          <div class="img-card">
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/071/762/524/non_2x/responsive-icon-in-orange-color-vector.jpg"
+            />
+          </div>
+          <h6>Responsive</h6>
+        </div>
+        <div class="card">
+          <div class="img-card">
+            <img src="https://static.thenounproject.com/png/2755536-200.png" />
+          </div>
+          <h6>Modern</h6>
+        </div>
+      </section>
+    </div>
 
-      <section id="menu">
-        <h3 id="pageHeader">Pages</h3>
-        <div id="myPages">
-          <ul>
-            <li id="homePageOpener" onclick="openPage('home')">Home</li>
-            <li id="aboutPageOpener" onclick="openPage('about')">About</li>
-            <li id="myWorkPageOpener" onclick="openPage('myWork')">My Work</li>
-            <li id="contactsPageOpener" onclick="openPage('contacts')">
-              Contacts
-            </li>
-          </ul>
+    <div class="carousel">
+      <div class="group">
+        <div class="slider-img">
+          <img
+            src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/meja-sm.webp"
+            alt=""
+          />
         </div>
-        <h3 id="pageHeader">Sub Pages</h3>
-        <div id="propertySection">
-          <ul id="properties"></ul>
+        <div class="slider-img">
+          <img
+            src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/vide-sm.webp"
+            alt=""
+          />
         </div>
-        <section id="clear" class="clear">
-          <div onclick="clearCurrent()">
-            <i class="fa-solid fa-broom"></i> Clear Current Page
-          </div>
-          <div onclick="clearAll()">
-            <i class="fa-solid fa-broom"></i> Clear All Pages
-          </div>
-        </section>
+        <div class="slider-img">
+          <img
+            src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/malte-sm.webp"
+            alt=""
+          />
+        </div>
+        <div class="slider-img">
+          <img
+            src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/harald-sm.webp"
+            alt=""
+          />
+        </div>
+        <div class="slider-img">
+          <img
+            src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/thea-sm.webp"
+            alt=""
+          />
+        </div>
+        <div class="slider-img">
+          <img
+            src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/alfons-sm.webp"
+            alt=""
+          />
+        </div>
+      </div>
+      <div aria-hidden class="group">
+        <div class="slider-img">
+          <img
+            src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/meja-sm.webp"
+            alt=""
+          />
+        </div>
+        <div class="slider-img">
+          <img
+            src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/vide-sm.webp"
+            alt=""
+          />
+        </div>
+        <div class="slider-img">
+          <img
+            src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/malte-sm.webp"
+            alt=""
+          />
+        </div>
+        <div class="slider-img">
+          <img
+            src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/harald-sm.webp"
+            alt=""
+          />
+        </div>
+        <div class="slider-img">
+          <img
+            src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/thea-sm.webp"
+            alt=""
+          />
+        </div>
+        <div class="slider-img">
+          <img
+            src="https://cdn.portfolioboxdns.com/content-black/dynamic/templates/alfons-sm.webp"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-section">
+      <section class="hero">
+        <h1>Build Your Portfolio. Instantly.</h1>
+        <p>
+          Choose a template, customize your details, and launch your personal
+          portfolio in seconds.
+        </p>
+        <img src="/media/demopage.png" id="demo-page" />
+        <button><a href="/build.html">Get Started</a></button>
       </section>
-      <section id="editComponent" class="editComponent">
-        <form action="" id="editForm">
-          <input type="hidden" name="row" id="row" value="0" />
-          <div class="closebtn" onclick="closeEditComponent()">
-            <i class="fa-solid xmark">X</i>
-          </div>
-        </form>
-       
+    </div>
+
+    <div class="info-section">
+      <section class="info">
+        <div id="info-text">
+          <div id="text-style">Download</div>
+          <br />
+          <div id="text-aside-style">Edit and Customize your own way</div>
+        </div>
+        <div id="info-pic"></div>
       </section>
-    </main>
-    <footer></footer>
+    </div>
+
+    <div class="diffclass-portfolio-info">
+      <section class="diffclass-portfolio">
+        <div id="diffclass-info-text">
+          <div id="text-style">Top Portfolio Website Features by Type</div>
+        </div>
+        <div id="diffclass-option">
+          <button id="text1-button" class="change">Web developer</button>
+          <button id="text2-button" class="change">Business</button>
+          <button id="text3-button" class="change">Job seeking</button>
+          <button id="text4-button" class="change">Design</button>
+        </div>
+        <div id="info-display">
+          <div id="text1" class="fade"></div>
+          <div id="text2" class="fade"></div>
+          <div id="text3" class="fade"></div>
+          <div id="text4" class="fade"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="html-layout-download">
+      <section class="layout-download">
+        <p>
+          Do not want to try then just download the basic web layout and then
+          style on your own
+        </p>
+        <button id="downloadBasicHtml">Download</button>
+      </section>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq">
+        <h1>Frequently asked question</h1>
+        <div class="qans-section">
+          <div id="q1">
+            <div id="q-text">
+              Portfolio actually free, or is it just a trial?
+            </div>
+            <div id="plus">+</div>
+          </div>
+          <div id="ans-1" style="height: 0px">
+            You can build and publish a real portfolio website for free, with no
+            time limit and no credit card required.
+          </div>
+        </div>
+
+        <div class="qans-section">
+          <div id="q2">
+            <div id="q-text">
+              Will my portfolio website look good on mobile devices?
+            </div>
+            <div id="plus">+</div>
+          </div>
+          <div id="ans-2" style="height: 0px">
+            Yes. Every <strong>MyPortfolio</strong> template is fully responsive
+            and automatically adapts to all screen sizes, from desktop to tablet
+            to mobile.
+          </div>
+        </div>
+
+        <div class="qans-section">
+          <div id="q3">
+            <div id="q-text">
+              Am I locked into a single portfolio template once I start?
+            </div>
+            <div id="plus">+</div>
+          </div>
+          <div id="ans-3" style="height: 0px">
+            No. There are 7<sup>*</sup> templates to choose from and they are
+            widely customizable.<br />
+            <sup>* current number, may vary in the future</sup>
+          </div>
+        </div>
+
+        <div class="qans-section">
+          <div id="q4">
+            <div id="q-text">Do I need coding or design skills?</div>
+            <div id="plus">+</div>
+          </div>
+          <div id="ans-4" style="height: 0px">
+            No. <strong>MyPortfolio</strong> is a visual editor that runs in
+            your browser. You build your site by moving things around and seeing
+            changes in real time. No downloads, no code, no technical knowledge
+            needed.
+          </div>
+        </div>
+
+        <div class="qans-section">
+          <div id="q5">
+            <div id="q-text">
+              How does the 0% commission work for selling online?
+            </div>
+            <div id="plus">+</div>
+          </div>
+          <div id="ans-5" style="height: 0px">
+            <strong>MyPortfolio</strong> does not take any commission on your
+            sales. You keep 100% of your revenue when selling products, digital
+            files, bookings, or appointments through your portfolio.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="cta">
+      <h2>Start your project today!</h2>
+      <button>
+        <a href="/build.html" style="text-decoration: none">Click to start</a>
+      </button>
+    </section>
+
+    <footer>© 2026 <strong>MyPortfolio</strong></footer>
+    <script src="/scripts/index.js"></script>
   </body>
 </html>
