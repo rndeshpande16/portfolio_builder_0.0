@@ -76,7 +76,7 @@ function addComponent(c, h) {
     var props = "";
     comps.forEach((comp, index) => {
       htmlString += comp[1];
-      props += `<li id='openEditor${index}' ondragend="handleDragStart(event)" draggable='true' onclick='openEditBar(${index})'><div class='text'>${comp[0]}</div></li>`;
+      props += `<li id='openEditor${index}' ondragend="handleDragStart(event)" draggable='true' onclick='openEditBar(${index})'><div class='text'>${comp[0].charAt(0).toUpperCase() + comp[0].slice(1)}</div></li>`;
     });
     propertySec.innerHTML = props;
     idoc.body.innerHTML = htmlString;
@@ -172,7 +172,7 @@ function loadPage(page) {
     var propertyString = "";
     properties.forEach(
       (property, index) =>
-        (propertyString += `<li id='openEditor${index}'  ondragend="handleDragStart(event)" draggable='true' onclick='openEditBar(${index})'><div class='text'>${property}</div><!--<div class='adjust'><i class="fa-solid fa-angle-down"></i><i class="fa-solid fa-angle-up fa-dark"></i><i class="fa-solid fa-xmark"></i></div>--></li>`),
+        (propertyString += `<li id='openEditor${index}'  ondragend="handleDragStart(event)" draggable='true' onclick='openEditBar(${index})'><div class='text'>${property.charAt(0).toUpperCase() + property.slice(1)}</div><!--<div class='adjust'><i class="fa-solid fa-angle-down"></i><i class="fa-solid fa-angle-up fa-dark"></i><i class="fa-solid fa-xmark"></i></div>--></li>`),
     );
     propertySec.innerHTML = propertyString;
     var comps = data;
@@ -256,6 +256,7 @@ const parser = new DOMParser();
 const serializer = new XMLSerializer();
 
 function handleImageEdit(ev, val, row, ind) {
+  ev.preventDefault();
   var htmlString = JSON.parse(localStorage.getItem(currentPage));
   const doc = parser.parseFromString(htmlString[ind][1], "text/html");
   doc.querySelectorAll("img")[row].src = val;
@@ -286,6 +287,7 @@ function handleParaEdit(ev, val, row, ind) {
 }
 
 function handleLtextEdit(ev, val, row, ind) {
+  ev.preventDefault();
   var htmlString = JSON.parse(localStorage.getItem(currentPage));
   const doc = parser.parseFromString(htmlString[ind][1], "text/html");
   doc.querySelectorAll("a")[row].innerText = val;
@@ -296,6 +298,7 @@ function handleLtextEdit(ev, val, row, ind) {
 }
 
 function handleLhrefEdit(ev, val, row, ind) {
+  ev.preventDefault();
   var htmlString = JSON.parse(localStorage.getItem(currentPage));
   const doc = parser.parseFromString(htmlString[ind][1], "text/html");
   doc.querySelectorAll("a")[row].href = val;
@@ -347,7 +350,10 @@ function openEditBar(index) {
               value="${val}"
               id="heading${ind}"
               name="heading${ind}"
-              onchange="handleHeadingEdit(event, this.value, ${ind}, ${index})"
+              onkeydown="if (event.key === 'Enter') {
+                event.preventDefault();
+                handleHeadingEdit(event, this.value, ${ind}, ${index});
+              }"
             />
           `;
   };
@@ -385,7 +391,10 @@ function openEditBar(index) {
               value="${val}"
               id="image${ind}"
               name="image${ind}"
-              onchange="handleImageEdit(event, this.value, ${ind}, ${index})"
+              onkeydown="if (event.key === 'Enter'){
+                event.preventDefault();
+                handleImageEdit(event, this.value, ${ind}, ${index});
+              }"
             />`;
   };
   let anchor = (val, href, ind) => {
@@ -401,7 +410,10 @@ function openEditBar(index) {
               value="${val}"
               id="ltext${ind}"
               name="ltext${ind}"
-              onchange="handleLtextEdit(event, this.value, ${ind}, ${index})"
+              onkeydown="if (event.key === 'Enter') {
+                event.preventDefault();
+                handleLtextEdit(event, this.value, ${ind}, ${index});
+              }"
             />
             <label for="href${ind}">Link ${ind + 1} Address:</label>
             <input
@@ -409,7 +421,10 @@ function openEditBar(index) {
               value="${href}"
               id="href${ind}"
               name="href${ind}"
-              onchange="handleLhrefEdit(event, this.value, ${ind}, ${index})"
+              onkeydown="if (event.key === 'Enter') {
+                event.preventDefault();
+                handleLhrefEdit(event, this.value, ${ind}, ${index});
+              }"
             />`;
   };
   let deleteButton =
@@ -465,7 +480,7 @@ function openEditBar(index) {
     <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;width: 100%;">
       <label style="margin: 0; font-weight: bold; font-size: 1.1rem;">Add New Element:</label>
       
-      <select id="newElementType" style="background-color: var(--dark); padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 100%; font-size: 1rem; color: white;">
+      <select id="newElementType" style="background-color: var(--dark); padding: 10px; border-radius: 5pt; border: none; width: 100%; font-size: 1rem; color: white;">
         <option value="p">Paragraph</option>
         <option value="h1">Heading 1</option>
         <option value="img">Image</option>
@@ -809,8 +824,8 @@ function handleBgColorChange(ev, ind) {
       "Add gradient (like current) or keep a single color? (Okay for gradient, and Cancel for single color)",
     )
   ) {
-    const color1 = prompt("Enter color 1: (bottom)", "#0f1b2e");
-    const color2 = prompt("Enter color 2: (upper)", "blue");
+    const color1 = prompt("Enter color 1: (bottom)", "");
+    const color2 = prompt("Enter color 2: (upper)", "");
     const angle = Number(prompt("Enter angle: (in degrees)", "45"));
     main.style.background = `linear-gradient(${angle}deg, ${color1} 50%, ${color2} 50%) ${fixed}`;
   } else {

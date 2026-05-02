@@ -719,3 +719,11 @@ footer {
 .features {
   margin-top: 60px;
 }
+
+a.active {
+  color: orange;
+}
+
+a.active::after {
+  background-color: orange;
+}
