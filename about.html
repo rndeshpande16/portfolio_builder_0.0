@@ -2,8 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css"
+      rel="stylesheet"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -19,6 +29,43 @@
     />
   </head>
   <body>
+    <div class="form-overlay">
+      <div class="modal-card">
+        <span id="close-modal" class="close-btn">&times;</span>
+        <h2>Welcome to <strong>Myportfolio</strong></h2>
+        <p>Please enter your details to improve your experience</p>
+        <form id="form-submit">
+          <div class="input-group">
+            <label>Enter your name: </label>
+            <input type="text" id="username" required />
+          </div>
+
+          <div class="input-group">
+            <label>For what purpose you are using this website</label>
+            <input type="text" id="usergoal" required />
+          </div>
+          <button type="submit" class="start-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+    <i
+      class="fa-solid fa-bars open-nav"
+      onclick="
+        document
+          .getElementsByClassName('navbar')[0]
+          .classList.toggle('visible');
+        this.classList.toggle('invert');
+        this.classList.toggle('fa-bars');
+        this.classList.toggle('fa-xmark');
+      "
+    ></i>
+    <div class="head">
+      <div class="logo">MyPortfolio</div>
+      <div id="login">
+        <a href="/index.html" id="login-user-name">Login</a>
+        <a href="#" id="logout" style="display: none">Logout</a>
+      </div>
+    </div>
     <header class="navbar">
       <nav>
         <a href="/index.html">Home</a>
@@ -29,21 +76,76 @@
       </nav>
     </header>
     <main class="about">
-      <h1>About <strong>MyPortfolio</strong></h1>
-      <img src="/media/demopage.png" alt="" />
-      <h1 class="parallax">
-        MyPortfolio is a basic portfolio/website builder created by
+      <div class="parallax" id="parallax-0">
+        <h1>About <strong>MyPortfolio</strong></h1>
+      </div>
+      <h1 class="parallax" id="parallax-1">
+        From the creators
         <span class="typewrite-names"></span>
         <hr />
-        This website was entirely programmed in the frontend, using HTML, CSS
-        and JavaScript.
       </h1>
-      <h1 class="parallax">
+      <h1 class="parallax" id="parallax-2">
         Some of our features:
         <span class="typewrite-features"></span>
       </h1>
+      <h1 class="parallax" id="parallax-5">
+        Crafted for you entirely<br />
+        in HTML, CSS & JS<br />
+      </h1>
+      <h1 class="parallax" id="parallax-6">
+        Contact us on<br />
+        <div>
+          <a href="mailto:rndeshpande_b25@it.vjti.ac.in" style="color: white"
+            ><i class="fa-solid fa-envelope"></i
+          ></a>
+          <a href="https://www.instagram.com" style="color: white"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="https://www.facebook.com" style="color: white"
+            ><i class="fa-brands fa-facebook"></i
+          ></a>
+          <a href="https://web.whatsapp.com/" style="color: white"
+            ><i class="fa-brands fa-whatsapp"></i
+          ></a>
+        </div>
+        <br />
+      </h1>
     </main>
+    <section class="parallax" id="parallax-4">
+      <div class="carousel"></div>
+    </section>
     <footer>© 2026 <strong>MyPortfolio</strong></footer>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.js"></script>
+    <script>
+      const { createApp } = Vue;
+      const { createVuetify } = Vuetify;
+
+      const vuetify = createVuetify();
+
+      const app = createApp({
+        template: `
+        <v-carousel show-arrows="hover">
+  <v-carousel-item
+    src="/media/c1.png"
+    width="100%"
+  ></v-carousel-item>
+
+  <v-carousel-item
+    src="/media/c2.png"
+    width="100%"
+  ></v-carousel-item>
+
+  <v-carousel-item
+    src="/media/c3.png"
+    width="100%"
+  ></v-carousel-item>
+</v-carousel>
+      `,
+      });
+
+      app.use(vuetify).mount(".carousel");
+    </script>
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <script src="/scripts/about.js"></script>
   </body>

@@ -24,6 +24,11 @@ strong {
 
 h1 {
   padding: 10pt;
+  font-size: 5vw;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 img {
@@ -32,6 +37,69 @@ img {
   border-radius: 5pt;
 }
 
-h1.parallax {
-  height: 100vh;
+main {
+  transform-style: preserve-3d;
+}
+
+/* .car {
+  display: flex;
+  justify-content: center;
+} */
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  border-radius: 5pt;
+  padding: 0;
+}
+
+.parallax {
+  position: relative;
+  transform-style: inherit;
+  min-width: 100vw;
+  min-height: 100vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20pt;
+}
+
+#parallax-2 {
+  background: url("https://images.pexels.com/photos/6424584/pexels-photo-6424584.jpeg")
+    fixed;
+  background-size: cover;
+}
+
+#parallax-1 {
+  background: url("https://images.pexels.com/photos/14553730/pexels-photo-14553730.jpeg")
+    fixed;
+  background-size: cover;
+}
+
+#parallax-0 {
+  background: url("https://images.pexels.com/photos/36571389/pexels-photo-36571389.jpeg")
+    fixed;
+  background-size: cover;
+}
+
+#parallax-4 {
+  background: url("https://wallpapercave.com/wp/wp8778419.png") fixed;
+  background-size: cover;
+}
+
+#parallax-5 {
+  background: url("https://images.pexels.com/photos/37227160/pexels-photo-37227160.jpeg")
+    fixed;
+  background-size: cover;
+}
+
+#parallax-6 {
+  background: url("https://images.pexels.com/photos/37227160/pexels-photo-37227160.jpeg")
+    fixed;
+  background-size: cover;
 }

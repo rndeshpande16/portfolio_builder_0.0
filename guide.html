@@ -169,13 +169,24 @@
         <a href="#" id="logout" style="display: none">Logout</a>
       </div>
     </div>
+    <i
+      class="fa-solid fa-bars open-nav"
+      onclick="
+        document
+          .getElementsByClassName('navbar')[0]
+          .classList.toggle('visible');
+        this.classList.toggle('invert');
+        this.classList.toggle('fa-bars');
+        this.classList.toggle('fa-xmark');
+      "
+    ></i>
     <header class="navbar">
       <nav>
         <a href="/index.html">Home</a>
         <a href="/guide.html" class="active">Guide</a>
         <a href="/build.html">Build</a>
         <a href="/feedback.html">Feedback</a>
-        <a href="#">About</a>
+        <a href="/about.html">About</a>
       </nav>
     </header>
 
