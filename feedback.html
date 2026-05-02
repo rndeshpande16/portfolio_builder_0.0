@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PortFolio Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Creepster&family=Pacifico&family=Playwrite+IE:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/index.css" />
+    <style>
+        body {
+            min-height: 100vh;
+        }
+
+        form {
+            margin: 7% auto;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: move 0.7s linear;
+        }
+
+        caption h1 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: orangered;
+        }
+
+        .table-style {
+            width: 50%;
+            margin: 20px auto;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        td {
+            padding: 8px;
+        }
+
+        input textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            border: 1px solid orangered;
+            box-shadow: 0 0 5px orangered;
+        }
+
+        #submit {
+            text-align: center;
+            width: 100%;
+            height: 3em;
+            background: orangered;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        #submit:hover {
+            background: green;
+        }
+
+        @keyframes move {
+            0% {
+                opacity: 0;
+                transform: translateY(10%) scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        p{
+            margin: 5%;
+            text-align: center;
+            font-weight: bold;
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-overlay">
+        <div class="modal-card">
+            <span id="close-modal" class="close-btn">&times;</span>
+            <h2>Welcome to <strong>Myportfolio</strong></h2>
+            <p>Please enter your details to improve your experience</p>
+            <form id="form-submit">
+                <div class="input-group">
+                    <label>Enter your name: </label>
+                    <input type="text" id="username" required />
+                </div>
+
+                <div class="input-group">
+                    <label>For what purpose you are using this website</label>
+                    <input type="text" id="usergoal" required />
+                </div>
+
+                <button type="submit" class="start-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="head">
+        <div class="logo">MyPortfolio</div>
+        <div id="login">
+            <a href="/index.html" id="login-user-name">Login</a>
+            <a href="#" id="logout" style="display: none">Logout</a>
+        </div>
+    </div>
+    <header class="navbar">
+        <nav>
+            <a href="/index.html">Home</a>
+            <a href="/guide.html" class="active">Guide</a>
+            <a href="/build.html">Build</a>
+            <a href="/feedback.html">Feedback</a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+
+    <p>Did you face any diffculty using our website then please take out some of your time and fill the feedback
+        form</p>
+
+    <form>
+        <table class="table-style">
+            <caption>
+                <h1>Feedback form</h1>
+            </caption>
+            <tr>
+                <td><label>Enter your name : </label></td>
+                <td><input type="text" pattern="[a-zA-Z\s]+" required></td>
+            </tr>
+            <tr>
+                <td><label>Gender</label></td>
+                <td><label><input name="gender" type="radio" required>Male</label>
+                    <label><input name="gender" type="radio" required>Female</label>
+                    <label><input name="gender" type="radio" required>other</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Email Address : </label></td>
+                <td><input id="email" type="email" required></td>
+            </tr>
+            <tr>
+                <td><label>Phone Number : </label></td>
+                <td><input type="text" placeholder="[+91] 0123456789" pattern="[0-9]{10}" required></td>
+            </tr>
+            <tr>
+                <td><label>What feedback would you like give : </label></td>
+                <td><textarea></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input id="submit" type="submit" value="Submit FeedBack" required></td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        const loginBtn = document.getElementById("login");
+        const formOverlay = document.querySelector(".form-overlay");
+        const formSubmit = document.getElementById("form-submit");
+        const loggedUserName = document.querySelector("#login-user-name");
+        const logout = document.querySelector("#logout");
+        const closeBtn = document.getElementById("close-modal");
+
+        loadUserData();
+
+        loginBtn.addEventListener("click", () => {
+            formOverlay.style.display = "flex";
+        });
+
+        formSubmit.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const nameValue = document.getElementById("username").value;
+            const goalValue = document.getElementById("usergoal").value;
+
+            localStorage.setItem("username", nameValue);
+            localStorage.setItem("usergoal", goalValue);
+
+            formOverlay.style.display = "none";
+            loadUserData();
+        });
+
+        function loadUserData() {
+            const storedName = localStorage.getItem("username");
+
+            if (storedName) {
+                if (loggedUserName) {
+                    loggedUserName.innerText = "Hello " + storedName + "!";
+                }
+                logout.style.display = "block";
+                logOut();
+            }
+        }
+
+        function logOut() {
+            logout.onclick = () => {
+                localStorage.clear();
+                window.location.reload();
+            };
+        }
+
+        closeBtn.addEventListener("click", () => {
+            formOverlay.style.display = "none";
+        });
+    </script>
+</body>
+
+</html>
