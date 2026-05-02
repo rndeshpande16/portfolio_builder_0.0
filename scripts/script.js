@@ -339,6 +339,8 @@ function openEditBar(index) {
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
               <label for="heading${ind}" style="margin: 0;">Heading ${ind + 1}:</label>
               <i class="fa-solid fa-trash" style="cursor: pointer; color: black;" onclick="deleteSubElement(event, 'h1', ${ind}, ${index})"></i>
+              <i class="fa-solid fa-circle-half-stroke" style="cursor: pointer; color: black;" onclick="changeColor(event, 'h1', ${ind}, ${index})"></i>
+              <i class="fa-solid fa-font" style="cursor: pointer; color: black; margin: 0pt 10pt;" onclick="changeFont(event, 'h1', ${ind}, ${index})"></i>
             </div>
             <input
               type="text"
@@ -355,6 +357,8 @@ function openEditBar(index) {
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
               <label for="paragraph${ind}" style="margin: 0;">Paragraph ${ind + 1}:</label>
               <i class="fa-solid fa-trash" style="cursor: pointer; color: black;" onclick="deleteSubElement(event, 'p', ${ind}, ${index})"></i>
+              <i class="fa-solid fa-circle-half-stroke" style="cursor: pointer; color: black;" onclick="changeColor(event, 'p', ${ind}, ${index})"></i>
+              <i class="fa-solid fa-font" style="cursor: pointer; color: black; margin: 0pt 10pt;" onclick="changeFont(event, 'p', ${ind}, ${index})"></i>
             </div>
             <textarea
               id="paragraph${ind}"
@@ -389,6 +393,8 @@ function openEditBar(index) {
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
               <label for="ltext${ind}" style="margin: 0;">Link ${ind + 1} Text:</label>
               <i class="fa-solid fa-trash" style="cursor: pointer; color: black;" onclick="deleteSubElement(event, 'a', ${ind}, ${index})"></i>
+              <i class="fa-solid fa-circle-half-stroke" style="cursor: pointer; color: black;" onclick="changeColor(event, 'a', ${ind}, ${index})"></i>
+              <i class="fa-solid fa-font" style="cursor: pointer; color: black; margin: 0pt 10pt;" onclick="changeFont(event, 'a', ${ind}, ${index})"></i>
             </div>
             <input
               type="text"
@@ -413,7 +419,7 @@ function openEditBar(index) {
   let delem = document.createElement("div");
   //delem.classList.add("compe");
   delem.innerHTML = deleteButton;
-  editForm.appendChild(delem);
+
   // editForm.appendChild(delem);
   data.querySelectorAll("h1").forEach((head, ind) => {
     let elem = document.createElement("div");
@@ -446,10 +452,16 @@ function openEditBar(index) {
     editForm.appendChild(elem);
     elems += 1;
   });
+  const changeBackground = document.createElement("div");
+  changeBackground.innerHTML = `<button onclick='handleBgColorChange(event, ${index})' class='bg-change-btn'>Change BG-Color</button>`;
+  editForm.append(document.createElement("hr"));
+  editForm.appendChild(delem);
+  editForm.append(document.createElement("hr"));
+  editForm.appendChild(changeBackground);
+  editForm.append(document.createElement("hr"));
   let addElementUI = document.createElement("div");
   addElementUI.classList.add("compe");
   addElementUI.innerHTML = `
-    <hr style="margin-top: 20px;" />
     <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;width: 100%;">
       <label style="margin: 0; font-weight: bold; font-size: 1.1rem;">Add New Element:</label>
       
@@ -592,6 +604,43 @@ function deleteSubElement(ev, tag, row, ind) {
   //closeEditComponent();
   openEditBar(ind);
 }
+function changeColor(ev, tag, row, ind) {
+  ev.preventDefault();
+  var htmlString = JSON.parse(localStorage.getItem(currentPage));
+  const doc = parser.parseFromString(htmlString[ind][1], "text/html");
+  const elements = doc.querySelectorAll(tag);
+  if (elements[row]) {
+    elements[row].style.color =
+      prompt("Enter Color:", elements[row].style.color) ||
+      elements[row].style.color;
+  }
+  const str = serializer.serializeToString(doc);
+  htmlString[ind][1] = str;
+  localStorage.setItem(currentPage, JSON.stringify(htmlString));
+  loadPage(currentPage);
+  //closeEditComponent();
+  openEditBar(ind);
+}
+function changeFont(ev, tag, row, ind) {
+  ev.preventDefault();
+  var htmlString = JSON.parse(localStorage.getItem(currentPage));
+  const doc = parser.parseFromString(htmlString[ind][1], "text/html");
+  const elements = doc.querySelectorAll(tag);
+  if (elements[row]) {
+    elements[row].style.setProperty(
+      "font-family",
+      prompt("Enter Font Name:", elements[row].style.fontFamily) ||
+        elements[row].style.fontFamily,
+      "important",
+    );
+  }
+  const str = serializer.serializeToString(doc);
+  htmlString[ind][1] = str;
+  localStorage.setItem(currentPage, JSON.stringify(htmlString));
+  loadPage(currentPage);
+  //closeEditComponent();
+  openEditBar(ind);
+}
 function clearCurrent() {
   if (confirm("Are you sure?")) {
     localStorage.removeItem(currentPage);
@@ -603,7 +652,11 @@ function clearCurrent() {
 
 function clearAll() {
   if (confirm("Are you sure?")) {
+    const username = localStorage.getItem("username");
+    const usergoal = localStorage.getItem("usergoal");
     localStorage.clear();
+    localStorage.setItem("username", username);
+    localStorage.setItem("usergoal", usergoal);
     window.location.reload();
   } else {
     return;
@@ -744,3 +797,32 @@ const downloadAllPages = async () => {
     console.log(err);
   }
 };
+
+function handleBgColorChange(ev, ind) {
+  ev.preventDefault();
+  var htmlString = JSON.parse(localStorage.getItem(currentPage));
+  const doc = parser.parseFromString(htmlString[ind][1], "text/html");
+  const main = doc.querySelectorAll("section")[0];
+  const fixed = confirm("Keep background fixed?") ? "fixed" : "default";
+  if (
+    confirm(
+      "Add gradient (like current) or keep a single color? (Okay for gradient, and Cancel for single color)",
+    )
+  ) {
+    const color1 = prompt("Enter color 1: (bottom)", "#0f1b2e");
+    const color2 = prompt("Enter color 2: (upper)", "blue");
+    const angle = Number(prompt("Enter angle: (in degrees)", "45"));
+    main.style.background = `linear-gradient(${angle}deg, ${color1} 50%, ${color2} 50%) ${fixed}`;
+  } else {
+    const color = prompt("Enter color");
+    if (color) {
+      main.style.background = `${color} ${fixed}`;
+    }
+  }
+  const str = serializer.serializeToString(doc);
+  htmlString[ind][1] = str;
+  localStorage.setItem(currentPage, JSON.stringify(htmlString));
+  loadPage(currentPage);
+  //closeEditComponent();
+  openEditBar(ind);
+}

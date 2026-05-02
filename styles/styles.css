@@ -617,3 +617,19 @@ nav h2 {
   margin-left: 10pt;
   margin-right: 10pt;
 }
+
+.bg-change-btn {
+  width: 100%;
+  border: 0;
+  padding: 10pt 0;
+  border-radius: 5pt;
+  color: var(--light);
+  background-color: var(--dark);
+  transition: 0.3s background-color ease;
+  font-weight: bold;
+}
+
+.bg-change-btn:hover {
+  cursor: pointer;
+  background-color: green;
+}

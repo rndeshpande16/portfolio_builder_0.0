@@ -39,6 +39,7 @@
         gap: 40px;
         width: 90%;
         margin: 0 auto;
+        margin-bottom: 40pt;
       }
 
       .step {
@@ -50,6 +51,7 @@
         animation: move linear both;
         animation-timeline: view();
         animation-range: entry 25% cover 60%;
+        margin: auto 30pt;
       }
 
       .step-img {
@@ -83,6 +85,8 @@
 
       .step-text h2 {
         color: rgba(255, 72, 0, 0.942);
+        text-align: left;
+        text-align-last: left;
       }
 
       @keyframes move {
@@ -106,10 +110,33 @@
         margin-bottom: 15pt;
       }
       .tip-text {
-        max-width: 320px;
+        max-width: 340px;
         text-align: justify;
         text-align-last: left;
-        padding: 10pt 0;
+        padding: 10pt 10pt;
+        background-color: orangered;
+        border-radius: 5pt;
+        color: white;
+      }
+      @media screen and (max-width: 950px) {
+        .step:nth-child(odd) {
+          flex-direction: column;
+          /* align-items: flex-start; */
+        }
+        .step:nth-child(even) {
+          flex-direction: column-reverse;
+          /* align-items: flex-start; */
+        }
+        /* .step {
+          min-width: 60vw;
+          max-width: 80vw;
+        } */
+        .step-text,
+        .step-text h2 {
+          width: 90%;
+          text-align: center;
+          text-align-last: center;
+        }
       }
     </style>
   </head>
@@ -118,7 +145,7 @@
     <div class="form-overlay">
       <div class="modal-card">
         <span id="close-modal" class="close-btn">&times;</span>
-        <h2>Welcome to Myportfolio</h2>
+        <h2>Welcome to <strong>Myportfolio</strong></h2>
         <p>Please enter your details to improve your experience</p>
         <form id="form-submit">
           <div class="input-group">
@@ -205,7 +232,7 @@
             <img src="/media/s4.png" alt="Customize font" />
           </div>
           <div class="step-text">
-            <h2>06. Customize font:</h2>
+            <h2>05. Customize font:</h2>
             Change font by text-type. You can now use entirely different fonts
             for paragraphs and headings, as well as hyperlinks!<br /><br />
             There are 8 imported fonts including Poppins, Serif, Bitcount Grid
@@ -215,7 +242,7 @@
 
         <div class="step">
           <div class="step-text">
-            <h2>07. Change theme:</h2>
+            <h2>06. Change theme:</h2>
             Change themes as per your vibe from the inbuilt theme templates!
             There are 18 of 'em only crafted for you!
           </div>
@@ -229,7 +256,7 @@
             <img src="/media/s6.png" alt="Preview Website" />
           </div>
           <div class="step-text">
-            <h2>08. Preview the website:</h2>
+            <h2>07. Preview the website:</h2>
             You can preview the website as it looks in reality using the preview
             feature by clicking on the preview icon in the side nav at the top
             right corner.
@@ -238,7 +265,7 @@
 
         <div class="step">
           <div class="step-text">
-            <h2>09. Download your website:</h2>
+            <h2>08. Download your website:</h2>
             You can download the whole website as a zip file or also by
             individual pages, as per your convenience.
           </div>
@@ -246,20 +273,21 @@
             <img src="/media/s7.png" alt="Change themes" />
           </div>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-img">
-          <img
-            src="https://download.logo.wine/logo/Netlify/Netlify-Logo.wine.png"
-            alt="Change themes"
-          />
+        <div class="step">
+          <div class="step-img">
+            <img
+              src="https://download.logo.wine/logo/Netlify/Netlify-Logo.wine.png"
+              alt="Change themes"
+            />
+          </div>
+          <div class="step-text">
+            <h2>09. Host online through Netlify:</h2>
+            Directly upload your main directory to Netlify to deploy it online
+            and share it with others <i class="fa-solid fa-face-smile"></i>
+          </div>
         </div>
-        <div class="step-text">
-          <h2>09. Host online through Netlify:</h2>
-          Directly upload your main directory to Netlify to deploy it online and
-          share it with others <i class="fa-solid fa-face-smile"></i>
-        </div>
       </div>
+
       <h2 style="margin: 5pt auto">Some tips:</h2>
       <div class="tip">
         <p class="tip-text">
@@ -281,7 +309,12 @@
       </div>
     </div>
 
-    <footer>© 2026 MyPortfolio</footer>
+    <footer>
+      © 2026
+      <strong style="font-family: &quot;Bitcount Grid Double&quot;"
+        >MyPortfolio</strong
+      >
+    </footer>
     <script>
       const loginBtn = document.getElementById("login");
       const formOverlay = document.querySelector(".form-overlay");
