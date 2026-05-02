@@ -818,7 +818,7 @@ function handleBgColorChange(ev, ind) {
   var htmlString = JSON.parse(localStorage.getItem(currentPage));
   const doc = parser.parseFromString(htmlString[ind][1], "text/html");
   const main = doc.querySelectorAll("section")[0];
-  const fixed = confirm("Keep background fixed?") ? "fixed" : "default";
+  const fixed = "fixed";
   if (
     confirm(
       "Add gradient (like current) or keep a single color? (Okay for gradient, and Cancel for single color)",
