@@ -449,7 +449,8 @@ body {
 
 @media screen and (max-width: 710px) {
   #diffclass-option {
-    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
