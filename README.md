@@ -48,6 +48,7 @@
   - /media/s6.png
   - /media/s7.png
   - /media/s8.png
+  - /media/favicon.png
 - /scripts - Scripts Required for functioning of website
   - /scripts/about.js
   - /scripts/index.js
@@ -85,3 +86,8 @@
 
 - Google (https://www.google.com/)
 - Pexels (https://www.pexels.com/)
+- Gemini (https://gemini.google.com/)
+
+## Hosted Using
+
+### Netlify (https://www.netlify.com)

@@ -44,7 +44,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 60px;
-  min-height: 10vh;
+  height: 90px;
   background: rgba(255, 72, 0, 0.942);
 }
 
@@ -340,8 +340,8 @@ body {
   justify-content: center;
   align-items: center;
   /* height: 50vh; */
-  margin-top: 10%;
-  margin-bottom: 8%;
+  margin-top: 8%;
+  /* margin-bottom: 8%; */
 }
 
 #diffclass-info-text #text-style {
@@ -495,6 +495,7 @@ body {
   align-items: center;
   flex-direction: column;
   margin: 5%;
+  cursor: default;
 }
 
 .faq {

@@ -14,6 +14,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     />
+    <link rel="shortcut icon" href="/media/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="/styles/index.css" />
     <style>
       body {
@@ -130,12 +131,10 @@
             <label>Enter your name: </label>
             <input type="text" id="username" required />
           </div>
-
           <div class="input-group">
             <label>For what purpose you are using this website</label>
             <input type="text" id="usergoal" required />
           </div>
-
           <button type="submit" class="start-btn">Submit</button>
         </form>
       </div>
@@ -172,7 +171,12 @@
       Your feedback is our first priority, please help us improve our website!
     </p>
 
-    <form>
+    <form
+      method="post"
+      data-netlify="true"
+      name="feedback"
+      action="/success.html"
+    >
       <table class="table-style">
         <caption>
           <h1>Feedback form</h1>
@@ -235,7 +239,6 @@
         >MyPortfolio</strong
       >
     </footer>
-    <form action=""></form>
     <script>
       const loginBtn = document.getElementById("login");
       const formOverlay = document.querySelector(".form-overlay");
