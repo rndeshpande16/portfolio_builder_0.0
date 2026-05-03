@@ -786,3 +786,9 @@ a.active::after {
     transform: rotate(90deg);
   }
 }
+
+@media screen and (max-width: 400px) {
+  #login {
+    display: none;
+  }
+}

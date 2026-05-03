@@ -50,16 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
       ans.style.opacity = 0;
     }
   });
-  q5.addEventListener("click", () => {
-    const ans = document.getElementById("ans-5");
-    if (ans.style.height == "0px") {
-      ans.style.height = "auto";
-      ans.style.opacity = 1;
-    } else {
-      ans.style.height = "0px";
-      ans.style.opacity = 0;
-    }
-  });
 
   setContent(
     text1,
@@ -213,26 +203,6 @@ document.addEventListener("DOMContentLoaded", () => {
       "Present typography, color systems, components, and spacing tokens. This proves systems thinking and readiness for scalable design work.",
     );
   });
-
-  document
-    .getElementById("downloadBasicHtml")
-    .addEventListener("click", async () => {
-      const response = await fetch("/template.html");
-      const htmlContent = await response.text();
-
-      const blob = new Blob([htmlContent], { type: "text/html" });
-      const url = URL.createObjectURL(blob);
-
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "page.html";
-
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
-    });
 
   // const loginBtn = document.getElementById("login");
   const formOverlay = document.querySelector(".form-overlay");
