@@ -51,8 +51,13 @@ header nav ul:first-child {
 .sidenav li b {
   font-size: larger;
 }
+@media screen and (max-width: 1160px) {
+  .sidenav {
+    width: 40vw;
+  }
+}
 header nav ul:last-child {
-  width: 22%;
+  min-width: 22%;
   background-color: var(--medd);
   opacity: 0.7;
   margin: 5px;
@@ -580,7 +585,7 @@ nav {
 }
 
 nav a {
-  margin-left: 25px;
+  /* margin-left: 25px; */
   text-decoration: none;
   color: white;
   opacity: 0.8;

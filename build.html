@@ -928,5 +928,39 @@
     <script src="/scripts/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <div
+      id="disabled"
+      style="
+        opacity: 0.95;
+        z-index: 100000;
+        background-color: var(--medd);
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        width: 100vw;
+        top: 0;
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+        display: none;
+      "
+    >
+      <h1 style="padding: 0 20pt; text-align: center">
+        Disabled for Small Devices, Sorry!
+      </h1>
+    </div>
+    <script>
+      window.addEventListener("resize", async (ev) => {
+        const viewportWidth = window.innerWidth;
+        if (viewportWidth <= 860) {
+          document.getElementById("disabled").style.display = "flex";
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 3500);
+        } else {
+          document.getElementById("disabled").style.display = "none";
+        }
+      });
+    </script>
   </body>
 </html>
