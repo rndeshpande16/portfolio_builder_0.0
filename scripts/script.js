@@ -708,8 +708,10 @@ function clearAll() {
     const username = localStorage.getItem("username");
     const usergoal = localStorage.getItem("usergoal");
     localStorage.clear();
-    localStorage.setItem("username", username);
-    localStorage.setItem("usergoal", usergoal);
+    if (username) {
+      localStorage.setItem("username", username);
+      localStorage.setItem("usergoal", usergoal);
+    }
     window.location.reload();
   } else {
     return;
