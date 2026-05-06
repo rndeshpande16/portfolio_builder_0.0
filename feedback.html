@@ -177,6 +177,7 @@
       netlify
       name="feedback"
       netlify-honeypot="bot-field"
+      data-netlify-recaptcha="true"
       action="/success"
     >
       <p class="hidden" style="visibility: hidden">
@@ -236,6 +237,9 @@
         <tr>
           <td><label for="feedback-text">Your Feedback : </label></td>
           <td><textarea name="feedback-text" required></textarea></td>
+        </tr>
+        <tr>
+          <td colspan="2"><div data-netlify-recaptcha="true"></div></td>
         </tr>
         <tr>
           <td colspan="2">
