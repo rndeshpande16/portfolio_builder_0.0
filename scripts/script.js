@@ -587,7 +587,6 @@ function undo() {
     currentChange--;
   }
 }
-function redo() {}
 function deleteManual(event, index) {
   event.preventDefault();
   if (confirm("Are you sure?")) {
