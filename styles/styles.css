@@ -115,6 +115,10 @@ aside ul {
   width: 100%;
 }
 
+option {
+  color: var(--dark);
+}
+
 header nav ul li {
   list-style-type: none;
   list-style: none;
