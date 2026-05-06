@@ -117,6 +117,7 @@ aside ul {
 
 option {
   color: var(--dark);
+  background-color: var(--light);
 }
 
 header nav ul li {
