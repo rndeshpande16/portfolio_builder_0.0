@@ -554,9 +554,9 @@ document.addEventListener("click", function (e) {
 function addChange(arr) {
   if (currentChange !== changes.length - 1) {
     changes = changes.slice(0, currentChange + 1);
-   }
-   changes.push(arr);
-   currentChange++;
+  }
+  changes.push(arr);
+  currentChange++;
 }
 function undo() {
   let command = changes[currentChange];
@@ -591,19 +591,19 @@ function undo() {
   }
 }
 function redo() {
-  if(currentChange>=changes.length-1) {
+  if (currentChange >= changes.length - 1) {
     return;
   }
   currentChange++;
   let command = changes[currentChange];
   let success = false;
   let data = JSON.parse(localStorage.getItem(currentPage)) || [];
-  if(command[0] === "add") {
+  if (command[0] === "add") {
     data.push([command[1], portfolio[command[1]]]);
     localStorage.setItem(currentPage, JSON.stringify(data));
     loadPage(currentPage);
-    success = true; 
-  }else if (command[0] === "swap") {
+    success = true;
+  } else if (command[0] === "swap") {
     let ind1 = command[1];
     let ind2 = command[2];
     let temp = data[ind1];
@@ -612,14 +612,14 @@ function redo() {
     localStorage.setItem(currentPage, JSON.stringify(data));
     loadPage(currentPage);
     success = true;
-  }else if (command[0] === "delete") {
+  } else if (command[0] === "delete") {
     let originalIndex = command[1];
     data.splice(originalIndex, 1);
     localStorage.setItem(currentPage, JSON.stringify(data));
     loadPage(currentPage);
     success = true;
-  }else if (command[0] === "theme") {
-    changeTheme(command[2], true); 
+  } else if (command[0] === "theme") {
+    changeTheme(command[2], true);
     success = true;
   }
   if (!success) {
