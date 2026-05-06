@@ -5,6 +5,18 @@
   scroll-padding-top: 60px;
 }
 
+h1 {
+  font-size: 6vh;
+}
+
+p {
+  font-size: 2.5vh;
+}
+
+a {
+  font-size: 2.5vh;
+}
+
 i.xmark {
   font-family: "Poppins" !important;
 }
@@ -84,8 +96,12 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   container-type: inline-size;
   img {
-    height: 250px;
+    min-height: 250px;
+    max-height: 60vh;
     transition: 0.3s border-radius ease-in-out;
+  }
+  .heading {
+    text-align: center;
   }
   .imageintro {
     display: flex;
